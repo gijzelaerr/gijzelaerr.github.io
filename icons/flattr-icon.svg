@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generate more at icons.mysitemyway.com -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg id="flattr-icon" class="custom-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" style="height: 100px; width: 100px;"><circle class="outer-shape" cx="50" cy="50" r="48" style="opacity: 1; fill: #448caa;"></circle>
+	<path class="inner-shape" style="opacity: 1; fill: #ffffff;" transform="translate(25,25) scale(0.5)" d="M35.895 0c-23.765 0-35.895 13.688-35.895 39.244v0 53.617l23.28-23.304v-27.236c0-10.587 2.806-17.325 12.219-18.837v0c3.288-0.643 10.132-0.418 14.483-0.418v0 16.171c0 0.147 0.020 0.411 0.058 0.546v0c0.183 0.655 0.774 1.134 1.476 1.136v0c0.397 0.001 0.768-0.205 1.151-0.583v0l40.344-40.329-57.117-0.006zM76.72 30.444v27.235c0 10.587-2.806 17.326-12.218 18.837v0c-3.288 0.643-10.132 0.418-14.484 0.418v0-16.171c0-0.146-0.020-0.411-0.058-0.545v0c-0.182-0.655-0.774-1.135-1.476-1.136v0c-0.397-0.001-0.768 0.206-1.151 0.583v0l-40.344 40.329 57.117 0.006c23.765 0 35.895-13.688 35.895-39.243v0-53.616l-23.28 23.303z"></path>
+</svg>
+

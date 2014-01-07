@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generate more at icons.mysitemyway.com -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg id="picassa-icon" class="custom-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" style="height: 100px; width: 100px;"><circle class="outer-shape" cx="50" cy="50" r="48" style="opacity: 1; fill: #448caa;"></circle>
+	<path class="inner-shape" style="opacity: 1; fill: #ffffff;" transform="translate(25,25) scale(0.5)" d="M68.75 38.502l-35.591-35.591c5.263-1.882 10.932-2.911 16.841-2.911 6.631 0 12.959 1.294 18.75 3.638v34.864zM75 68.75v-62.059c14.945 8.645 25 24.803 25 43.309 0 6.631-1.294 12.959-3.638 18.75h-21.362zM31.25 75h62.059c-8.645 14.945-24.803 25-43.309 25-6.631 0-12.959-1.294-18.75-3.638v-21.362zM41.627 21.875l-40.164 40.164c-0.954-3.856-1.463-7.888-1.463-12.039 0-18.885 10.471-35.322 25.923-43.829l15.704 15.704zM25 48.998v44.311c-9.238-5.344-16.605-13.559-20.886-23.425l20.886-20.886z"></path>
+</svg>
+
