@@ -1,0 +1,71 @@
+==================================================================
+https://keybase.io/gijzelaerr
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://pythonic.nl
+  * I am gijzelaerr (https://keybase.io/gijzelaerr) on keybase.
+  * I have a public key with fingerprint C660 BABA 4B91 4B5C EB60  7739 4385 8ABA 72EE 99CA
+
+To claim this, I am signing this object:
+
+{
+    "body": {
+        "client": {
+            "name": "keybase.io node.js client",
+            "version": "0.6.0"
+        },
+        "key": {
+            "fingerprint": "c660baba4b914b5ceb60773943858aba72ee99ca",
+            "host": "keybase.io",
+            "key_id": "43858ABA72EE99CA",
+            "uid": "49880454a97e8f04918dbbc183b2f000",
+            "username": "gijzelaerr"
+        },
+        "merkle_root": {
+            "ctime": 1411032541,
+            "hash": "9dd6fbb262ed85d1e72ce142e07ace9f901d76ab076a3e8029d40c9415e1d9ea5584954384b62e1c68097fc513205fc2ae5f95f3ad12389831451467126d54b7",
+            "seqno": 51191
+        },
+        "service": {
+            "hostname": "pythonic.nl",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1411032711,
+    "expire_in": 157680000,
+    "prev": "a95faacf3953b461c52a2137034811efebaa5c21b430028cef8932e1b6a4b3ce",
+    "seqno": 5,
+    "tag": "signature"
+}
+
+with the aforementioned key, yielding the PGP signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG v1
+
+owFVkj1oFEEUx9f4ASqCAUGwCltYhWXefOzOnBCMIWJhoWAlhmM+3t5Nctk9dzen
+Z0ynKDZaaiNWgqCljWBjGWtLa7HQKvbOxBPNFsvuvP/7v/d7856dOpzMza88fPKh
++fli99Dn7ya5ce71o+3U1G6a9rZTO/JYdfGr0puY9tINnBrdYubrhap2mK23CzPN
+YjrBpvV1FVQkyzOS7ixGeUwufTXAZtz46JXaPCdGG82NAm6ERZOTomCKMylkOC8o
+olJWB8th3XYHqqb7nn3vwum+fvnSckFXV5VaWQ6xrT8BJSXhgmtVoCwJVyCdMRYk
+M7QkhERhi80MaeDX7+FIY9PEjjex2Rhhv6nrfWzb+SgCDkAYFRxCT7odhjTlXF4a
+Q3OKTgoHWFCLwCmSQltUpSLgilwbEl4MJaHKcWIVB4HgFGohJFciMHATLMDmkqii
+tAIYJaK0VKMolSiZdkCZVJIBF8DzAmjuBDdFgGjxdlWnPQGgYCf+NhNvMbYd5zbD
+G0+7YV15m1WjkDJu6q629SgEhl037kXkbjqOwjto+u9mHn3jKxcu7f9bjSUOjqOA
+MA68O/YN9n1UiCJQhCfWwUnw1IFAa1syJZjhOVhBNQVWEMYlAJZotBaWguGMECot
+llKxMA2Th+1ggeUfZOhTD4Jl6weV7rYaTHceXz6SzM8lx47Oxa1NThw//XeVn19M
+Xn1cespv/rj/IDt/cu3a9Te7X6+8x+RlvlYundn79OvL27P9b9mtq3Bhe+83
+=KKGn
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/gijzelaerr
+
+==================================================================
+
