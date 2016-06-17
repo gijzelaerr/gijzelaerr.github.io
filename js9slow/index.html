@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!-- saved from url=(0061)http://banana.transientskp.org/master/vlo_AR_DDT/bigimage/95/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>slow js9?</title>
+
+	<script src="./index_files/jquery.min.js"></script><style type="text/css"></style>
+
+
+	<link type="text/css" rel="stylesheet" href="./index_files/js9support.css">
+	<link type="text/css" rel="stylesheet" href="./index_files/js9.css">
+	<script type="text/javascript" src="./index_files/js9support.js"></script>
+	<script type="text/javascript" src="./index_files/js9.js"></script>
+	<script type="text/javascript" src="./index_files/js9plugins.js"></script>
+</head>
+
+<body onload="init()">
+
+
+<div id="size1024">
+	<div class="JS9Menubar" id="JS9-1024_Menubar" data-width="600px"></div>
+	<div class="JS9" id="JS9-1024" data-width="600px" data-height="600px"></div>
+</div>
+
+<script type="text/javascript">
+	function init(){
+		JS9.Load("some.fits", {onload: doit});
+	}
+
+	var extract_types = ["blind fit", "forced fit", "monitored position"]
+
+	function doit(){
+		var sources = [];
+
+		var opt = $.extend(true, {}, JS9.Catalogs.opts);
+		opt.tooltip =
+				"<b>id: $xreg.data.id<\/b><br>" +
+				"ra: $xreg.data.ra<br>" +
+				"decl: $xreg.data.decl<br>" +
+				"type: $xreg.data.type";
+		opt.onmouseup = function(im, xreg, evt){
+			window.open(xreg.data.url);
+		};
+
+
+		pix = JS9.WCSToPix(330.307891044, 32.7612365766);
+		data = {
+			id: 82447,
+			type: extract_types[1],
+			ra: 330.307891044,
+			decl: 32.7612365766,
+			url: "/master/vlo_AR_DDT/extractedsource/82447/"
+		}
+
+		sources.push({x: pix.x, y: pix.y, shape: "circle", color: "lightgreen", radius: 5, data: data});
+
+		pix = JS9.WCSToPix(305.510969219, 40.3683137673);
+		data = {
+			id: 82446,
+			type: extract_types[0],
+			ra: 305.510969219,
+			decl: 40.3683137673,
+			url: "/master/vlo_AR_DDT/extractedsource/82446/"
+		}
+
+		sources.push({x: pix.x, y: pix.y, shape: "box", color: "yellow", radius: 5, data: data});
+
+		pix = JS9.WCSToPix(305.163826554, 45.5071845997);
+		data = {
+			id: 82445,
+			type: extract_types[0],
+			ra: 305.163826554,
+			decl: 45.5071845997,
+			url: "/master/vlo_AR_DDT/extractedsource/82445/"
+		}
+
+		sources.push({x: pix.x, y: pix.y, shape: "box", color: "yellow", radius: 5, data: data});
+
+		pix = JS9.WCSToPix(311.609792225, 50.5357122252);
+		data = {
+			id: 82444,
+			type: extract_types[0],
+			ra: 311.609792225,
+			decl: 50.5357122252,
+			url: "/master/vlo_AR_DDT/extractedsource/82444/"
+		}
+
+		sources.push({x: pix.x, y: pix.y, shape: "box", color: "yellow", radius: 5, data: data});
+
+		pix = JS9.WCSToPix(341.680869384, 39.7948704559);
+		data = {
+			id: 82443,
+			type: extract_types[0],
+			ra: 341.680869384,
+			decl: 39.7948704559,
+			url: "/master/vlo_AR_DDT/extractedsource/82443/"
+		}
+
+		sources.push({x: pix.x, y: pix.y, shape: "box", color: "yellow", radius: 5, data: data});
+
+		pix = JS9.WCSToPix(6.43148861059, 64.0810012825);
+		data = {
+			id: 82442,
+			type: extract_types[0],
+			ra: 6.43148861059,
+			decl: 64.0810012825,
+			url: "/master/vlo_AR_DDT/extractedsource/82442/"
+		}
+
+		sources.push({x: pix.x, y: pix.y, shape: "box", color: "yellow", radius: 5, data: data});
+
+
+		JS9.NewShapeLayer("extracted sources", opt);
+		JS9.AddShapes("extracted sources", sources);
+
+	}
+</script>
+</div>
+
+
+
+</div></body></html>
