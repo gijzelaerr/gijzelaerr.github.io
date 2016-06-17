@@ -1,121 +1,604 @@
 <!DOCTYPE html>
 <!-- saved from url=(0061)http://banana.transientskp.org/master/vlo_AR_DDT/bigimage/95/ -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>slow js9?</title>
+    <title>Banana · db vlo_AR_DDT · Overview</title>
 
-	<script src="./index_files/jquery.min.js"></script><style type="text/css"></style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="./index_files/bootstrap.min.css" rel="stylesheet" media="screen">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="./index_files/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="./index_files/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="./index_files/AdminLTE.min.css">
+    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+          page. However, you can choose any other skin. Make sure you
+          apply the skin class to the body tag so the changes take effect.
+    -->
+    <link rel="stylesheet" href="./index_files/skin-blue.min.css">
+
+    <script src="./index_files/jquery.min.js"></script><style type="text/css"></style>
+    <script src="./index_files/bootstrap.min.js"></script>
+    <script src="./index_files/app.min.js"></script>
+    <script src="./index_files/highcharts.js"></script>
+    <script src="./index_files/exporting.js"></script>
 
 
-	<link type="text/css" rel="stylesheet" href="./index_files/js9support.css">
-	<link type="text/css" rel="stylesheet" href="./index_files/js9.css">
-	<script type="text/javascript" src="./index_files/js9support.js"></script>
-	<script type="text/javascript" src="./index_files/js9.js"></script>
-	<script type="text/javascript" src="./index_files/js9plugins.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="./index_files/js9support.css">
+    <link type="text/css" rel="stylesheet" href="./index_files/js9.css">
+    <script type="text/javascript" src="./index_files/js9support.js"></script><style type="text/css"></style>
+    <script type="text/javascript" src="./index_files/js9.js"></script>
+    <script type="text/javascript" src="./index_files/js9plugins.js"></script>
+
+
+    <link href="./index_files/banana.css" rel="stylesheet" media="screen">
+
+    <link rel="shortcut icon" href="http://banana.transientskp.org/master/static/favicon.ico">
 </head>
 
-<body onload="init()">
+<body onload="init()" class="skin-blue sidebar-mini">
+
+<div class="wrapper">
+
+    <!-- Main Header -->
+    <header class="main-header">
+
+        <!-- Logo -->
+        <a href="http://banana.transientskp.org/master/" class="logo">
+            <!-- mini logo for sidebar mini 50x50 pixels -->
+            <span class="logo-mini"><img src="./index_files/logo.png" width="20" height="15"></span>
+            <!-- logo for regular state and mobile devices -->
+            <span class="logo-lg"><img src="./index_files/logo.png" width="20" height="15"> <b>B</b>anana <b>3.0</b></span>
+        </a>
+
+        <!-- Header Navbar -->
+        <nav class="navbar navbar-static-top" role="navigation">
+            <!-- Sidebar toggle button-->
+            <a href="http://banana.transientskp.org/master/vlo_AR_DDT/bigimage/95/#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                <span class="sr-only">Toggle navigation</span>
+            </a>
+            <!-- Navbar Right Menu -->
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    
+                        <li><a href="http://banana.transientskp.org/master/accounts/login/">Login</a></li>
+                    
+                </ul>
+            </div>
+        </nav>
+    </header>
 
 
-<div id="size1024">
-	<div class="JS9Menubar" id="JS9-1024_Menubar" data-width="600px"></div>
-	<div class="JS9" id="JS9-1024" data-width="600px" data-height="600px"></div>
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <ul class="sidebar-menu">
+                <li><a href="http://banana.transientskp.org/master/"><i class="fa fa-clone"></i><span>Databases</span></a></li>
+                
+                    <li><a href="http://banana.transientskp.org/master/vlo_AR_DDT/"><i class="fa fa-align-justify"></i><span>database: vlo_AR_DDT</span></a></li>
+                
+
+                
+
+            </ul><!-- /.sidebar-menu -->
+
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                detailed image view for image: 95
+                <small>dataset # in database vlo_AR_DDT</small>
+            </h1>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            
+
+            <div class="container-fluid">
+                
+
+    <div class="container-fluid">
+            <div>
+                <a href="http://banana.transientskp.org/master/vlo_AR_DDT/rawimage/95/">
+                    <button class="btn btn-default btn-lg"><i class="glyphicon glyphicon-fa-download"></i>Download FITS file</button>
+                </a>
+            </div>
+            <div id="size1024">
+                <div class="JS9PluginContainer"><div class="JS9Menubar JS9Plugin" id="JS9-1024_Menubar" data-width="600px" style="width: 600px; height: auto;"><div class="JS9MenubarContainer" width="600" height="0"><span id="JS9Menus_JS9-1024_Menubar"><button type="button" id="fileMenuJS9-1024_Menubar" class="JS9Button">File</button><button type="button" id="viewMenuJS9-1024_Menubar" class="JS9Button">View</button><button type="button" id="zoomMenuJS9-1024_Menubar" class="JS9Button">Zoom</button><button type="button" id="scaleMenuJS9-1024_Menubar" class="JS9Button">Scale</button><button type="button" id="colorMenuJS9-1024_Menubar" class="JS9Button">Color</button><button type="button" id="regionMenuJS9-1024_Menubar" class="JS9Button">Region</button><button type="button" id="wcsMenuJS9-1024_Menubar" class="JS9Button">WCS</button><button type="button" id="analysisMenuJS9-1024_Menubar" class="JS9Button">Analysis</button><button type="button" id="helpMenuJS9-1024_Menubar" class="JS9Button">Help</button><button type="button" id="hiddenRegionMenuJS9-1024_Menubar" class="JS9Button" style="display:none">R</button><button type="button" id="hiddenAnchorMenuJS9-1024_Menubar" class="JS9Button" style="display:none">R</button></span></div></div></div>
+                <div class="JS9" id="JS9-1024" data-width="600px" data-height="600px" style="width: 605px; height: 605px; resize: both; overflow: hidden; position: relative;"><div class="JS9Container" tabindex="0" style="z-index: 0;"><canvas class="JS9Image" id="JS9-1024Image" width="600" height="600" style="z-index: 0;"></canvas></div><div class="resize-sensor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: scroll; z-index: -1; visibility: hidden;"><div class="resize-sensor-expand" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: scroll; z-index: -1; visibility: hidden;"><div style="position: absolute; left: 0px; top: 0px; width: 600px; height: 600px;"></div></div><div class="resize-sensor-shrink" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: scroll; z-index: -1; visibility: hidden;"><div style="position: absolute; left: 0; top: 0; width: 200%; height: 200%"></div></div></div><div id="tooltip_JS9-1024" class="JS9Tooltip"></div><div class="JS9Container" style="z-index: 8;"><div class="JS9Message" style="color: rgb(0, 255, 0);"></div><div class="JS9Message" style="color: rgb(0, 255, 0);"></div></div><div style="visibility:hidden; position:relative; top:-50;left:-50"> <input type="file" id="openLocalFile-JS9-1024" multiple="true" onchange="javascript:for(var i=0; i&lt;this.files.length; i++){JS9.Load(this.files[i], {display:&#39;JS9-1024&#39;}); }"> </div><div style="visibility:hidden; position:relative; top:-50;left:-50"> <input type="file" id="refreshLocalFile-JS9-1024" multiple="true" onchange="javascript:for(var i=0; i&lt;this.files.length; i++){JS9.RefreshImage(this.files[i], {display:&#39;JS9-1024&#39;}); }"> </div><div style="visibility:hidden; position:relative; top:-50;left:-50"> <input type="file" id="openLocalRegions-JS9-1024" multiple="true" onchange="javascript:for(var i=0; i&lt;this.files.length; i++){JS9.LoadRegions(this.files[i], {display:&#39;JS9-1024&#39;}); }"> </div><div style="visibility:hidden; position:relative; top:-50;left:-50"> <input type="file" id="openLocalColormap-JS9-1024" multiple="true" onchange="javascript:for(var i=0; i&lt;this.files.length; i++){JS9.AddColormap(this.files[i], {display:&#39;JS9-1024&#39;}); }"> </div><div class="JS9Container" style="z-index: 0;"><div class="canvas-container" style="width: 600px; height: 600px; position: relative; -webkit-user-select: none;"><canvas class="JS9Layer lower-canvas" id="JS9-1024-regions-shapeLayer" width="600" height="600" style="position: absolute; width: 600px; height: 600px; left: 0px; top: 0px; -webkit-user-select: none;"></canvas><canvas class="upper-canvas JS9Layer" width="600" height="600" style="position: absolute; width: 600px; height: 600px; left: 0px; top: 0px; -webkit-user-select: none;"></canvas></div></div><div class="JS9Container" style="z-index: 7;"><div class="canvas-container" style="width: 600px; height: 600px; position: relative; -webkit-user-select: none;"><canvas class="JS9Layer lower-canvas" id="JS9-1024-extracted_sources-shapeLayer" width="600" height="600" style="position: absolute; width: 600px; height: 600px; left: 0px; top: 0px; -webkit-user-select: none;"></canvas><canvas class="upper-canvas JS9Layer" width="600" height="600" style="position: absolute; width: 600px; height: 600px; left: 0px; top: 0px; -webkit-user-select: none;"></canvas></div></div></div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            function init(){
+                JS9.Load("some.fits", {onload: doit});
+            }
+
+            var extract_types = ["blind fit", "forced fit", "monitored position"]
+
+            function doit(){
+                var sources = [];
+
+                var opt = $.extend(true, {}, JS9.Catalogs.opts);
+                opt.tooltip =
+                        "<b>id: $xreg.data.id<\/b><br>" +
+                        "ra: $xreg.data.ra<br>" +
+                        "decl: $xreg.data.decl<br>" +
+                        "type: $xreg.data.type";
+                opt.onmouseup = function(im, xreg, evt){
+                    window.open(xreg.data.url);
+                };
+
+                
+                pix = JS9.WCSToPix(330.307891044, 32.7612365766);
+                data = {
+                    id: 82447,
+                    type: extract_types[1],
+                    ra: 330.307891044,
+                    decl: 32.7612365766,
+                    url: "/master/vlo_AR_DDT/extractedsource/82447/"
+                }
+
+                sources.push({x: pix.x, y: pix.y, shape: "circle", color: "lightgreen", radius: 5, data: data});
+                
+                pix = JS9.WCSToPix(305.510969219, 40.3683137673);
+                data = {
+                    id: 82446,
+                    type: extract_types[0],
+                    ra: 305.510969219,
+                    decl: 40.3683137673,
+                    url: "/master/vlo_AR_DDT/extractedsource/82446/"
+                }
+
+                sources.push({x: pix.x, y: pix.y, shape: "box", color: "yellow", radius: 5, data: data});
+                
+                pix = JS9.WCSToPix(305.163826554, 45.5071845997);
+                data = {
+                    id: 82445,
+                    type: extract_types[0],
+                    ra: 305.163826554,
+                    decl: 45.5071845997,
+                    url: "/master/vlo_AR_DDT/extractedsource/82445/"
+                }
+
+                sources.push({x: pix.x, y: pix.y, shape: "box", color: "yellow", radius: 5, data: data});
+                
+                pix = JS9.WCSToPix(311.609792225, 50.5357122252);
+                data = {
+                    id: 82444,
+                    type: extract_types[0],
+                    ra: 311.609792225,
+                    decl: 50.5357122252,
+                    url: "/master/vlo_AR_DDT/extractedsource/82444/"
+                }
+
+                sources.push({x: pix.x, y: pix.y, shape: "box", color: "yellow", radius: 5, data: data});
+                
+                pix = JS9.WCSToPix(341.680869384, 39.7948704559);
+                data = {
+                    id: 82443,
+                    type: extract_types[0],
+                    ra: 341.680869384,
+                    decl: 39.7948704559,
+                    url: "/master/vlo_AR_DDT/extractedsource/82443/"
+                }
+
+                sources.push({x: pix.x, y: pix.y, shape: "box", color: "yellow", radius: 5, data: data});
+                
+                pix = JS9.WCSToPix(6.43148861059, 64.0810012825);
+                data = {
+                    id: 82442,
+                    type: extract_types[0],
+                    ra: 6.43148861059,
+                    decl: 64.0810012825,
+                    url: "/master/vlo_AR_DDT/extractedsource/82442/"
+                }
+
+                sources.push({x: pix.x, y: pix.y, shape: "box", color: "yellow", radius: 5, data: data});
+                
+
+                JS9.NewShapeLayer("extracted sources", opt);
+                JS9.AddShapes("extracted sources", sources);
+
+            }
+        </script>
+    </div>
+
+
+            </section></div>
+        
+    </div>
+
+
+<link rel="stylesheet" href="./index_files/print.css" type="text/css" media="print">
+<link rel="stylesheet" href="./index_files/toolbar.css" type="text/css">
+
+<!-- Prevent our copy of jQuery from registering as an AMD module on sites that use RequireJS. -->
+<script src="./index_files/jquery_pre.js"></script>
+<script src="./index_files/jquery.min(1).js"></script>
+<script src="./index_files/jquery_post.js"></script>
+
+<script src="./index_files/toolbar.js"></script>
+<div id="djDebug" hidden="hidden" dir="ltr" data-store-id="e053901bb1bd422db9b101ce475d4df7" data-render-panel-url="/master/__debug__/render_panel/" style="display: block;">
+	<div hidden="hidden" id="djDebugToolbar" style="">
+		<ul id="djDebugPanelList">
+			
+			<li><a id="djHideToolBarButton" href="http://banana.transientskp.org/master/vlo_AR_DDT/bigimage/95/#" title="Hide toolbar">Hide »</a></li>
+			
+			
+				<li class="djDebugPanelButton">
+					<input type="checkbox" data-cookie="djdtVersionsPanel" checked="checked" title="Disable for next and successive requests">
+					
+						<a href="http://banana.transientskp.org/master/vlo_AR_DDT/bigimage/95/#" title="Versions" class="VersionsPanel">
+					
+					Versions
+					
+					
+						<br><small>Django 1.8.3</small>
+					
+					
+					
+						</a>
+					
+				</li>
+			
+				<li class="djDebugPanelButton">
+					<input type="checkbox" data-cookie="djdtTimerPanel" checked="checked" title="Disable for next and successive requests">
+					
+						<a href="http://banana.transientskp.org/master/vlo_AR_DDT/bigimage/95/#" title="Time" class="TimerPanel">
+					
+					Time
+					
+					
+						<br><small>CPU: 158.18ms (177.03ms)</small>
+					
+					
+					
+						</a>
+					
+				</li>
+			
+				<li class="djDebugPanelButton">
+					<input type="checkbox" data-cookie="djdtSettingsPanel" checked="checked" title="Disable for next and successive requests">
+					
+						<a href="http://banana.transientskp.org/master/vlo_AR_DDT/bigimage/95/#" title="Settings from &lt;code&gt;project.settings&lt;/code&gt;" class="SettingsPanel">
+					
+					Settings
+					
+					
+						
+					
+					
+					
+						</a>
+					
+				</li>
+			
+				<li class="djDebugPanelButton">
+					<input type="checkbox" data-cookie="djdtHeadersPanel" checked="checked" title="Disable for next and successive requests">
+					
+						<a href="http://banana.transientskp.org/master/vlo_AR_DDT/bigimage/95/#" title="Headers" class="HeadersPanel">
+					
+					Headers
+					
+					
+						
+					
+					
+					
+						</a>
+					
+				</li>
+			
+				<li class="djDebugPanelButton">
+					<input type="checkbox" data-cookie="djdtRequestPanel" checked="checked" title="Disable for next and successive requests">
+					
+						<a href="http://banana.transientskp.org/master/vlo_AR_DDT/bigimage/95/#" title="Request" class="RequestPanel">
+					
+					Request
+					
+					
+						<br><small>&lt;no view&gt;</small>
+					
+					
+					
+						</a>
+					
+				</li>
+			
+				<li class="djDebugPanelButton">
+					<input type="checkbox" data-cookie="djdtSQLPanel" checked="checked" title="Disable for next and successive requests">
+					
+						<a href="http://banana.transientskp.org/master/vlo_AR_DDT/bigimage/95/#" title="SQL queries from 1 connection" class="SQLPanel">
+					
+					SQL
+					
+					
+						<br><small>2 queries in 6.09ms</small>
+					
+					
+					
+						</a>
+					
+				</li>
+			
+				<li class="djDebugPanelButton">
+					<input type="checkbox" data-cookie="djdtStaticFilesPanel" checked="checked" title="Disable for next and successive requests">
+					
+						<a href="http://banana.transientskp.org/master/vlo_AR_DDT/bigimage/95/#" title="Static files (1252 found, 0 used)" class="StaticFilesPanel">
+					
+					Static files
+					
+					
+						<br><small>0 files used</small>
+					
+					
+					
+						</a>
+					
+				</li>
+			
+				<li class="djDebugPanelButton">
+					<input type="checkbox" data-cookie="djdtTemplatesPanel" checked="checked" title="Disable for next and successive requests">
+					
+						<a href="http://banana.transientskp.org/master/vlo_AR_DDT/bigimage/95/#" title="Templates (2 rendered)" class="TemplatesPanel">
+					
+					Templates
+					
+					
+						<br><small>banana/bigimage_detail.html</small>
+					
+					
+					
+						</a>
+					
+				</li>
+			
+				<li class="djDebugPanelButton">
+					<input type="checkbox" data-cookie="djdtCachePanel" checked="checked" title="Disable for next and successive requests">
+					
+						<a href="http://banana.transientskp.org/master/vlo_AR_DDT/bigimage/95/#" title="Cache calls from 1 backend" class="CachePanel">
+					
+					Cache
+					
+					
+						<br><small>0 calls in 0.00ms</small>
+					
+					
+					
+						</a>
+					
+				</li>
+			
+				<li class="djDebugPanelButton">
+					<input type="checkbox" data-cookie="djdtSignalsPanel" checked="checked" title="Disable for next and successive requests">
+					
+						<a href="http://banana.transientskp.org/master/vlo_AR_DDT/bigimage/95/#" title="Signals" class="SignalsPanel">
+					
+					Signals
+					
+					
+						<br><small>12 receivers of 12 signals</small>
+					
+					
+					
+						</a>
+					
+				</li>
+			
+				<li class="djDebugPanelButton">
+					<input type="checkbox" data-cookie="djdtLoggingPanel" checked="checked" title="Disable for next and successive requests">
+					
+						<a href="http://banana.transientskp.org/master/vlo_AR_DDT/bigimage/95/#" title="Log messages" class="LoggingPanel">
+					
+					Logging
+					
+					
+						<br><small>0 messages</small>
+					
+					
+					
+						</a>
+					
+				</li>
+			
+				<li class="djDebugPanelButton">
+					<input type="checkbox" data-cookie="djdtRedirectsPanel" title="Enable for next and successive requests">
+					
+						<div class="djdt-contentless djdt-disabled">
+					
+					Intercept redirects
+					
+					
+						</div>
+					
+				</li>
+			
+		</ul>
+	</div>
+	<div hidden="hidden" id="djDebugToolbarHandle" style="display: block;">
+		<span title="Show toolbar" id="djShowToolBarButton">«</span>
+	</div>
+	
+		
+			<div id="VersionsPanel" class="djdt-panelContent" style="display: none;">
+				<div class="djDebugPanelTitle">
+					<a href="http://banana.transientskp.org/master/vlo_AR_DDT/bigimage/95/" class="djDebugClose"></a>
+					<h3>Versions</h3>
+				</div>
+				<div class="djDebugPanelContent">
+					
+					<img src="./index_files/ajax-loader.gif" alt="loading" class="djdt-loader">
+					<div class="djdt-scroll"></div>
+					
+				</div>
+			</div>
+		
+	
+		
+			<div id="TimerPanel" class="djdt-panelContent" style="display: none;">
+				<div class="djDebugPanelTitle">
+					<a href="http://banana.transientskp.org/master/vlo_AR_DDT/bigimage/95/" class="djDebugClose"></a>
+					<h3>Time</h3>
+				</div>
+				<div class="djDebugPanelContent">
+					
+					<img src="./index_files/ajax-loader.gif" alt="loading" class="djdt-loader">
+					<div class="djdt-scroll"></div>
+					
+				</div>
+			</div>
+		
+	
+		
+			<div id="SettingsPanel" class="djdt-panelContent" style="display: none;">
+				<div class="djDebugPanelTitle">
+					<a href="http://banana.transientskp.org/master/vlo_AR_DDT/bigimage/95/" class="djDebugClose"></a>
+					<h3>Settings from <code>project.settings</code></h3>
+				</div>
+				<div class="djDebugPanelContent">
+					
+					<img src="./index_files/ajax-loader.gif" alt="loading" class="djdt-loader">
+					<div class="djdt-scroll"></div>
+					
+				</div>
+			</div>
+		
+	
+		
+			<div id="HeadersPanel" class="djdt-panelContent" style="display: none;">
+				<div class="djDebugPanelTitle">
+					<a href="http://banana.transientskp.org/master/vlo_AR_DDT/bigimage/95/" class="djDebugClose"></a>
+					<h3>Headers</h3>
+				</div>
+				<div class="djDebugPanelContent">
+					
+					<img src="./index_files/ajax-loader.gif" alt="loading" class="djdt-loader">
+					<div class="djdt-scroll"></div>
+					
+				</div>
+			</div>
+		
+	
+		
+			<div id="RequestPanel" class="djdt-panelContent" style="display: none;">
+				<div class="djDebugPanelTitle">
+					<a href="http://banana.transientskp.org/master/vlo_AR_DDT/bigimage/95/" class="djDebugClose"></a>
+					<h3>Request</h3>
+				</div>
+				<div class="djDebugPanelContent">
+					
+					<img src="./index_files/ajax-loader.gif" alt="loading" class="djdt-loader">
+					<div class="djdt-scroll"></div>
+					
+				</div>
+			</div>
+		
+	
+		
+			<div id="SQLPanel" class="djdt-panelContent" style="display: none;">
+				<div class="djDebugPanelTitle">
+					<a href="http://banana.transientskp.org/master/vlo_AR_DDT/bigimage/95/" class="djDebugClose"></a>
+					<h3>SQL queries from 1 connection</h3>
+				</div>
+				<div class="djDebugPanelContent">
+					
+					<img src="./index_files/ajax-loader.gif" alt="loading" class="djdt-loader">
+					<div class="djdt-scroll"></div>
+					
+				</div>
+			</div>
+		
+	
+		
+			<div id="StaticFilesPanel" class="djdt-panelContent" style="display: none;">
+				<div class="djDebugPanelTitle">
+					<a href="http://banana.transientskp.org/master/vlo_AR_DDT/bigimage/95/" class="djDebugClose"></a>
+					<h3>Static files (1252 found, 0 used)</h3>
+				</div>
+				<div class="djDebugPanelContent">
+					
+					<img src="./index_files/ajax-loader.gif" alt="loading" class="djdt-loader">
+					<div class="djdt-scroll"></div>
+					
+				</div>
+			</div>
+		
+	
+		
+			<div id="TemplatesPanel" class="djdt-panelContent" style="display: none;">
+				<div class="djDebugPanelTitle">
+					<a href="http://banana.transientskp.org/master/vlo_AR_DDT/bigimage/95/" class="djDebugClose"></a>
+					<h3>Templates (2 rendered)</h3>
+				</div>
+				<div class="djDebugPanelContent">
+					
+					<img src="./index_files/ajax-loader.gif" alt="loading" class="djdt-loader">
+					<div class="djdt-scroll"></div>
+					
+				</div>
+			</div>
+		
+	
+		
+			<div id="CachePanel" class="djdt-panelContent" style="display: none;">
+				<div class="djDebugPanelTitle">
+					<a href="http://banana.transientskp.org/master/vlo_AR_DDT/bigimage/95/" class="djDebugClose"></a>
+					<h3>Cache calls from 1 backend</h3>
+				</div>
+				<div class="djDebugPanelContent">
+					
+					<img src="./index_files/ajax-loader.gif" alt="loading" class="djdt-loader">
+					<div class="djdt-scroll"></div>
+					
+				</div>
+			</div>
+		
+	
+		
+			<div id="SignalsPanel" class="djdt-panelContent" style="display: none;">
+				<div class="djDebugPanelTitle">
+					<a href="http://banana.transientskp.org/master/vlo_AR_DDT/bigimage/95/" class="djDebugClose"></a>
+					<h3>Signals</h3>
+				</div>
+				<div class="djDebugPanelContent">
+					
+					<img src="./index_files/ajax-loader.gif" alt="loading" class="djdt-loader">
+					<div class="djdt-scroll"></div>
+					
+				</div>
+			</div>
+		
+	
+		
+			<div id="LoggingPanel" class="djdt-panelContent" style="display: none;">
+				<div class="djDebugPanelTitle">
+					<a href="http://banana.transientskp.org/master/vlo_AR_DDT/bigimage/95/" class="djDebugClose"></a>
+					<h3>Log messages</h3>
+				</div>
+				<div class="djDebugPanelContent">
+					
+					<img src="./index_files/ajax-loader.gif" alt="loading" class="djdt-loader">
+					<div class="djdt-scroll"></div>
+					
+				</div>
+			</div>
+		
+	
+		
+	
+	<div id="djDebugWindow" class="djdt-panelContent" style="display: none;"></div>
 </div>
 
-<script type="text/javascript">
-	function init(){
-		JS9.Load("some.fits", {onload: doit});
-	}
 
-	var extract_types = ["blind fit", "forced fit", "monitored position"]
-
-	function doit(){
-		var sources = [];
-
-		var opt = $.extend(true, {}, JS9.Catalogs.opts);
-		opt.tooltip =
-				"<b>id: $xreg.data.id<\/b><br>" +
-				"ra: $xreg.data.ra<br>" +
-				"decl: $xreg.data.decl<br>" +
-				"type: $xreg.data.type";
-		opt.onmouseup = function(im, xreg, evt){
-			window.open(xreg.data.url);
-		};
-
-
-		pix = JS9.WCSToPix(330.307891044, 32.7612365766);
-		data = {
-			id: 82447,
-			type: extract_types[1],
-			ra: 330.307891044,
-			decl: 32.7612365766,
-			url: "/master/vlo_AR_DDT/extractedsource/82447/"
-		}
-
-		sources.push({x: pix.x, y: pix.y, shape: "circle", color: "lightgreen", radius: 5, data: data});
-
-		pix = JS9.WCSToPix(305.510969219, 40.3683137673);
-		data = {
-			id: 82446,
-			type: extract_types[0],
-			ra: 305.510969219,
-			decl: 40.3683137673,
-			url: "/master/vlo_AR_DDT/extractedsource/82446/"
-		}
-
-		sources.push({x: pix.x, y: pix.y, shape: "box", color: "yellow", radius: 5, data: data});
-
-		pix = JS9.WCSToPix(305.163826554, 45.5071845997);
-		data = {
-			id: 82445,
-			type: extract_types[0],
-			ra: 305.163826554,
-			decl: 45.5071845997,
-			url: "/master/vlo_AR_DDT/extractedsource/82445/"
-		}
-
-		sources.push({x: pix.x, y: pix.y, shape: "box", color: "yellow", radius: 5, data: data});
-
-		pix = JS9.WCSToPix(311.609792225, 50.5357122252);
-		data = {
-			id: 82444,
-			type: extract_types[0],
-			ra: 311.609792225,
-			decl: 50.5357122252,
-			url: "/master/vlo_AR_DDT/extractedsource/82444/"
-		}
-
-		sources.push({x: pix.x, y: pix.y, shape: "box", color: "yellow", radius: 5, data: data});
-
-		pix = JS9.WCSToPix(341.680869384, 39.7948704559);
-		data = {
-			id: 82443,
-			type: extract_types[0],
-			ra: 341.680869384,
-			decl: 39.7948704559,
-			url: "/master/vlo_AR_DDT/extractedsource/82443/"
-		}
-
-		sources.push({x: pix.x, y: pix.y, shape: "box", color: "yellow", radius: 5, data: data});
-
-		pix = JS9.WCSToPix(6.43148861059, 64.0810012825);
-		data = {
-			id: 82442,
-			type: extract_types[0],
-			ra: 6.43148861059,
-			decl: 64.0810012825,
-			url: "/master/vlo_AR_DDT/extractedsource/82442/"
-		}
-
-		sources.push({x: pix.x, y: pix.y, shape: "box", color: "yellow", radius: 5, data: data});
-
-
-		JS9.NewShapeLayer("extracted sources", opt);
-		JS9.AddShapes("extracted sources", sources);
-
-	}
-</script>
-</div>
-
-
-
-</div></body></html>
+<div id="dhtmlwindowholder"><span style="display:none">.</span></div></body></html>
