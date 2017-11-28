@@ -15,9 +15,14 @@ a {
 
 
 .menu-icon {
-  margin: 0.3rem;
+  margin: 0.4rem;
+    opacity: 0.4;
 }
 
+
+.menu-icon:hover {
+    opacity: 0.8;
+}
 
 body {
     background-image: url('/images/background.png');
