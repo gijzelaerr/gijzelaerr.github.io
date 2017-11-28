@@ -1,105 +1,24 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
-    <link rel="icon" href="favicon.ico">
-    <title>Gijs Molenaar</title>
-</head>
-<body>
+---
+---
 
-<div class="container">
-    <div class="jumbotron">
-        <div class="row text-center">
-            <div class="col-xs-12">
-                <img src="smile.jpg" class="img-circle">
-            </div>
-        </div>
+{%  include header.html %}
 
-    </div>
-    <div class="jumbotron">
+    <main role="main" class="container">
 
-        <div class="row text-center">
-            <div class="col-xs-12">
-                When I was a kid I wanted to become a bicycle repair man. Now I'm working as a free-lance software engineer / 
-                data scientist, which is also fun. For the last 5 years I worked on data
-                reduction pipelines for very big radio telescopes like <a href="http://www.lofar.org" target="_blank">LOFAR</a> and
-                <a href="http://www.ska.ac.za/" target="_blank">SKA</a>.  I have experience in various fields like astronomy,
-                big data, industrial computing, fin tech, machine learning and computer vision. Amsterdam I call home, but I'm
-                often in Cape Town. If you are looking for a versatile problem solver don't hesitate to contact me.
-                In my spare time I make <a href="http://brouwerijdepomp.nl/" target="_blank">beer</a>
-                and <a href="https://soundcloud.com/gijzelaerr" target="_blank">music</a>. My name is Gijs Molenaar.
-            </div>
-        </div>
+      <div class="row">
+          <div class="col-8">
+            <p class="lead"> When I was a kid I wanted to become a bicycle repair man.<br> Now I'm working as a free-lance
+            software engineer / data scientist, which is also fun. For the last 5 years I worked on data
+            reduction pipelines for very big radio telescopes like <a href="http://www.lofar.org" target="_blank">LOFAR</a> and
+            <a href="http://www.ska.ac.za/" target="_blank">SKA</a>.  I have experience in various fields like astronomy,
+            big data, industrial computing, fin tech, machine learning and computer vision. Amsterdam I call home, but I'm
+            often in Cape Town. In my spare time I make <a href="http://brouwerijdepomp.nl/" target="_blank">beer</a>
+            and <a href="https://soundcloud.com/gijzelaerr" target="_blank">music</a>. My name is Gijs Molenaar.</p>
+          </div>
+          <div class="col">
+            <img src="images/pythonic200.png" class="img-circle">
+          </div>
+      </div>
+    </main>
 
-    </div>
-    <div class="jumbotron">
-
-        <div class="row">
-
-            <div class="col-sm-6">
-                <div class="row">
-                    <div class="col-xs-4">
-                        <a href="http://twitter.com/gijzelaerr" target="_blank">
-                            <img src="icons/twitter-icon.svg" alt="Twitter">
-                        </a>
-                    </div>
-                    <div class="col-xs-4">
-                        <a href="http://nl.linkedin.com/in/gijsmolenaar" target="_blank">
-                            <img src="icons/linkedin-icon.svg" alt="LinkedIn">
-                        </a>
-                    </div>
-                    <div class="col-xs-4">
-                        <a href="https://soundcloud.com/gijzelaerr" target="_blank">
-                            <img src="icons/soundcloud-icon.svg" alt="SoundCloud">
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6">
-
-                <div class="row">
-                    <div class="col-xs-4">
-                        <a href="https://scholar.google.com/citations?user=BzgJ8xUAAAAJ" target="_blank">
-                            <img src="icons/default-icon.svg" alt="Google Scholar">
-                        </a>
-                    </div>
-                    <div class="col-xs-4">
-                        <a href="https://github.com/gijzelaerr" target="_blank">
-                            <img src="icons/github-icon.svg" alt="Github">
-                        </a>
-                    </div>
-                    <div class="col-xs-4">
-                        <a href="mailto:gijsNOSPAM@pythonic.nl" target="_blank">
-                            <img src="icons/mail-icon.svg" alt="Email">
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>      
-
-    <div class="jumbotron">
-        <div class="row text-center">
-            <div class="col-xs-12">
-                        <img src="http://hitwebcounter.com/counter/counter.php?page=5743057&style=0007&nbdigits=9&type=page&initCount=0" title="web counter script" Alt="web counter script"   border="0" >
-            </div>
-        </div>
-    </div>
-
-    <script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-
-    <script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-64792-8', 'auto');
-ga('send', 'pageview');
-    </script>
-
-</body>
-</html>
+{%  include footer.html %}
