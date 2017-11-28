@@ -17,3 +17,11 @@ a {
 .menu-icon {
   margin: 0.3rem;
 }
+
+
+body {
+    background-image: url('/images/background.png');
+    background-repeat: repeat-x;
+    background-position: bottom;
+    margin-bottom: 200px;
+}
