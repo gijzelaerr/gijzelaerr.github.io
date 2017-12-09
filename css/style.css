@@ -1,6 +1,6 @@
 
 body {
-  padding-top: 5rem;
+  padding-top: 4.8rem;
 }
 
 .starter-template {
@@ -13,15 +13,29 @@ a {
   color: #35988b;
 }
 
+.anim {
+    opacity: 0.0;
+}
+
+.jumbotron {
+    text-align: center;
+}
 
 .menu-icon {
-  margin: 0.4rem;
-    opacity: 0.4;
+    margin: 0.4rem;
+    opacity: 0.8;
+}
+
+.nav-link {
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    padding-left: 3rem;
+
 }
 
 
 .menu-icon:hover {
-    opacity: 0.8;
+    opacity: 1.0;
 }
 
 body {

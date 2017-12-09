@@ -3,40 +3,79 @@
 
 {%  include header.html %}
 
- <div class="container" >
+<script>
+    window.onload = function () {
+        var elem = document.getElementById("anim");
+        var i = 1;
 
-     <div class="starter-template">
-         <img src="images/pythonic200_title2.png">
+        function myLoop() {
+            setTimeout(function () {
+                elem.style.opacity = i / 100.0;
+                console.log(i / 100.0);
+                i++;
+                if (i < 100) {
+                    myLoop();
+                }
+            }, 40)
+        }
 
-        <p class="lead">Pythonic.nl is a one man company delivering high quality software products.<br>
-        </p>
-      </div>
+        myLoop();
 
 
+    }
+</script>
+
+<div class="jumbotron">
+    <!-- <div class="starter-template"> -->
     <div class="container">
+        <div id="anim">
+            <img src="images/pythonic200_title2.png">
+
+            <p class="lead">Pythonic.nl is a one man company delivering high quality software products.<br>
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="container">
+        <hr>
+
         <div class="row">
-          <div class="col-md-4">
-              <h2>Pythonic</h2>
-              <p>Modern, idiomatic, documented, tested and carefully nurtured software products. Although not afraid
-                  of other languages, Python is the language of choice.
-              </p>
-          </div>
             <div class="col-md-4">
-              <h2>Scientific</h2>
-              <p>Deep knowledge of scientific code, methods and culture. Ambitiously transforming prototype code into
-                  production ready software products.
-              </p>
-          </div>
+                <h2>Pythonic</h2>
+                <p>Modern, idiomatic, documented, tested and carefully nurtured software products. Although not afraid
+                    of other languages, Python is the language of choice.
+                </p>
+            </div>
+            <div class="col-md-4">
+                <h2>Scientific</h2>
+                <p>Deep knowledge of scientific code, methods and culture. Ambitiously transforming prototype code into
+                    production ready software products.
+                </p>
+            </div>
 
-          <div class="col-md-4">
-              <h2>Data processing</h2>
-              <p>Working in astronomy resulted in experience with handling massive amounts of data. Educated in the
-                  field of artificial intelligence.
-              </p>
-          </div>
+            <div class="col-md-4">
+                <h2>Data processing</h2>
+                <p>Working in astronomy resulted in experience with handling massive amounts of data. Educated in the
+                    field of artificial intelligence.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <p><a class="btn btn-secondary" href="/projects" role="button">VIEW PROJECTS &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <p><a class="btn btn-secondary" href="/cv" role="button">VIEW CV &raquo;</a></p>
+            </div>
 
+            <div class="col-md-4">
+                <p><a class="btn btn-secondary" href="/publications" role="button">VIEW PUBLICATIONS &raquo;</a></p>
+            </div>
         </div>
 
+        <hr>
     </div>
 
-{%  include footer.html %}
+    {% include footer.html %}
