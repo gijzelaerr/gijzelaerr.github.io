@@ -13,6 +13,16 @@ a {
   color: #35988b;
 }
 
+hr {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.page-title {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
 #anim {
     opacity: 0.0;
 }
@@ -26,11 +36,17 @@ a {
     opacity: 0.8;
 }
 
-.nav-link {
+.nav-item {
     font-size: 1.3rem;
     text-transform: uppercase;
-    padding-left: 3rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-bottom: 5px;
+}
 
+.nav-item:hover {
+    color: #35988b;
+    border-bottom: 5px solid #35988b;
 }
 
 
