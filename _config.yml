@@ -3,3 +3,6 @@ theme: minima
 exclude:
   - Gemfile
   - Gemfile.lock
+url: "http://pythonic.nl"
+plugins:
+  - jekyll-sitemap
