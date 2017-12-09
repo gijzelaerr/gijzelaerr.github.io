@@ -37,6 +37,9 @@ hr {
 
 .jumbotron {
     text-align: center;
+    background-image: url('/images/stars.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .menu-icon {
