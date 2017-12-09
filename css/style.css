@@ -1,6 +1,6 @@
 
 body {
-  padding-top: 4.8rem;
+    padding-top: 4.8rem;
 }
 
 .starter-template {
@@ -11,6 +11,14 @@ body {
 
 a {
   color: #35988b;
+}
+
+h1 {
+    font-family: 'Quicksand';
+}
+
+h2 {
+    font-family: 'Quicksand';
 }
 
 hr {
@@ -39,14 +47,15 @@ hr {
 .nav-item {
     font-size: 1.3rem;
     text-transform: uppercase;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    //padding-left: 0.5rem;
+    //padding-right: 0.5rem;
     border-bottom: 5px;
+    font-family: 'Quicksand';
 }
 
 .nav-item:hover {
     color: #35988b;
-    border-bottom: 5px solid #35988b;
+    border-bottom: 5px solid #DDDDDD;
 }
 
 
