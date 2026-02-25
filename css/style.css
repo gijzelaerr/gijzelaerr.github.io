@@ -50,8 +50,8 @@ hr {
 .nav-item {
     font-size: 1.3rem;
     text-transform: uppercase;
-    //padding-left: 0.5rem;
-    //padding-right: 0.5rem;
+    /* padding-left: 0.5rem; */
+    /* padding-right: 0.5rem; */
     border-bottom: 5px;
     font-family: 'Quicksand';
 }
