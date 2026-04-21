@@ -1,118 +1,149 @@
 ---
 ---
 
-{%  include header.html %}
+{% include header.html %}
 
-<main role="main" class="container">
+<article class="page">
 
-    <div class="row">
-        <div class="col-2">
-        </div>
-        <div class="col-8">
+    <p class="page-eyebrow">File · Curriculum Vitae</p>
+    <h1 class="page-title">Curriculum.</h1>
+    <p class="page-subtitle">Software, science &amp; adjacent mischief. A one-page <a href="/cv.pdf">PDF version</a> is available.</p>
 
+    <h2 class="page-section-heading" data-num="§ 01">Experience</h2>
+    <ol class="log">
 
-            <h1 class="page-title">CV</h1>
-
-            <hr>
-
-            <div class="row">
-                <div class="col-4 text-center">
-                    <H3>2022 - present</H3>
-                </div>
-                <div class="col-8">
-                    Senior System Engineer, <a href="https://spotify.com" target="_blank">Spotify</a>
-                </div>
+        <li class="entry">
+            <div class="entry-date">2022 — now<br>Amsterdam</div>
+            <div class="entry-body">
+                <p class="entry-title"><a href="https://spotify.com" target="_blank" rel="noopener">Spotify</a></p>
+                <p class="entry-role">Senior Systems Engineer</p>
+                <ul>
+                    <li><strong>Fabric team</strong> — built and maintained the service mesh, service discovery, and service-to-service authentication / authorization infrastructure.</li>
+                    <li><strong>ATC team</strong> — developed edge-perimeter systems for attack prevention, scraping detection, and load balancing.</li>
+                    <li>Responded to high-impact incidents affecting platform reliability; maintained mission-critical legacy systems running since Spotify's inception.</li>
+                </ul>
             </div>
+        </li>
 
- 
-            <hr>
-
-            <div class="row">
-                <div class="col-4 text-center">
-                    <H3>2008 - present</H3>
-                </div>
-                <div class="col-8">
-                    Independent Software & Research Engineer, <a href="http://pythonic.nl"
-                                                                target="_blank">Pythonic.nl</a>
-                </div>
+        <li class="entry">
+            <div class="entry-date">2021<br>Amsterdam</div>
+            <div class="entry-body">
+                <p class="entry-title"><a href="https://www.dpgmedia.nl/" target="_blank" rel="noopener">DPG Media</a></p>
+                <p class="entry-role">Machine Learning Engineer</p>
+                <ul>
+                    <li>Built the recommendation engine for a then-upcoming multi-brand news app and website.</li>
+                    <li>Held the role of product owner for technical debt.</li>
+                </ul>
             </div>
+        </li>
 
-            <hr>
-
-            <div class="row">
-                <div class="col-4 text-center">
-                    <H3>2011 - 2017</H3>
-                </div>
-
-                <div class="col-8">
-                    Scientific Software Engineer, <a href="http://api.uva.nl/" target="_blank">University of Amsterdam</a>.
-                    Part-time seconded to <a href="http://www.ska.ac.za/" target="_blank">Square Kilometre Array South Africa</a>
-                </div>
+        <li class="entry">
+            <div class="entry-date">2011 — 2021<br>Amsterdam</div>
+            <div class="entry-body">
+                <p class="entry-title"><a href="/">Pythonic.nl</a></p>
+                <p class="entry-role">Freelance Software &amp; Research Engineer</p>
+                <ul>
+                    <li>Delivered software for Alliander, ASTRON, CWI, SARAO, SETI (Berkeley), and SURFnet.</li>
+                    <li>Built a simulation of the Dutch electricity grid with realistic usage patterns, as a testbed for reinforcement-learning agents optimising long-term investment strategies (Alliander).</li>
+                    <li>Algorithmic perfume design via collaborative filtering (Scentronix).</li>
+                    <li>Containerisation for SETI signal search at <a href="https://seti.berkeley.edu/listen/" target="_blank" rel="noopener">Breakthrough Listen</a>.</li>
+                    <li>Radio-astronomy data-reduction pipelines for LOFAR, MeerKAT, and APERTIF.</li>
+                </ul>
             </div>
+        </li>
 
-            <hr>
-
-            <div class="row">
-                <div class="col-4 text-center">
-                    <H3>2011</H3>
-                </div>
-                <div class="col-8">
-                    Scientific Software Engineer, <a href="http://sightcorp.com/" target="_blank">ThirdSight</a>
-                </div>
+        <li class="entry">
+            <div class="entry-date">2012 — 2018<br>AMS / CPT</div>
+            <div class="entry-body">
+                <p class="entry-title"><a href="https://www.uva.nl/" target="_blank" rel="noopener">University of Amsterdam</a></p>
+                <p class="entry-role">Scientific Software Engineer</p>
+                <ul>
+                    <li>Seconded part-time to the Square Kilometre Array (<a href="https://www.sarao.ac.za/" target="_blank" rel="noopener">SARAO</a>) in South Africa.</li>
+                    <li>Created the <a href="http://kernsuite.info/" target="_blank" rel="noopener">KERN</a> radio-astronomy software suite.</li>
+                    <li>Built APERTIF software packaging and cluster tooling at <a href="https://www.astron.nl/" target="_blank" rel="noopener">ASTRON</a>.</li>
+                    <li>Designed modular data-reduction pipelines for the ASTERICS project.</li>
+                </ul>
             </div>
+        </li>
 
-            <hr>
-
-            <h1>Education</h1>
-
-            <hr>
-
-            <div class="row">
-                <div class="col-4 text-center">
-                    <H3>2015 - 2020</H3>
-                </div>
-                <div class="col-8">
-                     PhD student, Rhodes University, South Africa
-                </div>
+        <li class="entry">
+            <div class="entry-date">2011<br>Amsterdam</div>
+            <div class="entry-body">
+                <p class="entry-title">ThirdSight <em>(now Sightcorp)</em></p>
+                <p class="entry-role">Scientific Software Engineer</p>
+                <p>Computer-vision research into facial expression analysis.</p>
             </div>
+        </li>
 
-            <hr>
+    </ol>
 
-            <div class="row">
-                <div class="col-4 text-center">
-                    <H3>2008 - 2010</H3>
-                </div>
-                <div class="col-8">
-                     MSc Artificial Intelligence, University of Amsterdam
-                </div>
+    <h2 class="page-section-heading" data-num="§ 02">Education</h2>
+    <ol class="log">
+
+        <li class="entry">
+            <div class="entry-date">2015 — 2020<br>South Africa</div>
+            <div class="entry-body">
+                <p class="entry-title"><a href="https://www.ru.ac.za/" target="_blank" rel="noopener">Rhodes University</a></p>
+                <p class="entry-role">PhD — Radio Astronomy / Computer Science</p>
+                <p>Thesis: <a href="/thesis.pdf">Design patterns and software techniques for large-scale, open and reproducible containerised data-reduction pipelines</a>.</p>
             </div>
+        </li>
 
-            <hr>
-
-            <div class="row">
-                <div class="col-4 text-center">
-                    <H3>2004 - 2008</H3>
-                </div>
-                <div class="col-8">
-                     BSc (Cum Laude) Software Engineer, System and Network Engineer, Hogeschool van Amsterdam
-                </div>
+        <li class="entry">
+            <div class="entry-date">2009 — 2011<br>Amsterdam</div>
+            <div class="entry-body">
+                <p class="entry-title"><a href="https://www.uva.nl/" target="_blank" rel="noopener">University of Amsterdam</a></p>
+                <p class="entry-role">MSc — Artificial Intelligence</p>
+                <p>Thesis: <a href="http://arno.uva.nl/cgi/arno/show.cgi?fid=216268" target="_blank" rel="noopener">Sonic Gesture</a> — real-time computer-vision translation of hand poses into MIDI.</p>
             </div>
+        </li>
 
-            <hr>
-
-            <div class="row">
-                <div class="col-4 text-center">
-                    <H3>1999 - 2003</H3>
-                </div>
-                <div class="col-8">
-                     MBO Elektrotechniek Nova College
-                </div>
+        <li class="entry">
+            <div class="entry-date">2004 — 2008<br>Amsterdam</div>
+            <div class="entry-body">
+                <p class="entry-title"><a href="https://www.hva.nl/" target="_blank" rel="noopener">Hogeschool van Amsterdam</a></p>
+                <p class="entry-role">BSc <em>cum laude</em> — Software, System &amp; Network Engineering</p>
             </div>
+        </li>
 
-            <hr>
+    </ol>
 
-        </div>
-    </div>
-</main>
+    <h2 class="page-section-heading" data-num="§ 03">Certifications</h2>
+    <ol class="log">
 
-{%  include footer.html %}
+        <li class="entry">
+            <div class="entry-date">2021</div>
+            <div class="entry-body">
+                <p class="entry-title">AWS Certified Solutions Architect <em>— Associate</em></p>
+            </div>
+        </li>
+
+        <li class="entry">
+            <div class="entry-date">2021</div>
+            <div class="entry-body">
+                <p class="entry-title">EU Certified Drone Operator <em>— A1 / A2 / A3</em></p>
+            </div>
+        </li>
+
+        <li class="entry">
+            <div class="entry-date">2002</div>
+            <div class="entry-body">
+                <p class="entry-title">Cisco Certified Network Associate <em>(CCNA)</em></p>
+            </div>
+        </li>
+
+    </ol>
+
+    <h2 class="page-section-heading" data-num="§ 04">Languages</h2>
+    <ol class="log">
+        <li class="entry">
+            <div class="entry-date">—</div>
+            <div class="entry-body">
+                <p><strong>Dutch</strong> <em>native</em> &nbsp;·&nbsp; <strong>English</strong> <em>full professional proficiency</em></p>
+            </div>
+        </li>
+    </ol>
+
+</article>
+
+{% include footer.html %}

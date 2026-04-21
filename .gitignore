@@ -3,5 +3,7 @@ _site/
 node_modules/
 .bundle/
 vendor/
+.gems/
+.jekyll-cache/
 .*.swp
 .idea/

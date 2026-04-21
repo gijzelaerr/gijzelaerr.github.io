@@ -1,133 +1,77 @@
 ---
 ---
 
-{%  include header.html %}
+{% include header.html %}
 
-<div class="jumbotron">
-    <!-- <div class="starter-template"> -->
-    <div class="container">
-        <div id="anim">
-            <img src="images/pythonic200_title3.png">
-
-            <p class="lead">Pythonic.nl is a one-man company delivering high quality software products.<br>
-            </p>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="container">
-        <hr>
-
-        <div class="row">
-            <div class="col-md-4 text-center">
-                <h2>Pythonic</h2>
-                <p>Modern, idiomatic, documented, tested and carefully nurtured software products. Although not afraid
-                    of other languages, Python is the language of choice.
-                </p>
-            </div>
-            <div class="col-md-4 text-center">
-                <h2>Scientific</h2>
-                <p>Deep knowledge of scientific code, methods and culture. Ambitiously transforming prototype code into
-                    production ready software products.
-                </p>
-            </div>
-
-            <div class="col-md-4 text-center">
-                <h2>Data processing</h2>
-                <p>Working in astronomy resulted in experience with handling massive amounts of data. Educated in the
-                    field of artificial intelligence.
-                </p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 text-center">
-                <p><a class="btn btn-secondary" href="/projects" role="button">VIEW PROJECTS &raquo;</a></p>
-            </div>
-            <div class="col-md-4 text-center">
-                <p><a class="btn btn-secondary" href="/cv" role="button">VIEW CV &raquo;</a></p>
-            </div>
-
-            <div class="col-md-4 text-center">
-                <p><a class="btn btn-secondary" href="/publications" role="button">VIEW PUBLICATIONS &raquo;</a></p>
-            </div>
+<section class="hero">
+    <div class="hero-grid">
+        <div class="hero-meta-top reveal reveal-1">
+            <span class="left">52°22′03″N &nbsp;·&nbsp; 04°54′15″E</span>
+            <span class="right">AMS &nbsp;·&nbsp; WDH &nbsp;·&nbsp; CPT</span>
         </div>
 
-        <hr>
-
-        <div class="row">
-            <div class="col-md-2">
-            </div>
-            <div class="col-md-8 text-center">
-                <h2>Clients include</h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-2 col-sm-6 align-self-center text-center">
-                <a href="https://www.alliander.com/">
-                    <img src="images/clients/alliander.jpg" width="100px" style="margin:30px">
-                </a>
-            </div>
-            <div class="col-md-2 col-sm-6 align-self-center text-center">
-                <a href="https://www.astron.nl/">
-                    <img src="images/clients/astron.png" width="100px" style="margin:30px">
-                </a>
-            </div>
-            <div class="col-md-2 col-sm-6 align-self-center text-center">
-                <a href="https://www.cwi.nl/">
-                    <img src="images/clients/cwi.jpg" width="100px" style="margin:30px">
-                </a>
-            </div>
-            <div class="col-md-2 col-sm-6 align-self-center text-center">
-                <a href="https://www.ska.ac.za/">
-                    <img src="images/clients/sarao.jpg" width="100px" style="margin:30px">
-                </a>
-            </div>
-            <div class="col-md-2 col-sm-6 align-self-center text-center">
-                <a href="https://seti.berkeley.edu">
-                    <img src="images/clients/seti.png" width="100px" style="margin:30px">
-                </a>
-            </div>
-            <div class="col-md-2 col-sm-6 align-self-center text-center">
-                <a href="https://www.surfnet.nl">
-                    <img src="images/clients/surfnet.png" width="100px" style="margin:30px">
-                </a>
-            </div>
-         </div>
-        <hr>
-
-        <div class="row">
-            <div class="col-md-2">
-            </div>
-            <div class="col-md-8 text-center">
-                <h2>Do you have any questions?</h2>
-                <p>Feel free to contact me!</p>
-                <p><a class="btn btn-secondary" href="mailto:gijs@pythonic.nl" role="button">SEND AN EMAIL &raquo;</a>
+        <div class="bauhaus">
+            <div class="bauhaus-type reveal reveal-2">
+                <h1 class="bauhaus-head">
+                    A lab for software, <span class="accent">signals</span> <span class="amp">&amp;</span> unlikely side-projects.
+                </h1>
+                <p class="bauhaus-sub">
+                    Run by <a href="/about/">Gijs Molenaar</a> — systems engineer at
+                    <a href="https://spotify.com" target="_blank" rel="noopener">Spotify</a>,
+                    radio astronomer, occasional brewer and maker of electronic music. Est. 2008.
                 </p>
             </div>
         </div>
     </div>
-</div>
+</section>
 
-<script>
-    window.onload = function () {
-        var elem = document.getElementById("anim");
-        var i = 1;
+<article class="intro">
+    <p class="intro-lede">
+        I work on Spotify's edge and service-mesh infrastructure — the plumbing that keeps a few hundred
+        million listeners connected to what they love.
+    </p>
+    <div class="intro-body">
+        <p>
+            Before that I spent a decade as a freelance engineer through <strong>Pythonic</strong>, building
+            data-reduction pipelines for radio telescopes like
+            <a href="https://www.lofar.org" target="_blank" rel="noopener">LOFAR</a>
+            and <a href="https://www.sarao.ac.za/" target="_blank" rel="noopener">SKA</a>, simulating the
+            Dutch electricity grid as a testbed for reinforcement-learning agents, and maintaining a small
+            constellation of open-source projects. I hold a PhD in radio astronomy and a master's in
+            artificial intelligence.
+        </p>
+        <p>
+            Current practice leans heavily on AI as a daily collaborator — using it to sharpen
+            communication, accelerate troubleshooting, and work through complex problems more
+            effectively.
+        </p>
+        <p>
+            Amsterdam is home, but I'm often in Windhoek and Cape Town. In my spare time I brew
+            <a href="http://brouwerijdepomp.nl/" target="_blank" rel="noopener">beer</a>, make electronic
+            <a href="https://soundcloud.com/gijzelaerr" target="_blank" rel="noopener">music</a>,
+            and build things with AI that probably shouldn't exist.
+        </p>
+    </div>
+</article>
 
-        function myLoop() {
-            setTimeout(function () {
-                elem.style.opacity = i / 100.0;
-                i++;
-                if (i < 100) {
-                    myLoop();
-                }
-            }, 30)
-        }
+<section class="clients">
+    <p class="clients-label">Past collaborators</p>
+    <div class="clients-grid">
+        <a href="https://www.alliander.com/" target="_blank" rel="noopener"><img src="/images/clients/alliander.jpg" alt="Alliander"></a>
+        <a href="https://www.astron.nl/" target="_blank" rel="noopener"><img src="/images/clients/astron.png" alt="ASTRON"></a>
+        <a href="https://www.cwi.nl/" target="_blank" rel="noopener"><img src="/images/clients/cwi.jpg" alt="CWI"></a>
+        <a href="https://www.sarao.ac.za/" target="_blank" rel="noopener"><img src="/images/clients/sarao.jpg" alt="SARAO"></a>
+        <a href="https://seti.berkeley.edu" target="_blank" rel="noopener"><img src="/images/clients/seti.png" alt="SETI Berkeley"></a>
+        <a href="https://www.surf.nl" target="_blank" rel="noopener"><img src="/images/clients/surfnet.png" alt="SURF"></a>
+    </div>
+</section>
 
-        myLoop();
-
-
-    }
-</script>
+<section class="contact-block">
+    <p class="contact-line">
+        Questions, ideas, strange projects &mdash;
+        <a href="mailto:gijs@pythonic.nl">gijs@pythonic.nl</a>
+    </p>
+    <p class="contact-coords">Signal open · 52°22′03″N 04°54′15″E</p>
+</section>
 
 {% include footer.html %}

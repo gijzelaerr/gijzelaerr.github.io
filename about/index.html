@@ -1,38 +1,50 @@
 ---
 ---
 
-{%  include header.html %}
+{% include header.html %}
 
-<main role="main" class="container">
+<article class="page">
 
-    <div class="row">
-        <div class="col-md-2">
-        </div>
-        <div class="col-md-6">
-            <h1 class="page-title">About</h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-1">
-        </div>
-        <div class="col-md-5">
-            <p class="lead" style="text-align: right">
-                Growing up in a music store, I developed an early love for both technology and sound. Now I'm a software engineer at Spotify, which feels
-                like a natural fit. I have a PhD in radio astronomy and a master's degree in AI, with experience spanning scientific computing, machine
-                learning, industrial systems, and large-scale infrastructure. For over a decade I worked as a freelance engineer through Pythonic, building
-                data reduction pipelines for radio telescopes like <a href="http://www.lofar.org" target="_blank">LOFAR</a> and
-                <a href="http://www.ska.ac.za/" target="_blank">SKA</a>, optimizing electricity grids with deep reinforcement learning, and
-                contributing to open source. These days I work on Spotify's edge and service mesh infrastructure, keeping things running at scale.
-                Amsterdam is home, but I'm often in Windhoek and Cape Town. In my spare time I brew
-                <a href="http://brouwerijdepomp.nl/" target="_blank">beer</a>, make electronic
-                <a href="https://soundcloud.com/gijzelaerr" target="_blank">music</a>, and build things with AI.
+    <p class="page-eyebrow">File · Biography</p>
+    <h1 class="page-title">About.</h1>
+    <p class="page-subtitle">One human, several time zones, a stubborn affection for radio waves.</p>
+
+    <div class="about-layout">
+        <figure class="about-figure">
+            <img src="/images/dish.jpg" alt="Gijs at a radio telescope site">
+            <figcaption><span class="sig">◉ REC</span>MeerKAT site, Karoo — Northern Cape</figcaption>
+        </figure>
+
+        <div class="about-body">
+            <p class="lead">
+                Growing up in a music store, I developed an early love for both technology and sound.
+                Now I'm a systems engineer at Spotify, which feels like a natural fit.
+            </p>
+            <p>
+                I have a PhD in radio astronomy and a master's degree in AI, with experience spanning
+                scientific computing, machine learning, industrial systems, and large-scale
+                infrastructure. For over a decade I worked as a freelance engineer through
+                <strong>Pythonic</strong>, building data-reduction pipelines for radio telescopes
+                like <a href="https://www.lofar.org" target="_blank" rel="noopener">LOFAR</a> and
+                <a href="https://www.sarao.ac.za/" target="_blank" rel="noopener">SKA</a>,
+                simulating the Dutch electricity grid as a testbed for reinforcement-learning
+                agents, and contributing to open source.
+            </p>
+            <p>
+                These days I work on Spotify's edge and service-mesh infrastructure — keeping things
+                running at scale. Current practice leans heavily on AI as a daily collaborator: using
+                it to sharpen communication, accelerate troubleshooting, and work through complex
+                problems more effectively.
+            </p>
+            <p>
+                Amsterdam is home, but I'm often in Windhoek and Cape Town. In my
+                spare time I brew <a href="http://brouwerijdepomp.nl/" target="_blank" rel="noopener">beer</a>,
+                make electronic <a href="https://soundcloud.com/gijzelaerr" target="_blank" rel="noopener">music</a>,
+                and build things with AI.
             </p>
         </div>
-        <div class="col-md-6">
-            <img src="/images/dish.jpg" style="margin-left: 30px">
-        </div>
-
     </div>
-</main>
 
-{%  include footer.html %}
+</article>
+
+{% include footer.html %}
