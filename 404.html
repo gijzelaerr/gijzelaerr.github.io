@@ -1,19 +1,46 @@
 ---
 permalink: /404.html
+layout: null
 ---
+{% include header.html %}
 
+<section class="notfound">
+    <div class="notfound-grid">
+        <div class="notfound-meta reveal reveal-1">
+            <span class="left">STATUS · 404 · NOT FOUND</span>
+            <span class="right">TX · LOST CARRIER</span>
+        </div>
 
-{%  include header.html %}
+        <div class="notfound-body reveal reveal-2">
+            <p class="notfound-kicker"><span class="num">E&mdash;04</span> OUT OF BAND</p>
+            <h1 class="notfound-head">
+                Signal <span class="accent">lost</span> between <br>
+                the telescope <span class="amp">&amp;</span> the page.
+            </h1>
+            <p class="notfound-sub">
+                Whatever you were looking for has drifted off-frequency &mdash; renamed,
+                retired, or never transmitted at all. Dial back to a known waypoint.
+            </p>
+            <ul class="notfound-links">
+                <li><a href="/">&larr; Home</a></li>
+                <li><a href="/projects/">Projects</a></li>
+                <li><a href="/publications/">Publications</a></li>
+                <li><a href="/about/">About</a></li>
+            </ul>
+        </div>
 
-<div class="jumbotron">
-    <!-- <div class="starter-template"> -->
-    <div class="container">
-        <div>
-            <img src="images/pythonic200_title3.png">
-
-            <h1>404 - Computer says no.</h1>
+        <div class="notfound-readout reveal reveal-3" aria-hidden="true">
+            <div class="readout-label">CARRIER 404.000 MHz</div>
+            <svg viewBox="0 0 600 80" preserveAspectRatio="none">
+                <path d="M0 40 L60 40 L80 20 L100 60 L140 40 L180 40 L200 30 L220 50 L260 40 L600 40" />
+            </svg>
+            <div class="readout-meta">
+                <span>SNR &minus;&#8734; dB</span>
+                <span>BEAM 0 / 0</span>
+                <span>t &minus;&infin;</span>
+            </div>
         </div>
     </div>
-</div>
+</section>
 
-{%  include footer.html %}
+{% include footer.html %}
