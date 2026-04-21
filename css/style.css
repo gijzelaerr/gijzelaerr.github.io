@@ -269,20 +269,23 @@ hr {
 }
 .nav-links a:hover::before { width: 100%; }
 
-.nav-social { gap: 0.85rem; }
+.nav-social { gap: 1rem; }
 .nav-social a {
     display: block;
-    opacity: 0.45;
-    transition: opacity 0.25s var(--ease);
+    opacity: 0.78;
+    transition: opacity 0.25s var(--ease), transform 0.25s var(--ease);
     padding: 0.25rem;
     text-decoration: none;
 }
-.nav-social a:hover { opacity: 1; }
+.nav-social a:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+}
 .nav-social img {
     display: block;
-    width: 16px;
-    height: 16px;
-    filter: invert(0.95) brightness(1.1);
+    width: 20px;
+    height: 20px;
+    filter: invert(1) brightness(1.15);
 }
 
 .nav-toggle {
