@@ -672,6 +672,8 @@ hr {
     margin: 0 0 1.25rem;
 }
 
+.accent-dot { color: var(--signal); }
+
 .page-subtitle {
     font-family: var(--font-body);
     font-size: 1rem;
