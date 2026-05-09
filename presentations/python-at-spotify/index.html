@@ -1,0 +1,218 @@
+---
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Python at Spotify: Twenty Years of Evolution — Keynote by Gijs Molenaar at PyGrunn 2026.">
+    <meta name="author" content="Gijs Molenaar">
+    <meta name="theme-color" content="#060912">
+    <meta name="color-scheme" content="dark">
+
+    <title>Python at Spotify — PyGrunn 2026 Keynote</title>
+
+    <link rel="canonical" href="https://pythonic.nl/presentations/python-at-spotify/">
+
+    <meta property="og:site_name" content="Pythonic">
+    <meta property="og:title" content="Python at Spotify: Twenty Years of Evolution">
+    <meta property="og:description" content="Keynote by Gijs Molenaar at PyGrunn 2026. From greenlets to GPUs — how Python evolved at Spotify over two decades.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://pythonic.nl/presentations/python-at-spotify/">
+    <meta property="og:image" content="https://pythonic.nl/presentations/python-at-spotify/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="675">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Python at Spotify: Twenty Years of Evolution">
+    <meta name="twitter:description" content="Keynote by Gijs Molenaar at PyGrunn 2026.">
+    <meta name="twitter:image" content="https://pythonic.nl/presentations/python-at-spotify/og-image.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&family=Instrument+Serif:ital@0;1&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="icon" type="image/svg+xml" sizes="any" href="/favicon.svg?v=2">
+    <link rel="alternate icon" type="image/x-icon" href="/favicon.ico?v=2">
+    <link rel="mask-icon" href="/favicon.svg?v=2" color="#ff7a3a">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png?v=2">
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+<nav class="nav">
+    <a class="nav-brand" href="/" aria-label="Pythonic home">
+        <span class="brand-mark">Pythonic<span class="accent-dot">.</span>nl</span>
+        <span class="brand-tag">LAB / G. MOLENAAR</span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+    </button>
+    <div class="nav-menu" id="nav-menu">
+        <ul class="nav-links">
+            <li><a href="/projects/">Projects</a></li>
+            <li><a href="/cv/">CV</a></li>
+            <li><a href="/publications/">Publications</a></li>
+            <li><a href="/presentations/">Presentations</a></li>
+            <li><a href="/about/">About</a></li>
+        </ul>
+        <ul class="nav-social">
+            <li><a href="https://github.com/gijzelaerr" target="_blank" rel="noopener" aria-label="GitHub"><img src="/icons/github.svg" alt=""></a></li>
+            <li><a href="https://substack.com/@gijsmolenaar" target="_blank" rel="noopener" aria-label="Substack"><img src="/icons/substack.svg" alt=""></a></li>
+            <li><a href="http://nl.linkedin.com/in/gijsmolenaar" target="_blank" rel="noopener" aria-label="LinkedIn"><img src="/icons/linkedin.svg" alt=""></a></li>
+            <li><a href="https://soundcloud.com/gijzelaerr" target="_blank" rel="noopener" aria-label="SoundCloud"><img src="/icons/soundcloud.svg" alt=""></a></li>
+            <li><a href="https://open.spotify.com/playlist/2LPBGhBBfQ6XZgid0P6ntT" target="_blank" rel="noopener" aria-label="Spotify Discovery playlist"><img src="/icons/spotify.svg" alt=""></a></li>
+        </ul>
+    </div>
+</nav>
+
+<main role="main">
+
+<article class="page deck-page">
+
+    <p class="page-eyebrow">File · Presentation</p>
+    <h1 class="page-title">Python at Spotify<span class="accent-dot">.</span></h1>
+    <p class="page-subtitle">Twenty Years of Evolution — Keynote at PyGrunn 2026, Groningen. May 2026.</p>
+
+    <div class="deck-viewer" id="deck-viewer">
+        <div class="deck-stage">
+            <button class="deck-nav deck-prev" aria-label="Previous slide" id="deck-prev">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+
+            <div class="deck-frame" id="deck-frame">
+                <img class="deck-slide" id="deck-slide" src="slide-01.png" alt="Slide 1 of 48" draggable="false">
+            </div>
+
+            <button class="deck-nav deck-next" aria-label="Next slide" id="deck-next">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+            </button>
+        </div>
+
+        <div class="deck-controls">
+            <div class="deck-counter">
+                <span class="deck-counter-current" id="deck-current">01</span>
+                <span class="deck-counter-sep">/</span>
+                <span class="deck-counter-total" id="deck-total">48</span>
+            </div>
+
+            <div class="deck-progress">
+                <div class="deck-progress-bar" id="deck-progress"></div>
+            </div>
+
+            <div class="deck-actions">
+                <button class="deck-btn" id="deck-fullscreen" aria-label="Fullscreen">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="deck-meta">
+        <a href="/presentations/" class="deck-back">&larr; All presentations</a>
+    </div>
+
+</article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="site-footer-inner">
+        <span class="left">Pythonic<span class="accent-dot">.</span>nl<span class="dot"></span>Est. 2008</span>
+        <span class="center">34.0784°N &nbsp;/&nbsp; 107.6184°W</span>
+        <span class="right">Gijs Molenaar</span>
+    </div>
+</footer>
+
+<script>
+(function () {
+    var toggle = document.querySelector('.nav-toggle');
+    var menu = document.getElementById('nav-menu');
+    if (toggle && menu) {
+        toggle.addEventListener('click', function () {
+            var open = menu.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+    }
+
+    var totalSlides = 48;
+    var current = 1;
+    var slide = document.getElementById('deck-slide');
+    var counter = document.getElementById('deck-current');
+    var progress = document.getElementById('deck-progress');
+    var prevBtn = document.getElementById('deck-prev');
+    var nextBtn = document.getElementById('deck-next');
+    var fullscreenBtn = document.getElementById('deck-fullscreen');
+    var viewer = document.getElementById('deck-viewer');
+
+    var preloaded = {};
+
+    function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+    function slideSrc(n) { return 'slide-' + pad(n) + '.png'; }
+
+    function preload(n) {
+        if (n < 1 || n > totalSlides || preloaded[n]) return;
+        var img = new Image();
+        img.src = slideSrc(n);
+        preloaded[n] = img;
+    }
+
+    function go(n) {
+        if (n < 1 || n > totalSlides) return;
+        current = n;
+        slide.src = slideSrc(n);
+        slide.alt = 'Slide ' + n + ' of ' + totalSlides;
+        counter.textContent = pad(n);
+        progress.style.width = ((n / totalSlides) * 100) + '%';
+        prevBtn.disabled = n === 1;
+        nextBtn.disabled = n === totalSlides;
+        preload(n + 1);
+        preload(n + 2);
+    }
+
+    prevBtn.addEventListener('click', function () { go(current - 1); });
+    nextBtn.addEventListener('click', function () { go(current + 1); });
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); go(current - 1); }
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); go(current + 1); }
+        if (e.key === 'Home') { e.preventDefault(); go(1); }
+        if (e.key === 'End') { e.preventDefault(); go(totalSlides); }
+        if (e.key === 'f' || e.key === 'F') { toggleFullscreen(); }
+        if (e.key === 'Escape' && document.fullscreenElement) { document.exitFullscreen(); }
+    });
+
+    var touchStartX = 0;
+    var touchStartY = 0;
+    viewer.addEventListener('touchstart', function (e) {
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+    viewer.addEventListener('touchend', function (e) {
+        var dx = e.changedTouches[0].screenX - touchStartX;
+        var dy = e.changedTouches[0].screenY - touchStartY;
+        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+            dx < 0 ? go(current + 1) : go(current - 1);
+        }
+    }, { passive: true });
+
+    function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+            viewer.requestFullscreen().catch(function () {});
+        } else {
+            document.exitFullscreen();
+        }
+    }
+    fullscreenBtn.addEventListener('click', toggleFullscreen);
+
+    go(1);
+    for (var i = 1; i <= Math.min(5, totalSlides); i++) preload(i);
+})();
+</script>
+
+</body>
+</html>
