@@ -1,0 +1,1070 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Four coupled equations for drinks, fun, toxins and regret, and one integral that decides whether the night was worth it. A toy model with live simulations, by Gijs Molenaar.">
+    <meta name="author" content="Gijs Molenaar">
+    <meta name="theme-color" content="#060912">
+    <meta name="color-scheme" content="dark">
+
+    <title>The Differential Equation of Hangovers — Gijs Molenaar</title>
+
+    <link rel="canonical" href="https://pythonic.nl/presentations/differential-equation-of-hangovers/">
+
+    <meta property="og:site_name" content="Pythonic">
+    <meta property="og:title" content="The Differential Equation of Hangovers">
+    <meta property="og:description" content="Four coupled equations for drinks, fun, toxins and regret, and one integral that decides whether the night was worth it. A toy model with live simulations, by Gijs Molenaar.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://pythonic.nl/presentations/differential-equation-of-hangovers/">
+    <meta property="og:image" content="https://pythonic.nl/presentations/differential-equation-of-hangovers/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="675">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Differential Equation of Hangovers">
+    <meta name="twitter:description" content="A toy model with live simulations, by Gijs Molenaar.">
+    <meta name="twitter:image" content="https://pythonic.nl/presentations/differential-equation-of-hangovers/og-image.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Serif:ital@0;1&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="icon" type="image/svg+xml" sizes="any" href="/favicon.svg?v=2">
+    <link rel="alternate icon" type="image/x-icon" href="/favicon.ico?v=2">
+    <link rel="mask-icon" href="/favicon.svg?v=2" color="#ff7a3a">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png?v=2">
+    <link href="/css/style.css" rel="stylesheet">
+    <style>
+        /* live HTML deck: the slides render inside #deck-host (shadow DOM) instead of an <img> */
+        #deck-host { position: absolute; inset: 0; }
+        .deck-frame { background: #0F1424; }
+        .deck-hint { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; color: var(--paper-40); margin-top: 0.9rem; }
+        .deck-viewer:fullscreen .deck-frame { background: #000; }
+    </style>
+</head>
+
+<body>
+
+<nav class="nav">
+    <a class="nav-brand" href="/" aria-label="Pythonic home">
+        <span class="brand-mark">Pythonic<span class="accent-dot">.</span>nl</span>
+        <span class="brand-tag">LAB / G. MOLENAAR</span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+    </button>
+    <div class="nav-menu" id="nav-menu">
+        <ul class="nav-links">
+            <li><a href="/projects/">Projects</a></li>
+            <li><a href="/cv/">CV</a></li>
+            <li><a href="/publications/">Publications</a></li>
+            <li><a href="/presentations/">Presentations</a></li>
+            <li><a href="/about/">About</a></li>
+        </ul>
+        <ul class="nav-social">
+            <li><a href="https://github.com/gijzelaerr" target="_blank" rel="noopener" aria-label="GitHub"><img src="/icons/github.svg" alt=""></a></li>
+            <li><a href="https://substack.com/@gijsmolenaar" target="_blank" rel="noopener" aria-label="Substack"><img src="/icons/substack.svg" alt=""></a></li>
+            <li><a href="http://nl.linkedin.com/in/gijsmolenaar" target="_blank" rel="noopener" aria-label="LinkedIn"><img src="/icons/linkedin.svg" alt=""></a></li>
+            <li><a href="https://soundcloud.com/gijzelaerr" target="_blank" rel="noopener" aria-label="SoundCloud"><img src="/icons/soundcloud.svg" alt=""></a></li>
+            <li><a href="https://open.spotify.com/playlist/2LPBGhBBfQ6XZgid0P6ntT" target="_blank" rel="noopener" aria-label="Spotify Discovery playlist"><img src="/icons/spotify.svg" alt=""></a></li>
+        </ul>
+    </div>
+</nav>
+
+<main role="main">
+
+<article class="page deck-page">
+
+    <p class="page-eyebrow">File · Presentation</p>
+    <h1 class="page-title">The Differential Equation of Hangovers<span class="accent-dot">.</span></h1>
+    <p class="page-subtitle">Four coupled equations for drinks, fun, toxins and regret — a toy model with live simulations. October 2026.</p>
+
+    <div class="deck-viewer" id="deck-viewer">
+        <div class="deck-stage">
+            <button class="deck-nav deck-prev" aria-label="Previous slide" id="deck-prev">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+
+            <div class="deck-frame" id="deck-frame">
+                <div id="deck-host"></div>
+            </div>
+
+            <button class="deck-nav deck-next" aria-label="Next slide" id="deck-next">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+            </button>
+        </div>
+
+        <div class="deck-controls">
+            <div class="deck-counter">
+                <span class="deck-counter-current" id="deck-current">01</span>
+                <span class="deck-counter-sep">/</span>
+                <span class="deck-counter-total" id="deck-total">15</span>
+            </div>
+
+            <div class="deck-progress">
+                <div class="deck-progress-bar" id="deck-progress"></div>
+            </div>
+
+            <div class="deck-actions">
+                <button class="deck-btn" id="deck-fullscreen" aria-label="Fullscreen">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <p class="deck-hint">Arrow keys or swipe to page · F for fullscreen · the charts are live and loop</p>
+
+    <div class="deck-meta">
+        <a href="/presentations/" class="deck-back">&larr; All presentations</a>
+    </div>
+
+</article>
+
+<template id="deck-slides">
+<style>
+:host{all:initial;position:absolute;inset:0;display:block;overflow:hidden;background:#0F1424}
+*{margin:0;padding:0;box-sizing:border-box}
+.stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform:translate(-50%,-50%) scale(var(--k,0.5));transform-origin:center center}
+section{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:hidden;opacity:0;visibility:hidden;transition:opacity .4s ease,visibility 0s linear .4s;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+section.on{opacity:1;visibility:visible;transition:opacity .4s ease}
+h1{font-size:96px;font-weight:600;line-height:1.1}
+h2{font-size:64px;font-weight:600;line-height:1.15}
+h3{font-size:44px;font-weight:600;line-height:1.2}
+p{font-size:32px;line-height:1.4}
+div{display:flex;flex-direction:column;min-width:0}
+img{display:block;flex:none}
+iframe{border:0;pointer-events:none;background:transparent;color-scheme:light}
+aside{display:none}
+section.on [data-build]{animation:b-rise .6s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--o,1) * .28s)}
+section.on [data-build="fade"]{animation-name:b-fade}
+@keyframes b-rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes b-fade{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){section,section.on{transition:none}section.on [data-build]{animation:none}}
+</style>
+<div class="stage">
+<section data-slide="cover" aria-roledescription="slide" aria-label="Slide 1" style="background:#0F1424;color:#F3EEE3;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:28px">
+<iframe class="emb" title="Animated chart" sandbox="allow-scripts" style="position:absolute;left:0px;top:0px;width:1920px;height:1080px" data-doc="&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;html,body{margin:0;padding:0;overflow:hidden}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;html,body{height:100%;background:transparent}canvas{position:fixed;left:0;top:0;width:100%;height:100%}&lt;/style&gt;
+&lt;canvas id=&quot;c&quot;&gt;&lt;/canvas&gt;
+&lt;script&gt;
+(function(){
+var DW=1920,DH=1080,PERIOD=16,HERO=12;
+var P={V:.017,K:.005,d:.022,ab:.5,al:1,ka:.5,lT:.3,be:30,ga:.6,At:.02,ds:.15,tt:8,mu:.8,et:76,As:.065,lF:1,ze:30000,Asl:.15,kw:.6,om:1.6,si:.35};
+function sim(s){var dt=.01,n=3601,A=[],T=[],H=[],F=[],a=0,x=0,h=0,f=0,i,j,t,R,e,w,Ph,L,S=Math.exp(P.ds*Math.max(0,P.tt-s.sleep)),G=1+P.om*s.n/(1+P.si*s.n);
+for(i=0;i&lt;n;i++){t=i*dt;A.push(a);T.push(x);H.push(h);F.push(f);R=0;for(j=0;j&lt;s.drinks.length;j++)if(t&gt;=s.drinks[j]&amp;&amp;t&lt;s.drinks[j]+P.ab)R+=P.d/P.ab;
+e=P.V*a/(P.K+a);w=s.w0+t;Ph=1+P.mu*Math.max(0,Math.cos(2*Math.PI*(w-9)/168));L=1+P.kw*Math.max(0,Math.cos(2*Math.PI*(w-120)/168));
+var da=R-e,dx=P.al*e+P.ka*s.c*R-P.lT*s.W*x,dh=P.be*x*(a&lt;=P.At?1:0)*S*Ph-P.ga*h,df=(t&lt;s.bed?P.et*G*L*a*Math.exp(-a/P.As):0)-P.lF*f-P.ze*Math.pow(Math.max(0,a-P.Asl),2);
+a=Math.max(0,a+dt*da);x=Math.max(0,x+dt*dx);h=Math.max(0,h+dt*dh);f=f+dt*df}
+return{A:A,T:T,H:H,F:F}}
+var r=sim({drinks:[0,.45,.9,1.35,1.8,2.25,2.7,3.15,3.6,4.05,4.5],w0:115,c:1,W:.5,sleep:5,n:4,bed:7});
+var X0=128,X1=1792,TM=30,Y0=360,N=TM*100;
+function X(i){return X0+(X1-X0)*i/N}
+function line(g,arr,k,col,w,dash){g.beginPath();for(var i=0;i&lt;=N;i+=4){var y=Y0-arr[i]*k;if(i)g.lineTo(X(i),y);else g.moveTo(X(i),y)}g.strokeStyle=col;g.lineWidth=w;g.setLineDash(dash||[]);g.stroke();g.setLineDash([])}
+function area(g,arr,k,col){g.beginPath();g.moveTo(X0,Y0);for(var i=0;i&lt;=N;i+=4)g.lineTo(X(i),Y0-arr[i]*k);g.lineTo(X1,Y0);g.closePath();g.fillStyle=col;g.fill()}
+function dot(g,x,y,col){g.beginPath();g.arc(x,y,7,0,6.3);g.fillStyle=col;g.shadowColor=col;g.shadowBlur=24;g.fill();g.shadowBlur=0}
+function draw(g,t){
+var p=Math.min(1,t/9),al=Math.min(1,t/.6)*(t&gt;14.5?Math.max(0,1-(t-14.5)/1.5):1),xp=X0+(X1-X0)*p,i=Math.round(p*N);
+g.globalAlpha=al;
+g.strokeStyle='rgba(243,238,227,.16)';g.lineWidth=1;g.beginPath();g.moveTo(X0,Y0);g.lineTo(X1,Y0);g.stroke();
+for(var k=0;k&lt;=5;k++){var tx=X0+(X1-X0)*k/5;g.beginPath();g.moveTo(tx,Y0-6);g.lineTo(tx,Y0+6);g.stroke()}
+g.save();g.beginPath();g.rect(0,0,xp,DH);g.clip();
+area(g,r.F,18,'rgba(79,209,197,.22)');area(g,r.H,-18,'rgba(255,107,94,.24)');
+line(g,r.T,1300,'rgba(183,156,255,.75)',2,[10,10]);
+g.shadowColor='#F5A524';g.shadowBlur=18;line(g,r.A,1300,'#F5A524',3);g.shadowBlur=0;
+line(g,r.F,18,'#4FD1C5',3);line(g,r.H,-18,'#FF6B5E',3);
+g.restore();
+if(p&lt;1){g.strokeStyle='rgba(243,238,227,.3)';g.beginPath();g.moveTo(xp,110);g.lineTo(xp,500);g.stroke();
+dot(g,xp,Y0-r.A[i]*1300,'#F5A524');dot(g,xp,Y0-r.F[i]*18,'#4FD1C5');dot(g,xp,Y0+r.H[i]*18,'#FF6B5E')}
+g.globalAlpha=1}
+var cv=document.getElementById('c'),g=cv.getContext('2d');
+function frame(ctx,w,h,t){ctx.setTransform(w/DW,0,0,h/DH,0,0);ctx.clearRect(0,0,DW,DH);draw(ctx,t)}
+function loop(now){var d=window.devicePixelRatio||1,w=Math.max(1,Math.round(innerWidth*d)),h=Math.max(1,Math.round(innerHeight*d));if(cv.width!==w||cv.height!==h){cv.width=w;cv.height=h}
+frame(g,w,h,(now/1000)%PERIOD);requestAnimationFrame(loop)}
+requestAnimationFrame(loop);
+var E=window.appifactEmbed;if(E){if(E.onRender)E.onRender(function(o){frame(o.ctx,o.width,o.height,HERO)})}
+})();
+&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe>
+<div style="flex:1"></div>
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#F5A524">A toy model in four state variables</p>
+<h1 style="font-family:'DM Serif Display', Georgia, serif;font-size:120px;font-weight:400;line-height:1.05;letter-spacing:-2px;width:1500px">The Differential Equation<br>of Hangovers</h1>
+<p style="font-size:30px;line-height:1.4;color:#A9B1C7;width:1100px">Four coupled equations for drinks, fun, toxins and regret, and one integral that decides whether the night was worth it.</p>
+<p style="position:absolute;right:128px;bottom:166px;width:560px;font-family:'DM Serif Display', Georgia, serif;font-size:44px;line-height:1.1;text-align:right">Gijs Molenaar</p>
+<p style="position:absolute;right:128px;bottom:128px;width:560px;font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#A9B1C7;text-align:right">Gentleman scientist researcher</p>
+</section>
+<section data-slide="chain" aria-roledescription="slide" aria-label="Slide 2" style="background:#0F1424;color:#F3EEE3;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#F5A524">Structure</p>
+<h2 style="font-family:'DM Serif Display', Georgia, serif;font-size:72px;font-weight:400;line-height:1.1;letter-spacing:-1px">The Causal Chain</h2>
+</div>
+<div style="position:relative;width:1664px;height:600px">
+<div style="position:absolute;left:0px;top:168px;width:320px;height:176px;background:#171D33;border:1px solid rgba(243,238,227,0.14);border-radius:8px;padding:24px 28px;display:flex;flex-direction:column;justify-content:center;gap:6px">
+<p style="font-family:'DM Serif Display', Georgia, serif;font-size:44px;font-weight:400;line-height:1.1">1. Drinks</p>
+<p style="font-size:24px;line-height:1.3;color:#A9B1C7">intake rate, in drinks per hour</p>
+</div>
+<div style="position:absolute;left:448px;top:168px;width:320px;height:176px;background:#171D33;border:1px solid rgba(243,238,227,0.14);border-radius:8px;padding:24px 28px;display:flex;flex-direction:column;justify-content:center;gap:6px">
+<p style="font-family:'DM Serif Display', Georgia, serif;font-size:44px;font-weight:400;line-height:1.1;color:#F5A524">2. Alcohol</p>
+<p style="font-size:24px;line-height:1.3;color:#A9B1C7">blood alcohol concentration A(t)</p>
+</div>
+<div style="position:absolute;left:896px;top:168px;width:320px;height:176px;background:#171D33;border:1px solid rgba(243,238,227,0.14);border-radius:8px;padding:24px 28px;display:flex;flex-direction:column;justify-content:center;gap:6px">
+<p style="font-family:'DM Serif Display', Georgia, serif;font-size:44px;font-weight:400;line-height:1.1;color:#B79CFF">3. Toxins</p>
+<p style="font-size:24px;line-height:1.3;color:#A9B1C7">metabolite and inflammatory load T(t)</p>
+</div>
+<div style="position:absolute;left:1344px;top:168px;width:320px;height:176px;background:#171D33;border:1px solid rgba(243,238,227,0.14);border-radius:8px;padding:24px 28px;display:flex;flex-direction:column;justify-content:center;gap:6px">
+<p style="font-family:'DM Serif Display', Georgia, serif;font-size:44px;font-weight:400;line-height:1.1;color:#FF6B5E">4. Hangover</p>
+<p style="font-size:24px;line-height:1.3;color:#A9B1C7">perceived intensity H(t)</p>
+</div>
+<div style="position:absolute;left:448px;top:424px;width:320px;height:176px;background:#171D33;border:1px solid rgba(243,238,227,0.14);border-radius:8px;padding:24px 28px;display:flex;flex-direction:column;justify-content:center;gap:6px">
+<p style="font-family:'DM Serif Display', Georgia, serif;font-size:44px;font-weight:400;line-height:1.1;color:#4FD1C5">5. Fun</p>
+<p style="font-size:24px;line-height:1.3;color:#A9B1C7">perceived euphoria F(t)</p>
+</div>
+<div style="position:absolute;left:896px;top:424px;width:768px;height:176px;background:#171D33;border:1px solid rgba(243,238,227,0.14);border-radius:8px;padding:24px 28px;display:flex;flex-direction:column;justify-content:center;gap:6px">
+<p style="font-family:'DM Serif Display', Georgia, serif;font-size:44px;font-weight:400;line-height:1.1">6. Net utility</p>
+<p style="font-size:24px;line-height:1.3;color:#A9B1C7">fun minus χ × hangover, summed over 36 hours</p>
+</div>
+<div style="position:absolute;left:896px;top:0px;width:320px;height:88px;border:1px dashed rgba(243,238,227,0.4);border-radius:8px;padding:0px 20px;display:flex;flex-direction:column;justify-content:center">
+<p style="font-size:24px;line-height:1.3;color:#A9B1C7;text-align:center">Congeners c(t)<br>and hydration W(t)</p>
+</div>
+<div style="position:absolute;left:1344px;top:0px;width:320px;height:88px;border:1px dashed rgba(243,238,227,0.4);border-radius:8px;padding:0px 20px;display:flex;flex-direction:column;justify-content:center">
+<p style="font-size:24px;line-height:1.3;color:#A9B1C7;text-align:center">Sleep debt S(t)<br>and Monday dread Φ(t)</p>
+</div>
+<div style="position:absolute;left:0px;top:468px;width:320px;height:88px;border:1px dashed rgba(243,238,227,0.4);border-radius:8px;padding:0px 20px;display:flex;flex-direction:column;justify-content:center">
+<p style="font-size:24px;line-height:1.3;color:#A9B1C7;text-align:center">Company Γ<br>and weekend Λ</p>
+</div>
+<svg aria-hidden="true" style="position:absolute;left:0;top:0;overflow:visible;pointer-events:none" width="1" height="1"><line x1="320" y1="256" x2="446" y2="256" stroke="#A9B1C7" stroke-width="3" stroke-linecap="round"/><path d="M434.5 263.4 L448 256 L434.5 248.6" fill="none" stroke="#A9B1C7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<svg aria-hidden="true" style="position:absolute;left:0;top:0;overflow:visible;pointer-events:none" width="1" height="1"><line x1="768" y1="256" x2="894" y2="256" stroke="#A9B1C7" stroke-width="3" stroke-linecap="round"/><path d="M882.5 263.4 L896 256 L882.5 248.6" fill="none" stroke="#A9B1C7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<svg aria-hidden="true" style="position:absolute;left:0;top:0;overflow:visible;pointer-events:none" width="1" height="1"><line x1="1216" y1="256" x2="1342" y2="256" stroke="#A9B1C7" stroke-width="3" stroke-linecap="round"/><path d="M1330.5 263.4 L1344 256 L1330.5 248.6" fill="none" stroke="#A9B1C7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<svg aria-hidden="true" style="position:absolute;left:0;top:0;overflow:visible;pointer-events:none" width="1" height="1"><line x1="608" y1="344" x2="608" y2="422" stroke="#A9B1C7" stroke-width="3" stroke-linecap="round"/><path d="M600.6 410.5 L608 424 L615.4 410.5" fill="none" stroke="#A9B1C7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<svg aria-hidden="true" style="position:absolute;left:0;top:0;overflow:visible;pointer-events:none" width="1" height="1"><line x1="768" y1="512" x2="894" y2="512" stroke="#A9B1C7" stroke-width="3" stroke-linecap="round"/><path d="M882.5 519.4 L896 512 L882.5 504.6" fill="none" stroke="#A9B1C7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<svg aria-hidden="true" style="position:absolute;left:0;top:0;overflow:visible;pointer-events:none" width="1" height="1"><line x1="1504" y1="344" x2="1504" y2="422" stroke="#A9B1C7" stroke-width="3" stroke-linecap="round"/><path d="M1496.6 410.5 L1504 424 L1511.4 410.5" fill="none" stroke="#A9B1C7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<svg aria-hidden="true" style="position:absolute;left:0;top:0;overflow:visible;pointer-events:none" width="1" height="1"><line x1="1056" y1="88" x2="1056" y2="166" stroke="#7C86A2" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 6"/><path d="M1050.5 158.0 L1056 168 L1061.5 158.0" fill="none" stroke="#7C86A2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<svg aria-hidden="true" style="position:absolute;left:0;top:0;overflow:visible;pointer-events:none" width="1" height="1"><line x1="1504" y1="88" x2="1504" y2="166" stroke="#7C86A2" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 6"/><path d="M1498.5 158.0 L1504 168 L1509.5 158.0" fill="none" stroke="#7C86A2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<svg aria-hidden="true" style="position:absolute;left:0;top:0;overflow:visible;pointer-events:none" width="1" height="1"><line x1="320" y1="512" x2="446" y2="512" stroke="#7C86A2" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 6"/><path d="M438.0 517.5 L448 512 L438.0 506.5" fill="none" stroke="#7C86A2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#7C86A2">Solid arrows feed a quantity. Dashed arrows scale how fast it changes.</p>
+</section>
+<section data-slide="system" aria-roledescription="slide" aria-label="Slide 3" style="background:#0F1424;color:#F3EEE3;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#F5A524">The model</p>
+<h2 style="font-family:'DM Serif Display', Georgia, serif;font-size:72px;font-weight:400;line-height:1.1;letter-spacing:-1px">The Full System</h2>
+</div>
+<p style="position:absolute;left:128px;top:336px;width:290px;font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#F5A524">Alcohol</p>
+<img data-build="rise" data-order="1" src="eq/dA.svg" alt="dA/dt = R_in(t) − V_max·A / (K_m + A)" style="position:absolute;left:440px;top:300px;width:484px;height:107px;object-fit:contain">
+<p style="position:absolute;left:128px;top:486px;width:290px;font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#4FD1C5">Fun</p>
+<img data-build="rise" data-order="2" src="eq/dF.svg" alt="dF/dt = η·Γ_social(t)·Λ_day(t)·A·exp(−A/A*) − λ_F·F − ζ·max(0, A − A_sloppy)²" style="position:absolute;left:440px;top:454px;width:1271px;height:99px;object-fit:contain">
+<p style="position:absolute;left:128px;top:636px;width:290px;font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#B79CFF">Toxic load</p>
+<img data-build="rise" data-order="3" src="eq/dT.svg" alt="dT/dt = α·(V_max·A / (K_m + A)) + κ·c(t) − λ_T·W(t)·T" style="position:absolute;left:440px;top:600px;width:798px;height:107px;object-fit:contain">
+<p style="position:absolute;left:128px;top:786px;width:290px;font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#FF6B5E">Hangover</p>
+<img data-build="rise" data-order="4" src="eq/dH.svg" alt="dH/dt = β·T(t)·Θ(A_thresh − A)·S(t)·Φ(t) − γ·H" style="position:absolute;left:440px;top:754px;width:943px;height:99px;object-fit:contain">
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#7C86A2">A is blood alcohol, F fun, T toxic load, H hangover. Each keeps its colour for the rest of the deck.</p>
+</section>
+<section data-slide="alcohol" aria-roledescription="slide" aria-label="Slide 4" style="background:#0F1424;color:#F3EEE3;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#F5A524">The night · 1 of 3</p>
+<h2 style="font-family:'DM Serif Display', Georgia, serif;font-size:72px;font-weight:400;line-height:1.1;letter-spacing:-1px">Alcohol Kinetics</h2>
+</div>
+<div style="flex:1;display:flex;flex-direction:row;justify-content:flex-end">
+<div style="width:700px;padding:129px 0px 0px 0px;display:flex;flex-direction:column;gap:22px">
+<div style="display:flex;flex-direction:column;gap:6px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#F5A524">Inflow</p>
+<p style="font-size:30px;line-height:1.4">Drinks per hour times the alcohol in each.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#F5A524">Saturation</p>
+<p style="font-size:30px;line-height:1.4">Elimination is Michaelis–Menten. At moderate to high levels the liver saturates and clears at a flat maximum rate.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#F5A524">The trap</p>
+<p style="font-size:30px;line-height:1.4">Drink faster than that maximum and there is no equilibrium. The level climbs for as long as the drinks keep coming.</p>
+</div>
+</div>
+</div>
+<img src="eq/dA.svg" alt="dA/dt = R_in(t) − V_max·A / (K_m + A)" style="position:absolute;left:1092px;top:293px;width:484px;height:107px;object-fit:contain">
+<iframe class="emb" title="Animated chart" sandbox="allow-scripts" style="position:absolute;left:128px;top:293px;width:900px;height:627px" data-doc="&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;html,body{margin:0;padding:0;overflow:hidden}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;html,body{height:100%;background:transparent}canvas{position:fixed;left:0;top:0;width:100%;height:100%}&lt;/style&gt;
+&lt;canvas id=&quot;c&quot;&gt;&lt;/canvas&gt;
+&lt;script&gt;
+(function(){
+var DW=900,DH=627,PERIOD=15,HERO=11.6;
+var V=.017,K=.005,d=.022,ab=.5,dr=[0,.45,.9,1.35,1.8,2.25,2.7,3.15,3.6,4.05,4.5],N=1600,A=[],Rr=[],a=0,i,j,t,R;
+for(i=0;i&lt;=N;i++){t=i*.01;A.push(a);R=0;for(j=0;j&lt;dr.length;j++)if(t&gt;=dr[j]&amp;&amp;t&lt;dr[j]+ab)R+=d/ab;Rr.push(R);a=Math.max(0,a+.01*(R-V*a/(K+a)))}
+var FONT='24px ui-monospace,SFMono-Regular,Menlo,Consolas,&quot;Liberation Mono&quot;,monospace';
+var VX=70,VW=240,YB=540,KY=2300,CX0=420,CX1=690;
+function Y(v){return YB-v*KY}
+function CX(i){return CX0+(CX1-CX0)*i/N}
+function clock(t){var h=19+t,day=h&gt;=24?'Sat':'Fri';h=h%24;var hh=Math.floor(h),mm=Math.floor((h-hh)*60+1e-6);return day+' '+(hh&gt;9?hh:'0'+hh)+':'+(mm&gt;9?mm:'0'+mm)}
+function draw(g,time){
+var p=Math.min(1,time/11),al=Math.min(1,time/.5)*(time&gt;14?Math.max(0,15-time):1),i=Math.round(p*N),a=A[i],ly=Y(a),k;
+g.globalAlpha=al;g.font=FONT;g.textBaseline='alphabetic';
+var marks=[[.15,'sloppy'],[.065,'sweet spot'],[.02,'numb below']];
+for(k=0;k&lt;3;k++){var my=Y(marks[k][0]);g.strokeStyle='rgba(243,238,227,.28)';g.lineWidth=1.5;g.setLineDash([8,8]);g.beginPath();g.moveTo(VX,my);g.lineTo(CX1+14,my);g.stroke();g.setLineDash([]);
+g.fillStyle='#A9B1C7';g.textAlign='left';g.fillText(marks[k][1],CX1+26,my+8)}
+var gr=g.createLinearGradient(0,ly,0,YB);gr.addColorStop(0,'rgba(245,165,36,.95)');gr.addColorStop(1,'rgba(245,165,36,.45)');
+g.fillStyle=gr;g.fillRect(VX+3,ly,VW-6,YB-ly);
+g.strokeStyle='rgba(243,238,227,.7)';g.lineWidth=3;g.beginPath();g.moveTo(VX,70);g.lineTo(VX,YB);g.lineTo(VX+VW,YB);g.lineTo(VX+VW,70);g.stroke();
+var cx=VX+VW/2;
+if(Rr[i]&gt;0){g.strokeStyle='rgba(245,165,36,.8)';g.lineWidth=6;g.beginPath();g.moveTo(cx,52);g.lineTo(cx,ly);g.stroke();
+for(k=0;k&lt;3;k++){var f=((time*1.6+k/3)%1),dy=52+(ly-52)*f;g.beginPath();g.arc(cx,dy,8,0,6.3);g.fillStyle='#F5A524';g.fill()}}
+var e=V*a/(K+a),sw=10*e/V;if(sw&gt;.3){g.strokeStyle='rgba(245,165,36,.75)';g.lineWidth=sw;g.beginPath();g.moveTo(cx,YB+2);g.lineTo(cx,YB+48);g.stroke()}
+g.fillStyle='#F3EEE3';g.textAlign='left';g.fillText('drinks in',VX,40);
+g.textAlign='center';g.fillText('liver out, capped',cx,YB+78);
+g.strokeStyle='rgba(243,238,227,.35)';g.lineWidth=1.5;g.beginPath();g.moveTo(CX0,YB);g.lineTo(CX1,YB);g.stroke();
+g.beginPath();for(k=0;k&lt;=N;k+=4){if(k)g.lineTo(CX(k),Y(A[k]));else g.moveTo(CX(k),Y(A[k]))}g.strokeStyle='rgba(245,165,36,.28)';g.lineWidth=2;g.stroke();
+g.beginPath();for(k=0;k&lt;=i;k+=2){if(k)g.lineTo(CX(k),Y(A[k]));else g.moveTo(CX(k),Y(A[k]))}g.strokeStyle='#F5A524';g.lineWidth=4;g.shadowColor='#F5A524';g.shadowBlur=16;g.stroke();g.shadowBlur=0;
+g.strokeStyle='rgba(245,165,36,.6)';g.lineWidth=1.5;g.setLineDash([4,6]);g.beginPath();g.moveTo(VX+VW,ly);g.lineTo(CX(i),ly);g.stroke();g.setLineDash([]);
+g.beginPath();g.arc(CX(i),ly,8,0,6.3);g.fillStyle='#F5A524';g.fill();
+g.fillStyle='#A9B1C7';var tl=[[0,'19:00'],[6,'01:00'],[12,'07:00']];
+for(k=0;k&lt;3;k++){g.textAlign='center';g.fillText(tl[k][1],CX(tl[k][0]*100),YB+36)}
+var nd=0;for(k=0;k&lt;dr.length;k++)if(i*.01&gt;=dr[k])nd++;
+g.fillStyle='#F3EEE3';g.textAlign='left';g.fillText(clock(i*.01)+(Rr[i]&gt;0||i*.01&lt;4.5?'  drink '+nd+' of 11':'  draining'),CX0,40);
+g.globalAlpha=1}
+var cv=document.getElementById('c'),g=cv.getContext('2d');
+function frame(ctx,w,h,t){ctx.setTransform(w/DW,0,0,h/DH,0,0);ctx.clearRect(0,0,DW,DH);draw(ctx,t)}
+function loop(now){var r=window.devicePixelRatio||1,w=Math.max(1,Math.round(innerWidth*r)),h=Math.max(1,Math.round(innerHeight*r));if(cv.width!==w||cv.height!==h){cv.width=w;cv.height=h}
+frame(g,w,h,(now/1000)%PERIOD);requestAnimationFrame(loop)}
+requestAnimationFrame(loop);
+var E=window.appifactEmbed;if(E){if(E.onRender)E.onRender(function(o){frame(o.ctx,o.width,o.height,HERO)})}
+})();
+&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#7C86A2">Animation: eleven drinks in four and a half hours, then the long linear drain. Constants are illustrative.</p>
+</section>
+<section data-slide="fun" aria-roledescription="slide" aria-label="Slide 5" style="background:#0F1424;color:#F3EEE3;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#F5A524">The night · 2 of 3</p>
+<h2 style="font-family:'DM Serif Display', Georgia, serif;font-size:72px;font-weight:400;line-height:1.1;letter-spacing:-1px">The Fun Curve</h2>
+</div>
+<div style="flex:1;display:flex;flex-direction:row;gap:64px">
+<div style="width:560px;display:flex;flex-direction:column;justify-content:space-between">
+<div style="display:flex;flex-direction:column;gap:8px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#4FD1C5">Biphasic drive</p>
+<img src="eq/drive.svg" alt="A·exp(−A/A*)" style="width:203px;height:58px;object-fit:contain">
+<p style="font-size:30px;line-height:1.4">Rises steeply to the sweet spot A*, then rolls over.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#4FD1C5">Hedonic adaptation</p>
+<img src="eq/adapt.svg" alt="−λ_F·F" style="width:136px;height:46px;object-fit:contain">
+<p style="font-size:30px;line-height:1.4">Without novelty the buzz fades, even at a flat blood alcohol.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#4FD1C5">The messy degradation</p>
+<img src="eq/penalty.svg" alt="−ζ·max(0, A − A_sloppy)²" style="width:389px;height:51px;object-fit:contain">
+<p style="font-size:30px;line-height:1.4">Past about 0.15 g/dL, fun crashes quadratically.</p>
+</div>
+</div>
+<div style="flex:1"></div>
+</div>
+<iframe class="emb" title="Animated chart" sandbox="allow-scripts" style="position:absolute;left:752px;top:293px;width:1040px;height:627px" data-doc="&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;html,body{margin:0;padding:0;overflow:hidden}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;html,body{height:100%;background:transparent}canvas{position:fixed;left:0;top:0;width:100%;height:100%}&lt;/style&gt;
+&lt;canvas id=&quot;c&quot;&gt;&lt;/canvas&gt;
+&lt;script&gt;
+(function(){
+var DW=1040,DH=627,PERIOD=11,HERO=3.4;
+var D=76*(1+1.6*4/(1+.35*4))*1.6,As=.065,ze=30000,Asl=.15;
+function drive(a){return D*a*Math.exp(-a/As)}
+function Fs(a){return drive(a)-ze*Math.pow(Math.max(0,a-Asl),2)}
+var X0=90,X1=1010,AM=.22,Y0=450,KY=30,YT=30,YB=552;
+function X(a){return X0+(X1-X0)*a/AM}
+function Y(f){return Y0-f*KY}
+var FONT='24px ui-monospace,SFMono-Regular,Menlo,Consolas,&quot;Liberation Mono&quot;,monospace';
+function path(g,fn,a0,a1){g.beginPath();for(var a=a0;a1&gt;=a;a+=.001){var y=Y(fn(a));if(a===a0)g.moveTo(X(a),y);else g.lineTo(X(a),y)}}
+function ease(u){return u*u*(3-2*u)}
+function draw(g,time){
+var p=Math.min(1,time/8),al=Math.min(1,time/.5)*(time&gt;10?Math.max(0,11-time):1),ad=.172*ease(p),k;
+g.globalAlpha=al;g.font=FONT;
+g.fillStyle='rgba(245,165,36,.16)';g.fillRect(X(.05),YT,X(.08)-X(.05),YB-YT);
+g.fillStyle='rgba(255,107,94,.13)';g.fillRect(X(.15),YT,X1-X(.15),YB-YT);
+g.strokeStyle='rgba(243,238,227,.4)';g.lineWidth=1.5;g.beginPath();g.moveTo(X0,Y0);g.lineTo(X1,Y0);g.stroke();
+g.beginPath();g.moveTo(X0,YT);g.lineTo(X0,YB);g.stroke();
+g.textAlign='center';g.textBaseline='alphabetic';
+var tk=[0,.05,.1,.15,.2];for(k=0;k&lt;5;k++){var tx=X(tk[k]);g.strokeStyle='rgba(243,238,227,.4)';g.beginPath();g.moveTo(tx,Y0-6);g.lineTo(tx,Y0+6);g.stroke();
+g.fillStyle='#A9B1C7';g.fillText(k?tk[k].toFixed(2):'0',tx,588)}
+g.textAlign='right';g.fillText('blood alcohol, g/dL',X1,620);
+g.textAlign='left';g.fillStyle='#4FD1C5';g.fillText('fun',2,100);g.fillStyle='#FF6B5E';g.fillText('regret',2,530);
+g.textAlign='center';g.fillStyle='#A9B1C7';g.fillText('warm-up',X(.025),62);
+g.fillStyle='#F5A524';g.fillText('sweet',X(.065),62);g.fillText('spot',X(.065),92);
+g.fillStyle='#A9B1C7';g.fillText('diminishing',X(.115),62);g.fillText('returns',X(.115),92);
+g.fillStyle='#FF6B5E';g.fillText('sloppy',X(.185),62);
+g.save();g.beginPath();g.rect(X0,YT,X1-X0,YB-YT);g.clip();
+path(g,drive,.15,AM);g.strokeStyle='rgba(79,209,197,.55)';g.lineWidth=2;g.setLineDash([8,8]);g.stroke();g.setLineDash([]);
+path(g,Fs,0,AM);g.strokeStyle='rgba(79,209,197,.3)';g.lineWidth=3;g.stroke();
+path(g,Fs,0,ad);g.strokeStyle=ad&gt;Asl?'#FF6B5E':'#4FD1C5';g.lineWidth=5;g.shadowColor=g.strokeStyle;g.shadowBlur=18;g.stroke();g.shadowBlur=0;
+if(ad&gt;Asl){path(g,Fs,0,Asl);g.strokeStyle='#4FD1C5';g.lineWidth=5;g.stroke()}
+g.restore();
+var fy=Math.min(YB,Y(Fs(ad)));g.beginPath();g.arc(X(ad),fy,10,0,6.3);g.fillStyle=ad&gt;Asl?'#FF6B5E':'#4FD1C5';g.shadowColor=g.fillStyle;g.shadowBlur=24;g.fill();g.shadowBlur=0;
+g.fillStyle='#A9B1C7';g.textAlign='right';g.fillText('no penalty',X1,Y(drive(.22))+44);
+g.fillStyle='#F3EEE3';g.textAlign='left';g.fillText('BAC '+ad.toFixed(3)+'   fun '+Fs(ad).toFixed(1),X0,620);
+g.globalAlpha=1}
+var cv=document.getElementById('c'),g=cv.getContext('2d');
+function frame(ctx,w,h,t){ctx.setTransform(w/DW,0,0,h/DH,0,0);ctx.clearRect(0,0,DW,DH);draw(ctx,t)}
+function loop(now){var r=window.devicePixelRatio||1,w=Math.max(1,Math.round(innerWidth*r)),h=Math.max(1,Math.round(innerHeight*r));if(cv.width!==w||cv.height!==h){cv.width=w;cv.height=h}
+frame(g,w,h,(now/1000)%PERIOD);requestAnimationFrame(loop)}
+requestAnimationFrame(loop);
+var E=window.appifactEmbed;if(E){if(E.onRender)E.onRender(function(o){frame(o.ctx,o.width,o.height,HERO)})}
+})();
+&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#7C86A2">Curve: steady-state fun at each blood alcohol level, four friends, Friday night. Sweet spot in the source: 0.05 to 0.08 g/dL. Constants illustrative.</p>
+</section>
+<section data-slide="social" aria-roledescription="slide" aria-label="Slide 6" style="background:#0F1424;color:#F3EEE3;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#F5A524">The night · 3 of 3</p>
+<h2 style="font-family:'DM Serif Display', Georgia, serif;font-size:72px;font-weight:400;line-height:1.1;letter-spacing:-1px">The Social Amplifier</h2>
+</div>
+<div style="flex:1;display:flex;flex-direction:row;justify-content:flex-end">
+<div style="width:600px;display:flex;flex-direction:column;justify-content:space-between">
+<img src="eq/gamma.svg" alt="Γ_social = 1 + ω·N_friends / (1 + σ·N_friends)" style="width:486px;height:97px;object-fit:contain">
+<p style="font-size:30px;line-height:1.4">Alcohol consumed alone has a miserable exchange rate compared with shared celebration.</p>
+<div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:16px">
+<p style="font-family:'DM Serif Display', Georgia, serif;font-size:72px;line-height:1.1;color:#4FD1C5">×2.2</p>
+<p style="font-family:'DM Serif Display', Georgia, serif;font-size:72px;line-height:1.1;color:#4FD1C5">×3.7</p>
+<p style="font-family:'DM Serif Display', Georgia, serif;font-size:72px;line-height:1.1;color:#4FD1C5">×5.6</p>
+<p style="font-size:24px;line-height:1.3;color:#A9B1C7">one friend</p>
+<p style="font-size:24px;line-height:1.3;color:#A9B1C7">four friends</p>
+<p style="font-size:24px;line-height:1.3;color:#A9B1C7">the ceiling, any crowd</p>
+</div>
+<p style="font-size:30px;line-height:1.4">The boost saturates. A handful of close friends captures most of it; a stadium of strangers adds almost nothing more.</p>
+</div>
+</div>
+<iframe class="emb" title="Animated chart" sandbox="allow-scripts" style="position:absolute;left:128px;top:293px;width:1000px;height:627px" data-doc="&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;html,body{margin:0;padding:0;overflow:hidden}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;html,body{height:100%;background:transparent}canvas{position:fixed;left:0;top:0;width:100%;height:100%}&lt;/style&gt;
+&lt;canvas id=&quot;c&quot;&gt;&lt;/canvas&gt;
+&lt;script&gt;
+(function(){
+var DW=1000,DH=627,PERIOD=13,HERO=3.9;
+var om=1.6,si=.35;function G(n){return 1+om*n/(1+si*n)}
+var FONT='24px ui-monospace,SFMono-Regular,Menlo,Consolas,&quot;Liberation Mono&quot;,monospace',BIG='40px ui-monospace,SFMono-Regular,Menlo,Consolas,&quot;Liberation Mono&quot;,monospace';
+var CX=250,CY=370,X0=580,X1=960,YB=520,KY=86;
+function PX(n){return X0+(X1-X0)*n/12}
+function PY(v){return YB-(v-1)*KY}
+var seed=7;function rnd(){seed=(seed*16807)%2147483647;return seed/2147483647}
+var crowd=[];for(var q=0;q&lt;520;q++){var ang=rnd()*6.283,rr=135+rnd()*105;crowd.push([CX+Math.cos(ang)*rr*1.0,CY+Math.sin(ang)*rr*.92,1.5+rnd()*2.5,rnd()])}
+function seat(k){var ring=k&lt;8?0:1,m=ring?4:8,j=ring?k-8:k,ang=-1.5708+6.283*(j+(ring?.5:0))/m+(ring?.39:0),r=ring?200:130;return[CX+Math.cos(ang)*r,CY+Math.sin(ang)*r]}
+function draw(g,time){
+var al=Math.min(1,time/.5)*(time&gt;12.3?Math.max(0,(13-time)/.7):1),stad=time&gt;=8.5,nf=Math.min(12,time/.6),n=Math.floor(nf),fr=nf-n,k;
+g.globalAlpha=al;g.textBaseline='alphabetic';
+g.beginPath();g.arc(CX,CY,74,0,6.3);g.strokeStyle='rgba(243,238,227,.45)';g.lineWidth=2;g.stroke();g.fillStyle='rgba(243,238,227,.05)';g.fill();
+g.beginPath();g.arc(CX,CY,16,0,6.3);g.fillStyle='#F5A524';g.shadowColor='#F5A524';g.shadowBlur=22;g.fill();g.shadowBlur=0;
+if(stad){var sa=Math.min(1,(time-8.5)/1.2);for(k=0;k&lt;crowd.length;k++){var c=crowd[k];g.globalAlpha=al*sa*(.25+.5*c[3]);g.beginPath();g.arc(c[0],c[1],c[2],0,6.3);g.fillStyle='#A9B1C7';g.fill()}g.globalAlpha=al}
+else for(k=0;k&lt;Math.min(12,n+1);k++){var s=seat(k),sc=k&lt;n?1:fr*1.4&gt;1?1:fr*1.4;if(k&gt;=12)break;g.globalAlpha=al*sc;g.beginPath();g.arc(s[0],s[1],14*sc,0,6.3);g.fillStyle='#4FD1C5';g.shadowColor='#4FD1C5';g.shadowBlur=16;g.fill();g.shadowBlur=0;g.globalAlpha=al}
+var gv=stad?G(50000):G(n);
+g.font=BIG;g.textAlign='left';g.fillStyle='#F3EEE3';g.fillText(stad?'50,000 strangers':(n===0?'alone':n===1?'1 friend':n+' friends'),20,60);
+g.fillStyle='#4FD1C5';g.fillText('Γ = '+gv.toFixed(2),20,112);
+g.font=FONT;g.fillStyle='#A9B1C7';g.fillText('Γ, the fun multiplier',X0,60);
+g.strokeStyle='rgba(243,238,227,.4)';g.lineWidth=1.5;g.beginPath();g.moveTo(X0,PY(6.1));g.lineTo(X0,YB);g.lineTo(X1,YB);g.stroke();
+var cy=PY(1+om/si);g.setLineDash([8,8]);g.strokeStyle='rgba(243,238,227,.4)';g.beginPath();g.moveTo(X0,cy);g.lineTo(X1,cy);g.stroke();g.setLineDash([]);
+g.textAlign='right';g.fillText('ceiling 5.57',X1-28,cy-10);
+g.textAlign='center';var tk=[0,4,8,12];for(k=0;k&lt;4;k++)g.fillText(''+tk[k],PX(tk[k]),YB+36);
+g.textAlign='right';g.fillText('friends',X1,YB+78);
+g.fillText('1',X0-12,YB+8);
+g.beginPath();for(var x=0;12&gt;=x;x+=.1){if(x)g.lineTo(PX(x),PY(G(x)));else g.moveTo(PX(x),PY(G(x)))}g.strokeStyle='rgba(79,209,197,.35)';g.lineWidth=3;g.stroke();
+var xe=stad?12:nf;g.beginPath();for(x=0;xe&gt;=x;x+=.1){if(x)g.lineTo(PX(x),PY(G(x)));else g.moveTo(PX(x),PY(G(x)))}g.strokeStyle='#4FD1C5';g.lineWidth=5;g.shadowColor='#4FD1C5';g.shadowBlur=16;g.stroke();g.shadowBlur=0;
+for(k=0;k&lt;=n;k++){g.beginPath();g.arc(PX(k),PY(G(k)),6,0,6.3);g.fillStyle='#4FD1C5';g.fill()}
+if(stad){g.beginPath();g.arc(X1,cy,10,0,6.3);g.fillStyle='#F3EEE3';g.shadowColor='#F3EEE3';g.shadowBlur=20;g.fill();g.shadowBlur=0}
+else{g.beginPath();g.arc(PX(n),PY(G(n)),11,0,6.3);g.fillStyle='#F3EEE3';g.fill()}
+g.globalAlpha=1}
+var cv=document.getElementById('c'),g=cv.getContext('2d');
+function frame(ctx,w,h,t){ctx.setTransform(w/DW,0,0,h/DH,0,0);ctx.clearRect(0,0,DW,DH);draw(ctx,t)}
+function loop(now){var r=window.devicePixelRatio||1,w=Math.max(1,Math.round(innerWidth*r)),h=Math.max(1,Math.round(innerHeight*r));if(cv.width!==w||cv.height!==h){cv.width=w;cv.height=h}
+frame(g,w,h,(now/1000)%PERIOD);requestAnimationFrame(loop)}
+requestAnimationFrame(loop);
+var E=window.appifactEmbed;if(E){if(E.onRender)E.onRender(function(o){frame(o.ctx,o.width,o.height,HERO)})}
+})();
+&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#7C86A2">Illustrative constants: ω = 1.6, σ = 0.35. The ceiling is 1 + ω/σ.</p>
+</section>
+<section data-slide="toxins" aria-roledescription="slide" aria-label="Slide 7" style="background:#0F1424;color:#F3EEE3;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#F5A524">The morning · 1 of 3</p>
+<h2 style="font-family:'DM Serif Display', Georgia, serif;font-size:72px;font-weight:400;line-height:1.1;letter-spacing:-1px">The Toxic Load</h2>
+</div>
+<img src="eq/dT.svg" alt="dT/dt = α·(V_max·A / (K_m + A)) + κ·c(t) − λ_T·W(t)·T" style="width:798px;height:107px;object-fit:contain">
+<div data-build="rise" data-order="1" style="position:absolute;left:128px;top:440px;width:532px;height:480px;background:#171D33;border:1px solid rgba(243,238,227,0.14);border-radius:8px;padding:36px;display:flex;flex-direction:column;gap:16px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#B79CFF">Production</p>
+<img src="eq/tprod.svg" alt="α·V_max·A / (K_m + A)" style="width:199px;height:98px;object-fit:contain">
+<p style="font-size:30px;line-height:1.4">Every unit of ethanol the liver oxidises leaves acetaldehyde behind.</p>
+<div style="flex:1"></div>
+<div style="display:flex;flex-direction:row;align-items:center;gap:16px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;color:#F5A524">ethanol</p>
+<svg aria-hidden="true" style="flex:none" width="72" height="20" viewBox="0 0 72 20"><line x1="2" y1="10" x2="68" y2="10" stroke="#B79CFF" stroke-width="3" stroke-linecap="round"/><path d="M56.5 17.4 L70 10 L56.5 2.6" fill="none" stroke="#B79CFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;color:#B79CFF">acetaldehyde</p>
+</div>
+</div>
+<div data-build="rise" data-order="2" style="position:absolute;left:694px;top:440px;width:532px;height:480px;background:#171D33;border:1px solid rgba(243,238,227,0.14);border-radius:8px;padding:36px;display:flex;flex-direction:column;gap:16px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#B79CFF">Congeners</p>
+<img src="eq/tcong.svg" alt="κ·c(t)" style="width:101px;height:48px;object-fit:contain">
+<p style="font-size:30px;line-height:1.4">Dark liquors, aged spirits and cheap fusel oils add toxic load beyond the ethanol itself.</p>
+<div style="flex:1"></div>
+<div style="height:20px;border-radius:10px;background:linear-gradient(to right, #F3EEE3, #F5A524 55%, #6B3410)"></div>
+<div style="display:flex;flex-direction:row;justify-content:space-between">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;color:#A9B1C7">clear, c near 0</p>
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;color:#A9B1C7">dark, c high</p>
+</div>
+</div>
+<div data-build="rise" data-order="3" style="position:absolute;left:1260px;top:440px;width:532px;height:480px;background:#171D33;border:1px solid rgba(243,238,227,0.14);border-radius:8px;padding:36px;display:flex;flex-direction:column;gap:16px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#B79CFF">Clearance</p>
+<img src="eq/tclear.svg" alt="−λ_T·W(t)·T" style="width:215px;height:48px;object-fit:contain">
+<p style="font-size:30px;line-height:1.4">Kidneys and liver clear the load at a rate scaled by hydration W. Dehydration stalls it.</p>
+<div style="flex:1"></div>
+<div style="display:flex;flex-direction:row;align-items:center;gap:16px">
+<p style="width:120px;font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;color:#A9B1C7">W = 1</p>
+<div style="width:320px;height:20px;border-radius:10px;background:#B79CFF"></div>
+</div>
+<div style="display:flex;flex-direction:row;align-items:center;gap:16px">
+<p style="width:120px;font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;color:#A9B1C7">W = 0.5</p>
+<div style="width:160px;height:20px;border-radius:10px;background:#B79CFF"></div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#7C86A2">In this model the hangover is driven by metabolites and immune activation, not by ethanol itself.</p>
+</section>
+<section data-slide="shock" aria-roledescription="slide" aria-label="Slide 8" style="background:#0F1424;color:#F3EEE3;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#F5A524">The morning · 2 of 3</p>
+<h2 style="font-family:'DM Serif Display', Georgia, serif;font-size:72px;font-weight:400;line-height:1.1;letter-spacing:-1px">The Delayed Shock</h2>
+</div>
+<div style="flex:1;display:flex;flex-direction:row;gap:64px">
+<div style="width:600px;display:flex;flex-direction:column;justify-content:space-between">
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#FF6B5E">The gate</p>
+<img src="eq/theta.svg" alt="Θ(A_thresh − A)" style="width:311px;height:56px;object-fit:contain">
+<p style="font-size:30px;line-height:1.4">Above the threshold, intoxication numbs the pain. The gate opens only as blood alcohol falls toward zero, and the whole accumulated load lands at once.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#FF6B5E">Sleep debt</p>
+<img src="eq/sleep.svg" alt="S(t) = exp(δ_sleep · max(0, τ_target − τ_actual))" style="width:560px;height:44px;object-fit:contain">
+<p style="font-size:30px;line-height:1.4">Each hour short of target multiplies the misery. Five hours instead of eight: ×1.57.</p>
+</div>
+</div>
+<div style="flex:1"></div>
+</div>
+<iframe class="emb" title="Animated chart" sandbox="allow-scripts" style="position:absolute;left:792px;top:293px;width:1000px;height:627px" data-doc="&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;html,body{margin:0;padding:0;overflow:hidden}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;html,body{height:100%;background:transparent}canvas{position:fixed;left:0;top:0;width:100%;height:100%}&lt;/style&gt;
+&lt;canvas id=&quot;c&quot;&gt;&lt;/canvas&gt;
+&lt;script&gt;
+(function(){
+var DW=1000,DH=627,PERIOD=13,HERO=10;
+var P={V:.017,K:.005,d:.022,ab:.5,al:1,ka:.5,lT:.3,be:30,ga:.6,At:.02,ds:.15,tt:8,mu:.8,et:76,As:.065,lF:1,ze:30000,Asl:.15,kw:.6,om:1.6,si:.35};
+function sim(s){var dt=.01,n=3601,A=[],T=[],H=[],F=[],a=0,x=0,h=0,f=0,i,j,t,R,e,w,Ph,L,S=Math.exp(P.ds*Math.max(0,P.tt-s.sleep)),G=1+P.om*s.n/(1+P.si*s.n);
+for(i=0;i&lt;n;i++){t=i*dt;A.push(a);T.push(x);H.push(h);F.push(f);R=0;for(j=0;j&lt;s.drinks.length;j++)if(t&gt;=s.drinks[j]&amp;&amp;t&lt;s.drinks[j]+P.ab)R+=P.d/P.ab;
+e=P.V*a/(P.K+a);w=s.w0+t;Ph=1+P.mu*Math.max(0,Math.cos(2*Math.PI*(w-9)/168));L=1+P.kw*Math.max(0,Math.cos(2*Math.PI*(w-120)/168));
+var da=R-e,dx=P.al*e+P.ka*s.c*R-P.lT*s.W*x,dh=P.be*x*(a&lt;=P.At?1:0)*S*Ph-P.ga*h,df=(t&lt;s.bed?P.et*G*L*a*Math.exp(-a/P.As):0)-P.lF*f-P.ze*Math.pow(Math.max(0,a-P.Asl),2);
+a=Math.max(0,a+dt*da);x=Math.max(0,x+dt*dx);h=Math.max(0,h+dt*dh);f=f+dt*df}
+return{A:A,T:T,H:H,F:F}}
+var r=sim({drinks:[0,.45,.9,1.35,1.8,2.25,2.7,3.15,3.6,4.05,4.5],w0:115,c:1,W:.5,sleep:5,n:4,bed:7});
+var I0=400,I1=2400,X0=30,X1=970,ic=I0;for(var q=500;q&lt;I1;q++)if(r.A[q]&lt;=P.At){ic=q;break}
+function X(i){return X0+(X1-X0)*(i-I0)/(I1-I0)}
+var FONT='24px ui-monospace,SFMono-Regular,Menlo,Consolas,&quot;Liberation Mono&quot;,monospace';
+var YA=220,KA=1000,YH=570,KH=26,KT=1070;
+function seg(g,arr,yb,k,i0,i1){g.beginPath();for(var i=i0;i1&gt;=i;i+=4){var y=yb-arr[i]*k;if(i===i0)g.moveTo(X(i),y);else g.lineTo(X(i),y)}}
+function draw(g,time){
+var p=Math.min(1,time/9),al=Math.min(1,time/.5)*(time&gt;12.2?Math.max(0,(13-time)/.8):1),ii=Math.round(I0+(I1-I0)*p),open=ii&gt;=ic,xc=X(ic),k;
+g.globalAlpha=al;g.font=FONT;g.textBaseline='alphabetic';
+g.fillStyle='rgba(245,165,36,.07)';g.fillRect(X0,40,xc-X0,YA-20-40);
+g.strokeStyle='rgba(243,238,227,.35)';g.lineWidth=1.5;g.beginPath();g.moveTo(X0,YA);g.lineTo(X1,YA);g.moveTo(X0,YH);g.lineTo(X1,YH);g.stroke();
+g.setLineDash([8,8]);g.beginPath();g.moveTo(X0,YA-20);g.lineTo(X1,YA-20);g.stroke();g.setLineDash([]);
+g.fillStyle='#A9B1C7';g.textAlign='right';g.fillText('threshold',X1,YA-30);
+g.fillStyle='#F5A524';g.fillText('blood alcohol A',X1,70);
+g.fillStyle='rgba(245,165,36,.75)';g.textAlign='left';g.fillText('pain numbed',X0+14,YA-34);
+seg(g,r.A,YA,KA,I0,I1);g.strokeStyle='rgba(245,165,36,.28)';g.lineWidth=2;g.stroke();
+seg(g,r.A,YA,KA,I0,ii);g.strokeStyle='#F5A524';g.lineWidth=4;g.shadowColor='#F5A524';g.shadowBlur=14;g.stroke();g.shadowBlur=0;
+g.strokeStyle='rgba(243,238,227,.5)';g.lineWidth=3;g.beginPath();g.moveTo(X0,325);g.lineTo(xc,325);g.stroke();
+g.strokeStyle=open?'#FF6B5E':'rgba(243,238,227,.25)';g.beginPath();g.moveTo(xc,325);g.lineTo(xc,270);g.lineTo(X1,270);g.stroke();
+g.fillStyle='#A9B1C7';g.textAlign='left';g.fillText('gate closed',X0+14,312);
+g.fillStyle=open?'#FF6B5E':'rgba(169,177,199,.5)';g.textAlign='right';g.fillText('gate open',X1,257);
+seg(g,r.T,YH,KT,I0,I1);g.strokeStyle='rgba(183,156,255,.3)';g.lineWidth=2;g.setLineDash([10,8]);g.stroke();
+seg(g,r.T,YH,KT,I0,ii);g.strokeStyle='#B79CFF';g.lineWidth=3;g.stroke();g.setLineDash([]);
+g.fillStyle='#B79CFF';g.textAlign='left';g.fillText('toxic load T, building unseen',X0+14,392);
+if(open){g.beginPath();g.moveTo(xc,YH);for(k=ic;ii&gt;=k;k+=4)g.lineTo(X(k),YH-r.H[k]*KH);g.lineTo(X(ii),YH);g.closePath();g.fillStyle='rgba(255,107,94,.28)';g.fill();
+seg(g,r.H,YH,KH,ic,ii);g.strokeStyle='#FF6B5E';g.lineWidth=4;g.shadowColor='#FF6B5E';g.shadowBlur=16;g.stroke();g.shadowBlur=0;
+var fl=Math.max(0,1-(ii-ic)/120);g.strokeStyle='rgba(255,107,94,'+(.45+.55*fl)+')';g.lineWidth=2+6*fl;g.setLineDash([6,6]);g.beginPath();g.moveTo(xc,40);g.lineTo(xc,YH);g.stroke();g.setLineDash([]);
+g.fillStyle='#FF6B5E';g.textAlign='center';g.fillText('hangover H',664,376);g.fillText('09:12',xc,30)}
+if(p&lt;1){g.strokeStyle='rgba(243,238,227,.5)';g.lineWidth=1;g.beginPath();g.moveTo(X(ii),40);g.lineTo(X(ii),YH);g.stroke()}
+g.fillStyle='#A9B1C7';var tl=[[400,'23:00','left'],[1000,'05:00','center'],[1600,'11:00','center'],[2200,'17:00','center']];
+for(k=0;k&lt;4;k++){g.textAlign=tl[k][2];g.fillText(tl[k][1],X(tl[k][0]),612)}
+g.globalAlpha=1}
+var cv=document.getElementById('c'),g=cv.getContext('2d');
+function frame(ctx,w,h,t){ctx.setTransform(w/DW,0,0,h/DH,0,0);ctx.clearRect(0,0,DW,DH);draw(ctx,t)}
+function loop(now){var d=window.devicePixelRatio||1,w=Math.max(1,Math.round(innerWidth*d)),h=Math.max(1,Math.round(innerHeight*d));if(cv.width!==w||cv.height!==h){cv.width=w;cv.height=h}
+frame(g,w,h,(now/1000)%PERIOD);requestAnimationFrame(loop)}
+requestAnimationFrame(loop);
+var E=window.appifactEmbed;if(E){if(E.onRender)E.onRender(function(o){frame(o.ctx,o.width,o.height,HERO)})}
+})();
+&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#7C86A2">Animation: the big Friday. Last drink 23:30, gate opens 09:12. Sleep penalty uses δ = 0.15 per hour; constants illustrative.</p>
+</section>
+<section data-slide="week" aria-roledescription="slide" aria-label="Slide 9" style="background:#F3EEE3;color:#0F1424;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#8A5200">The morning · 3 of 3</p>
+<h2 style="font-family:'DM Serif Display', Georgia, serif;font-size:72px;font-weight:400;line-height:1.1;letter-spacing:-1px">The Weekly Cycle</h2>
+</div>
+<div style="flex:1"></div>
+<div style="display:flex;flex-direction:row;gap:64px">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px">
+<img src="eq/lambda-l.svg" alt="Λ_day(t) = 1 + κ_weekend · max(0, sin(2π(t − t_Fri 6PM)/168))" style="width:729px;height:78px;object-fit:contain">
+<p style="font-size:30px;line-height:1.4;color:#4A4F63">Fun multiplier. Friday and Saturday nights carry a freedom premium; Tuesday carries tomorrow's alarm.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px">
+<img src="eq/phi-l.svg" alt="Φ(t) = 1 + μ_work · max(0, cos(2π(t − t_Mon 9AM)/168))" style="width:677px;height:78px;object-fit:contain">
+<p style="font-size:30px;line-height:1.4;color:#4A4F63">Misery multiplier. The same hangover feels far worse the closer it lands to Monday at 9:00.</p>
+</div>
+</div>
+<iframe class="emb" title="Animated chart" sandbox="allow-scripts" style="position:absolute;left:128px;top:293px;width:1664px;height:380px" data-doc="&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;html,body{margin:0;padding:0;overflow:hidden}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;html,body{height:100%;background:transparent}canvas{position:fixed;left:0;top:0;width:100%;height:100%}&lt;/style&gt;
+&lt;canvas id=&quot;c&quot;&gt;&lt;/canvas&gt;
+&lt;script&gt;
+(function(){
+var DW=1664,DH=380,PERIOD=13,HERO=6.9;
+var kw=.6,mu=.8,X0=40,X1=1624,YB=205,K=180;
+function Lm(w){return kw*Math.max(0,Math.cos(2*Math.PI*(w-120)/168))}
+function Ph(w){return mu*Math.max(0,Math.cos(2*Math.PI*(w-9)/168))}
+function X(w){return X0+(X1-X0)*w/168}
+var FONT='24px ui-monospace,SFMono-Regular,Menlo,Consolas,&quot;Liberation Mono&quot;,monospace',DAYS=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+function shape(g,fn,sg,w1){g.beginPath();g.moveTo(X0,YB);for(var w=0;w1&gt;=w;w+=.5)g.lineTo(X(w),YB-sg*fn(w)*K);g.lineTo(X(w1),YB);g.closePath()}
+function line(g,fn,sg,w1){g.beginPath();for(var w=0;w1&gt;=w;w+=.5){if(w)g.lineTo(X(w),YB-sg*fn(w)*K);else g.moveTo(X(w),YB-sg*fn(w)*K)}}
+function two(n){return n&gt;9?''+n:'0'+n}
+function draw(g,time){
+var p=Math.min(1,time/10),al=Math.min(1,time/.5)*(time&gt;12.3?Math.max(0,(13-time)/.7):1),wc=168*p,k;
+g.globalAlpha=al;g.font=FONT;g.textBaseline='alphabetic';
+for(k=0;k&lt;=7;k++){g.strokeStyle='rgba(15,20,36,.14)';g.lineWidth=1.5;g.beginPath();g.moveTo(X(k*24),50);g.lineTo(X(k*24),350);g.stroke()}
+g.fillStyle='#0F1424';g.textAlign='center';for(k=0;k&lt;7;k++)g.fillText(DAYS[k],X(k*24+12),34);
+shape(g,Lm,1,168);g.fillStyle='rgba(11,110,102,.12)';g.fill();shape(g,Ph,-1,168);g.fillStyle='rgba(194,59,46,.12)';g.fill();
+shape(g,Lm,1,wc);g.fillStyle='rgba(11,110,102,.32)';g.fill();shape(g,Ph,-1,wc);g.fillStyle='rgba(194,59,46,.32)';g.fill();
+line(g,Lm,1,168);g.strokeStyle='rgba(11,110,102,.45)';g.lineWidth=2;g.stroke();line(g,Ph,-1,168);g.strokeStyle='rgba(194,59,46,.45)';g.stroke();
+line(g,Lm,1,wc);g.strokeStyle='#0B6E66';g.lineWidth=4;g.stroke();line(g,Ph,-1,wc);g.strokeStyle='#C23B2E';g.stroke();
+g.strokeStyle='rgba(15,20,36,.6)';g.lineWidth=2;g.beginPath();g.moveTo(X0,YB);g.lineTo(X1,YB);g.stroke();
+g.fillStyle='#0B6E66';g.textAlign='right';g.fillText('weekend premium Λ',X(94),112);
+g.fillStyle='#C23B2E';g.textAlign='left';g.fillText('Monday dread Φ',300,342);
+var xc=X(wc);g.strokeStyle='#0F1424';g.lineWidth=2;g.beginPath();g.moveTo(xc,50);g.lineTo(xc,350);g.stroke();
+g.beginPath();g.arc(xc,YB-Lm(wc)*K,8,0,6.3);g.fillStyle='#0B6E66';g.fill();g.beginPath();g.arc(xc,YB+Ph(wc)*K,8,0,6.3);g.fillStyle='#C23B2E';g.fill();
+var wd=Math.min(167.99,wc),d=Math.floor(wd/24),h=Math.floor(wd-d*24);
+g.fillStyle='#0F1424';g.textAlign='center';g.fillText(DAYS[d]+' '+two(h)+':00    Λ '+(1+Lm(wc)).toFixed(2)+'    Φ '+(1+Ph(wc)).toFixed(2),832,372);
+g.globalAlpha=1}
+var cv=document.getElementById('c'),g=cv.getContext('2d');
+function frame(ctx,w,h,t){ctx.setTransform(w/DW,0,0,h/DH,0,0);ctx.clearRect(0,0,DW,DH);draw(ctx,t)}
+function loop(now){var r=window.devicePixelRatio||1,w=Math.max(1,Math.round(innerWidth*r)),h=Math.max(1,Math.round(innerHeight*r));if(cv.width!==w||cv.height!==h){cv.width=w;cv.height=h}
+frame(g,w,h,(now/1000)%PERIOD);requestAnimationFrame(loop)}
+requestAnimationFrame(loop);
+var E=window.appifactEmbed;if(E){if(E.onRender)E.onRender(function(o){frame(o.ctx,o.width,o.height,HERO)})}
+})();
+&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#5E6374">Λ is drawn centred on Friday midnight; as written it peaks on Sunday noon (see The Referee Report). Illustrative: κ = 0.6, μ = 0.8.</p>
+</section>
+<section data-slide="night" aria-roledescription="slide" aria-label="Slide 10" style="background:#0F1424;color:#F3EEE3;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#F5A524">The verdict · 1 of 4</p>
+<h2 style="font-family:'DM Serif Display', Georgia, serif;font-size:72px;font-weight:400;line-height:1.1;letter-spacing:-1px">Two Friday Nights, Simulated</h2>
+</div>
+<iframe class="emb" title="Animated chart" sandbox="allow-scripts" style="position:absolute;left:128px;top:293px;width:1664px;height:627px" data-doc="&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;html,body{margin:0;padding:0;overflow:hidden}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;html,body{height:100%;background:transparent}canvas{position:fixed;left:0;top:0;width:100%;height:100%}&lt;/style&gt;
+&lt;canvas id=&quot;c&quot;&gt;&lt;/canvas&gt;
+&lt;script&gt;
+(function(){
+var DW=1664,DH=627,PERIOD=23,HERO=21;
+var P={V:.017,K:.005,d:.022,ab:.5,al:1,ka:.5,lT:.3,be:30,ga:.6,At:.02,ds:.15,tt:8,mu:.8,et:76,As:.065,lF:1,ze:30000,Asl:.15,kw:.6,om:1.6,si:.35};
+function sim(s){var dt=.01,n=3601,A=[],T=[],H=[],F=[],a=0,x=0,h=0,f=0,i,j,t,R,e,w,Ph,L,S=Math.exp(P.ds*Math.max(0,P.tt-s.sleep)),G=1+P.om*s.n/(1+P.si*s.n);
+for(i=0;i&lt;n;i++){t=i*dt;A.push(a);T.push(x);H.push(h);F.push(f);R=0;for(j=0;j&lt;s.drinks.length;j++)if(t&gt;=s.drinks[j]&amp;&amp;t&lt;s.drinks[j]+P.ab)R+=P.d/P.ab;
+e=P.V*a/(P.K+a);w=s.w0+t;Ph=1+P.mu*Math.max(0,Math.cos(2*Math.PI*(w-9)/168));L=1+P.kw*Math.max(0,Math.cos(2*Math.PI*(w-120)/168));
+var da=R-e,dx=P.al*e+P.ka*s.c*R-P.lT*s.W*x,dh=P.be*x*(a&lt;=P.At?1:0)*S*Ph-P.ga*h,df=(t&lt;s.bed?P.et*G*L*a*Math.exp(-a/P.As):0)-P.lF*f-P.ze*Math.pow(Math.max(0,a-P.Asl),2);
+a=Math.max(0,a+dt*da);x=Math.max(0,x+dt*dx);h=Math.max(0,h+dt*dh);f=f+dt*df}
+return{A:A,T:T,H:H,F:F}}
+var SC=[{name:'PACED FRIDAY',desc:'5 drinks, water, 8 h sleep, 4 friends',drinks:[0,.5,1.25,2.25,3.25],w0:115,c:.2,W:1,sleep:8,n:4,bed:5.5},
+{name:'BIG FRIDAY',desc:'11 drinks, dark liquor, dehydrated, 5 h sleep, 4 friends',drinks:[0,.45,.9,1.35,1.8,2.25,2.7,3.15,3.6,4.05,4.5],w0:115,c:1,W:.5,sleep:5,n:4,bed:7}];
+for(var q=0;q&lt;2;q++){var s=SC[q],r=sim(s),cf=[0],ch=[0],ia=0,i;s.r=r;for(i=1;i&lt;3601;i++){cf.push(cf[i-1]+r.F[i]*.01);ch.push(ch[i-1]+r.H[i]*.01);if(r.A[i]&gt;r.A[ia])ia=i}
+s.cf=cf;s.ch=ch;s.ic=3600;for(i=ia;i&lt;3601;i++)if(r.A[i]&lt;=P.At){s.ic=i;break}}
+var N=3600,XL=30,X0=190,X1=1634,YA=262,KA=1000,YF=440,KF=14;
+function X(i){return X0+(X1-X0)*i/N}
+var FONT='24px ui-monospace,SFMono-Regular,Menlo,Consolas,&quot;Liberation Mono&quot;,monospace',BIG='28px ui-monospace,SFMono-Regular,Menlo,Consolas,&quot;Liberation Mono&quot;,monospace';
+function seg(g,arr,yb,k,i1){g.beginPath();for(var i=0;i1&gt;=i;i+=6){var y=yb-arr[i]*k;if(i)g.lineTo(X(i),y);else g.moveTo(X(i),y)}}
+function fill(g,arr,yb,k,i1,col){g.beginPath();g.moveTo(X0,yb);for(var i=0;i1&gt;=i;i+=6)g.lineTo(X(i),yb-arr[i]*k);g.lineTo(X(i1),yb);g.closePath();g.fillStyle=col;g.fill()}
+function two(n){return n&gt;9?''+n:'0'+n}
+function clock(t){var h=19+t,d=h&gt;=48?'Sun':h&gt;=24?'Sat':'Fri';h=h%24;var hh=Math.floor(h);return d+' '+two(hh)+':'+two(Math.floor((h-hh)*60+1e-6))}
+function sg(v){return(v&gt;=0?'+':'−')+Math.abs(v).toFixed(1)}
+function draw(g,time){
+var k=time&gt;=11.5?1:0,lt=time-k*11.5,s=SC[k],r=s.r,p=Math.min(1,lt/8),ii=Math.round(N*p),al=Math.min(1,lt/.5)*(lt&gt;11?Math.max(0,(11.5-lt)/.5):1),j;
+g.globalAlpha=al;g.textBaseline='alphabetic';
+g.font=BIG;g.fillStyle='#F5A524';g.textAlign='left';g.fillText(s.name,XL,34);var nw=g.measureText(s.name).width;
+g.font=FONT;g.fillStyle='#A9B1C7';g.fillText(s.desc,XL+nw+24,34);
+g.fillStyle='#F3EEE3';g.textAlign='right';
+var u=s.cf[ii]-s.ch[ii];
+g.fillText(p&lt;1?clock(ii*.01)+'    net utility '+sg(u):'fun '+s.cf[N].toFixed(1)+'  −  hangover '+s.ch[N].toFixed(1)+'  =  '+sg(u),X1,34);
+var marks=[[.15,'sloppy'],[.065,'sweet spot'],[.02,'numb below']];
+for(j=0;j&lt;3;j++){var my=YA-marks[j][0]*KA;g.strokeStyle='rgba(243,238,227,.25)';g.lineWidth=1.5;g.setLineDash([8,8]);g.beginPath();g.moveTo(X0,my);g.lineTo(X1,my);g.stroke();g.setLineDash([]);
+g.fillStyle='#A9B1C7';g.textAlign='right';g.fillText(marks[j][1],X0-14,my+8)}
+g.strokeStyle='rgba(243,238,227,.4)';g.lineWidth=1.5;g.beginPath();g.moveTo(X0,YA);g.lineTo(X1,YA);g.moveTo(X0,YF);g.lineTo(X1,YF);g.stroke();
+for(j=0;j&lt;s.drinks.length;j++){if(ii*.01&gt;=s.drinks[j]){g.beginPath();g.arc(X(s.drinks[j]*100)+4,YA+14,5,0,6.3);g.fillStyle='#F5A524';g.fill()}}
+var xb=X(s.bed*100);if(ii&gt;=s.bed*100){g.strokeStyle='rgba(243,238,227,.45)';g.setLineDash([4,8]);g.beginPath();g.moveTo(xb,84);g.lineTo(xb,592);g.stroke();g.setLineDash([]);g.fillStyle='#A9B1C7';g.textAlign='right';g.fillText('bed',xb-8,588)}
+seg(g,r.T,YA,KA,N);g.strokeStyle='rgba(183,156,255,.22)';g.lineWidth=2;g.stroke();seg(g,r.A,YA,KA,N);g.strokeStyle='rgba(245,165,36,.22)';g.stroke();
+seg(g,r.F,YF,KF,N);g.strokeStyle='rgba(79,209,197,.22)';g.stroke();seg(g,r.H,YF,-KF,N);g.strokeStyle='rgba(255,107,94,.22)';g.stroke();
+fill(g,r.F,YF,KF,ii,'rgba(79,209,197,.26)');fill(g,r.H,YF,-KF,ii,'rgba(255,107,94,.28)');
+seg(g,r.T,YA,KA,ii);g.strokeStyle='#B79CFF';g.lineWidth=3;g.setLineDash([10,8]);g.stroke();g.setLineDash([]);
+seg(g,r.A,YA,KA,ii);g.strokeStyle='#F5A524';g.lineWidth=4;g.shadowColor='#F5A524';g.shadowBlur=14;g.stroke();g.shadowBlur=0;
+seg(g,r.F,YF,KF,ii);g.strokeStyle='#4FD1C5';g.lineWidth=4;g.stroke();seg(g,r.H,YF,-KF,ii);g.strokeStyle='#FF6B5E';g.stroke();
+if(ii&gt;=s.ic){var xc=X(s.ic);g.strokeStyle='rgba(255,107,94,.8)';g.lineWidth=2;g.setLineDash([6,6]);g.beginPath();g.moveTo(xc,YA-30);g.lineTo(xc,592);g.stroke();g.setLineDash([]);
+g.fillStyle='#FF6B5E';g.textAlign='left';g.fillText('gate opens '+clock(s.ic*.01).slice(4),xc+10,588)}
+g.textAlign='left';var lg=[['A blood alcohol','#F5A524'],['T toxic load (dashed)','#B79CFF'],['F fun, above the line','#4FD1C5'],['H hangover, below it','#FF6B5E']],lx=X0;
+for(j=0;j&lt;4;j++){g.fillStyle=lg[j][1];g.fillText(lg[j][0],lx,68);lx+=g.measureText(lg[j][0]).width+44}
+if(p&lt;1){var xp=X(ii);g.strokeStyle='rgba(243,238,227,.5)';g.lineWidth=1;g.beginPath();g.moveTo(xp,50);g.lineTo(xp,592);g.stroke();
+var pts=[[YA-r.A[ii]*KA,'#F5A524'],[YF-r.F[ii]*KF,'#4FD1C5'],[YF+r.H[ii]*KF,'#FF6B5E']];for(j=0;j&lt;3;j++){g.beginPath();g.arc(xp,pts[j][0],7,0,6.3);g.fillStyle=pts[j][1];g.shadowColor=pts[j][1];g.shadowBlur=18;g.fill();g.shadowBlur=0}}
+g.fillStyle='#A9B1C7';var tl=['Fri 19:00','01:00','07:00','13:00','Sat 19:00','01:00','Sun 07:00'];
+for(j=0;j&lt;7;j++){g.textAlign=j===0?'left':j===6?'right':'center';g.fillText(tl[j],X(j*600),622)}
+g.globalAlpha=1}
+var cv=document.getElementById('c'),g=cv.getContext('2d');
+function frame(ctx,w,h,t){ctx.setTransform(w/DW,0,0,h/DH,0,0);ctx.clearRect(0,0,DW,DH);draw(ctx,t)}
+function loop(now){var d=window.devicePixelRatio||1,w=Math.max(1,Math.round(innerWidth*d)),h=Math.max(1,Math.round(innerHeight*d));if(cv.width!==w||cv.height!==h){cv.width=w;cv.height=h}
+frame(g,w,h,(now/1000)%PERIOD);requestAnimationFrame(loop)}
+requestAnimationFrame(loop);
+var E=window.appifactEmbed;if(E){if(E.onRender)E.onRender(function(o){frame(o.ctx,o.width,o.height,HERO)})}
+})();
+&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#7C86A2">Illustrative constants: the source fixed the equations, not their values. The fun drive is switched off at bedtime.</p>
+</section>
+<section data-slide="nights" aria-roledescription="slide" aria-label="Slide 11" style="background:#F3EEE3;color:#0F1424;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#8A5200">The verdict · 2 of 4</p>
+<h2 style="font-family:'DM Serif Display', Georgia, serif;font-size:72px;font-weight:400;line-height:1.1;letter-spacing:-1px">Four Nights, One Integral</h2>
+</div>
+<div style="display:grid;grid-template-columns:480px 730px 1fr;gap:26px;align-items:center">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#5E6374">Night</p>
+<div style="display:flex;flex-direction:row">
+<p style="width:470px;font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#C23B2E;text-align:right;padding:0px 14px 0px 0px">Hangover, summed</p>
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#0B6E66;padding:0px 0px 0px 16px">Fun, summed</p>
+</div>
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#5E6374">Net utility</p>
+
+<div style="display:flex;flex-direction:column;gap:2px">
+<p style="font-size:30px;font-weight:600;line-height:1.3">Paced Friday</p>
+<p style="font-size:24px;line-height:1.3;color:#4A4F63">5 drinks, water, 8 h sleep</p>
+</div>
+<div style="display:flex;flex-direction:row;align-items:center">
+<div style="width:470px;display:flex;flex-direction:row;justify-content:flex-end;align-items:center;gap:12px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;color:#C23B2E">10.9</p>
+<div style="width:35px;height:52px;background:#C23B2E"></div>
+</div>
+<div style="width:2px;height:92px;background:#0F1424"></div>
+<div style="display:flex;flex-direction:row;align-items:center;gap:12px">
+<div style="width:159px;height:52px;background:#0B6E66"></div>
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;color:#0B6E66">48.9</p>
+</div>
+</div>
+<div style="display:flex;flex-direction:row;align-items:baseline;gap:16px">
+<p style="font-family:'DM Serif Display', Georgia, serif;font-size:44px;line-height:1.1;color:#0B6E66">+38.1</p>
+<p style="font-size:24px;color:#4A4F63">worth it</p>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:2px">
+<p style="font-size:30px;font-weight:600;line-height:1.3">Big Friday</p>
+<p style="font-size:24px;line-height:1.3;color:#4A4F63">11 drinks, dehydrated, 5 h sleep</p>
+</div>
+<div style="display:flex;flex-direction:row;align-items:center">
+<div style="width:470px;display:flex;flex-direction:row;justify-content:flex-end;align-items:center;gap:12px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;color:#C23B2E">69.9</p>
+<div style="width:227px;height:52px;background:#C23B2E"></div>
+</div>
+<div style="width:2px;height:92px;background:#0F1424"></div>
+<div style="display:flex;flex-direction:row;align-items:center;gap:12px">
+<div style="width:165px;height:52px;background:#0B6E66"></div>
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;color:#0B6E66">50.8</p>
+</div>
+</div>
+<div style="display:flex;flex-direction:row;align-items:baseline;gap:16px">
+<p style="font-family:'DM Serif Display', Georgia, serif;font-size:44px;line-height:1.1;color:#C23B2E">−19.1</p>
+<p style="font-size:24px;color:#4A4F63">not worth it</p>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:2px">
+<p style="font-size:30px;font-weight:600;line-height:1.3">Same night, on Sunday</p>
+<p style="font-size:24px;line-height:1.3;color:#4A4F63">identical, with Monday 9:00 ahead</p>
+</div>
+<div style="display:flex;flex-direction:row;align-items:center">
+<div style="width:470px;display:flex;flex-direction:row;justify-content:flex-end;align-items:center;gap:12px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;color:#C23B2E">117.0</p>
+<div style="width:380px;height:52px;background:#C23B2E"></div>
+</div>
+<div style="width:2px;height:92px;background:#0F1424"></div>
+<div style="display:flex;flex-direction:row;align-items:center;gap:12px">
+<div style="width:99px;height:52px;background:#0B6E66"></div>
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;color:#0B6E66">30.4</p>
+</div>
+</div>
+<div style="display:flex;flex-direction:row;align-items:baseline;gap:16px">
+<p style="font-family:'DM Serif Display', Georgia, serif;font-size:44px;line-height:1.1;color:#C23B2E">−86.6</p>
+<p style="font-size:24px;color:#4A4F63">not worth it</p>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:2px">
+<p style="font-size:30px;font-weight:600;line-height:1.3">Tuesday, alone</p>
+<p style="font-size:24px;line-height:1.3;color:#4A4F63">5 drinks, no company, 6 h sleep</p>
+</div>
+<div style="display:flex;flex-direction:row;align-items:center">
+<div style="width:470px;display:flex;flex-direction:row;justify-content:flex-end;align-items:center;gap:12px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;color:#C23B2E">27.9</p>
+<div style="width:91px;height:52px;background:#C23B2E"></div>
+</div>
+<div style="width:2px;height:92px;background:#0F1424"></div>
+<div style="display:flex;flex-direction:row;align-items:center;gap:12px">
+<div style="width:24px;height:52px;background:#0B6E66"></div>
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;color:#0B6E66">7.4</p>
+</div>
+</div>
+<div style="display:flex;flex-direction:row;align-items:baseline;gap:16px">
+<p style="font-family:'DM Serif Display', Georgia, serif;font-size:44px;line-height:1.1;color:#C23B2E">−20.5</p>
+<p style="font-size:24px;color:#4A4F63">not worth it</p>
+</div>
+</div>
+<div style="flex:1"></div>
+<p style="font-family:'DM Serif Display', Georgia, serif;font-style:italic;font-size:44px;line-height:1.2">The big night bought 4% more fun and 6.4 times the hangover.</p>
+<img src="eq/U-l.svg" alt="U_net = integral from 0 to 36 of (F(t) − χ·H(t)) dt" style="position:absolute;right:128px;top:136px;width:578px;height:117px;object-fit:contain">
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#5E6374">χ, the regret exchange rate, is set to 1 here; the source notes it inflates with age. Units arbitrary, constants illustrative.</p>
+</section>
+<section data-slide="optimal" aria-roledescription="slide" aria-label="Slide 12" style="background:#0F1424;color:#F3EEE3;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#F5A524">The verdict · 3 of 4</p>
+<h2 style="font-family:'DM Serif Display', Georgia, serif;font-size:72px;font-weight:400;line-height:1.1;letter-spacing:-1px">The Optimal Trajectory</h2>
+</div>
+<div style="flex:1;display:flex;flex-direction:row;gap:24px">
+<div style="flex:1;background:#171D33;border:1px solid rgba(243,238,227,0.14);border-radius:8px;padding:32px 28px;display:flex;flex-direction:column;gap:40px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;color:#F5A524">01</p>
+<img src="eq/o1.svg" alt="A ≈ A*" style="width:174px;height:48px;object-fit:contain">
+<div style="flex:1"></div>
+<div style="display:flex;flex-direction:column;gap:12px">
+<h3 style="font-size:30px;font-weight:600;line-height:1.3">Hold the sweet spot</h3>
+<p style="font-size:24px;line-height:1.4;color:#A9B1C7">Keep blood alcohol near A* for a tight window.</p>
+</div>
+</div>
+<div style="flex:1;background:#171D33;border:1px solid rgba(243,238,227,0.14);border-radius:8px;padding:32px 28px;display:flex;flex-direction:column;gap:40px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;color:#F5A524">02</p>
+<img src="eq/o2.svg" alt="A &lt; A_sloppy" style="width:256px;height:61px;object-fit:contain">
+<div style="flex:1"></div>
+<div style="display:flex;flex-direction:column;gap:12px">
+<h3 style="font-size:30px;font-weight:600;line-height:1.3">Stay under the ceiling</h3>
+<p style="font-size:24px;line-height:1.4;color:#A9B1C7">Past it, the penalty grows with the square.</p>
+</div>
+</div>
+<div style="flex:1;background:#171D33;border:1px solid rgba(243,238,227,0.14);border-radius:8px;padding:32px 28px;display:flex;flex-direction:column;gap:40px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;color:#F5A524">03</p>
+<img src="eq/o3.svg" alt="max Λ_day" style="width:215px;height:61px;object-fit:contain">
+<div style="flex:1"></div>
+<div style="display:flex;flex-direction:column;gap:12px">
+<h3 style="font-size:30px;font-weight:600;line-height:1.3">Pick the night</h3>
+<p style="font-size:24px;line-height:1.4;color:#A9B1C7">Friday carries the largest weekend multiplier.</p>
+</div>
+</div>
+<div style="flex:1;background:#171D33;border:1px solid rgba(243,238,227,0.14);border-radius:8px;padding:32px 28px;display:flex;flex-direction:column;gap:40px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;color:#F5A524">04</p>
+<img src="eq/o4.svg" alt="W(t) → 1" style="width:223px;height:60px;object-fit:contain">
+<div style="flex:1"></div>
+<div style="display:flex;flex-direction:column;gap:12px">
+<h3 style="font-size:30px;font-weight:600;line-height:1.3">Keep drinking water</h3>
+<p style="font-size:24px;line-height:1.4;color:#A9B1C7">Hydration sets how fast the toxic load drains.</p>
+</div>
+</div>
+<div style="flex:1;background:#171D33;border:1px solid rgba(243,238,227,0.14);border-radius:8px;padding:32px 28px;display:flex;flex-direction:column;gap:40px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;color:#F5A524">05</p>
+<img src="eq/o5.svg" alt="R_in → 0" style="width:185px;height:53px;object-fit:contain">
+<div style="flex:1"></div>
+<div style="display:flex;flex-direction:column;gap:12px">
+<h3 style="font-size:30px;font-weight:600;line-height:1.3">Stop early</h3>
+<p style="font-size:24px;line-height:1.4;color:#A9B1C7">Last drink at least three hours before sleep.</p>
+</div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#7C86A2">The five conditions of the optimal trajectory, as stated in the source conversation.</p>
+</section>
+<section data-slide="cutoff" aria-roledescription="slide" aria-label="Slide 13" style="background:#F5A524;color:#0F1424;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:24px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase">The verdict · 4 of 4 · The cut-off rule</p>
+<p style="font-family:'DM Serif Display', Georgia, serif;font-size:260px;line-height:1;letter-spacing:-4px">3 hours</p>
+<p style="font-family:'DM Serif Display', Georgia, serif;font-size:72px;line-height:1.1;width:1500px">between the last drink and sleep.</p>
+<p style="font-size:30px;line-height:1.4;width:1100px">Any closer, and the phase-delayed toxic surge collides with sleep deprivation.</p>
+</section>
+<section data-slide="referee" aria-roledescription="slide" aria-label="Slide 14" style="background:#F3EEE3;color:#0F1424;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#8A5200">Review</p>
+<h2 style="font-family:'DM Serif Display', Georgia, serif;font-size:72px;font-weight:400;line-height:1.1;letter-spacing:-1px">The Referee Report</h2>
+</div>
+<div style="flex:1;display:grid;grid-template-columns:repeat(2, 1fr);grid-template-rows:repeat(2, 1fr);gap:32px">
+<div style="background:#FBF8F1;border:1px solid #DDD5C4;border-radius:8px;padding:28px 36px;display:flex;flex-direction:column;justify-content:center;gap:8px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#8A5200">Note 1</p>
+<h3 style="font-size:30px;font-weight:600;line-height:1.3">The weekend lobe arrives late</h3>
+<p style="font-size:24px;line-height:1.4;color:#4A4F63">As written, the sine is zero at Friday 6 PM and peaks 42 hours later, on Sunday noon. The prose wants Friday and Saturday night, so charts here centre the lobe on Friday midnight.</p>
+</div>
+<div style="background:#FBF8F1;border:1px solid #DDD5C4;border-radius:8px;padding:28px 36px;display:flex;flex-direction:column;justify-content:center;gap:8px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#8A5200">Note 2</p>
+<h3 style="font-size:30px;font-weight:600;line-height:1.3">Monday leaks into the weekend</h3>
+<p style="font-size:24px;line-height:1.4;color:#4A4F63">The cosine lobe around Monday 9 AM is 84 hours wide, so the dread multiplier is already 1.5 on Sunday morning. The Sunday scaries are in the math.</p>
+</div>
+<div style="background:#FBF8F1;border:1px solid #DDD5C4;border-radius:8px;padding:28px 36px;display:flex;flex-direction:column;justify-content:center;gap:8px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#8A5200">Note 3</p>
+<h3 style="font-size:30px;font-weight:600;line-height:1.3">Fun continues in your sleep</h3>
+<p style="font-size:24px;line-height:1.4;color:#4A4F63">The fun drive depends only on blood alcohol, so a falling curve passes the sweet spot again around dawn and keeps scoring. The simulation switches the drive off at bedtime.</p>
+</div>
+<div style="background:#FBF8F1;border:1px solid #DDD5C4;border-radius:8px;padding:28px 36px;display:flex;flex-direction:column;justify-content:center;gap:8px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#8A5200">Note 4</p>
+<h3 style="font-size:30px;font-weight:600;line-height:1.3">No constants were given</h3>
+<p style="font-size:24px;line-height:1.4;color:#4A4F63">The conversation fixed the form of every equation and none of the values. The shapes of the curves belong to the model; their magnitudes belong to this deck.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#5E6374">Sunday 9 AM figure uses μ = 0.8. In the big Friday simulation the falling curve re-crosses the sweet spot at 06:12.</p>
+</section>
+<section data-slide="close" aria-roledescription="slide" aria-label="Slide 15" style="background:#0F1424;color:#F3EEE3;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:28px">
+<iframe class="emb" title="Animated chart" sandbox="allow-scripts" style="position:absolute;left:0px;top:0px;width:1920px;height:1080px" data-doc="&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;html,body{margin:0;padding:0;overflow:hidden}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;html,body{height:100%;background:transparent}canvas{position:fixed;left:0;top:0;width:100%;height:100%}&lt;/style&gt;
+&lt;canvas id=&quot;c&quot;&gt;&lt;/canvas&gt;
+&lt;script&gt;
+(function(){
+var DW=1920,DH=1080,PERIOD=16,HERO=12;
+var P={V:.017,K:.005,d:.022,ab:.5,al:1,ka:.5,lT:.3,be:30,ga:.6,At:.02,ds:.15,tt:8,mu:.8,et:76,As:.065,lF:1,ze:30000,Asl:.15,kw:.6,om:1.6,si:.35};
+function sim(s){var dt=.01,n=3601,A=[],T=[],H=[],F=[],a=0,x=0,h=0,f=0,i,j,t,R,e,w,Ph,L,S=Math.exp(P.ds*Math.max(0,P.tt-s.sleep)),G=1+P.om*s.n/(1+P.si*s.n);
+for(i=0;i&lt;n;i++){t=i*dt;A.push(a);T.push(x);H.push(h);F.push(f);R=0;for(j=0;j&lt;s.drinks.length;j++)if(t&gt;=s.drinks[j]&amp;&amp;t&lt;s.drinks[j]+P.ab)R+=P.d/P.ab;
+e=P.V*a/(P.K+a);w=s.w0+t;Ph=1+P.mu*Math.max(0,Math.cos(2*Math.PI*(w-9)/168));L=1+P.kw*Math.max(0,Math.cos(2*Math.PI*(w-120)/168));
+var da=R-e,dx=P.al*e+P.ka*s.c*R-P.lT*s.W*x,dh=P.be*x*(a&lt;=P.At?1:0)*S*Ph-P.ga*h,df=(t&lt;s.bed?P.et*G*L*a*Math.exp(-a/P.As):0)-P.lF*f-P.ze*Math.pow(Math.max(0,a-P.Asl),2);
+a=Math.max(0,a+dt*da);x=Math.max(0,x+dt*dx);h=Math.max(0,h+dt*dh);f=f+dt*df}
+return{A:A,T:T,H:H,F:F}}
+var r=sim({drinks:[0,.5,1.25,2.25,3.25],w0:115,c:.2,W:1,sleep:8,n:4,bed:5.5});
+var X0=128,X1=1792,TM=30,Y0=360,N=TM*100;
+function X(i){return X0+(X1-X0)*i/N}
+function line(g,arr,k,col,w,dash){g.beginPath();for(var i=0;i&lt;=N;i+=4){var y=Y0-arr[i]*k;if(i)g.lineTo(X(i),y);else g.moveTo(X(i),y)}g.strokeStyle=col;g.lineWidth=w;g.setLineDash(dash||[]);g.stroke();g.setLineDash([])}
+function area(g,arr,k,col){g.beginPath();g.moveTo(X0,Y0);for(var i=0;i&lt;=N;i+=4)g.lineTo(X(i),Y0-arr[i]*k);g.lineTo(X1,Y0);g.closePath();g.fillStyle=col;g.fill()}
+function dot(g,x,y,col){g.beginPath();g.arc(x,y,7,0,6.3);g.fillStyle=col;g.shadowColor=col;g.shadowBlur=24;g.fill();g.shadowBlur=0}
+function draw(g,t){
+var p=Math.min(1,t/9),al=Math.min(1,t/.6)*(t&gt;14.5?Math.max(0,1-(t-14.5)/1.5):1),xp=X0+(X1-X0)*p,i=Math.round(p*N);
+g.globalAlpha=al;
+g.strokeStyle='rgba(243,238,227,.16)';g.lineWidth=1;g.beginPath();g.moveTo(X0,Y0);g.lineTo(X1,Y0);g.stroke();
+for(var k=0;k&lt;=5;k++){var tx=X0+(X1-X0)*k/5;g.beginPath();g.moveTo(tx,Y0-6);g.lineTo(tx,Y0+6);g.stroke()}
+g.save();g.beginPath();g.rect(0,0,xp,DH);g.clip();
+area(g,r.F,18,'rgba(79,209,197,.22)');area(g,r.H,-18,'rgba(255,107,94,.24)');
+line(g,r.T,1300,'rgba(183,156,255,.75)',2,[10,10]);
+g.shadowColor='#F5A524';g.shadowBlur=18;line(g,r.A,1300,'#F5A524',3);g.shadowBlur=0;
+line(g,r.F,18,'#4FD1C5',3);line(g,r.H,-18,'#FF6B5E',3);
+g.restore();
+if(p&lt;1){g.strokeStyle='rgba(243,238,227,.3)';g.beginPath();g.moveTo(xp,110);g.lineTo(xp,500);g.stroke();
+dot(g,xp,Y0-r.A[i]*1300,'#F5A524');dot(g,xp,Y0-r.F[i]*18,'#4FD1C5');dot(g,xp,Y0+r.H[i]*18,'#FF6B5E')}
+g.globalAlpha=1}
+var cv=document.getElementById('c'),g=cv.getContext('2d');
+function frame(ctx,w,h,t){ctx.setTransform(w/DW,0,0,h/DH,0,0);ctx.clearRect(0,0,DW,DH);draw(ctx,t)}
+function loop(now){var d=window.devicePixelRatio||1,w=Math.max(1,Math.round(innerWidth*d)),h=Math.max(1,Math.round(innerHeight*d));if(cv.width!==w||cv.height!==h){cv.width=w;cv.height=h}
+frame(g,w,h,(now/1000)%PERIOD);requestAnimationFrame(loop)}
+requestAnimationFrame(loop);
+var E=window.appifactEmbed;if(E){if(E.onRender)E.onRender(function(o){frame(o.ctx,o.width,o.height,HERO)})}
+})();
+&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe>
+<div style="flex:1"></div>
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#F5A524">Q.E.D.</p>
+<h2 style="font-family:'DM Serif Display', Georgia, serif;font-size:72px;font-weight:400;line-height:1.1;letter-spacing:-1px;width:1400px">Four equations, one integral, and a mathematically sound case for water.</h2>
+<p style="font-size:24px;line-height:1.4;color:#A9B1C7;width:1100px">A toy model built for amusement. It is not physiology and it is not advice. Backdrop: the paced Friday.</p>
+</section>
+</div>
+</template>
+
+</main>
+
+<footer class="site-footer">
+    <div class="site-footer-inner">
+        <span class="left">Pythonic<span class="accent-dot">.</span>nl<span class="dot"></span>Est. 2008</span>
+        <span class="center">34.0784°N &nbsp;/&nbsp; 107.6184°W</span>
+        <span class="right">Gijs Molenaar</span>
+    </div>
+</footer>
+
+<script>
+    (function () {
+        var toggle = document.querySelector('.nav-toggle');
+        var menu = document.getElementById('nav-menu');
+        if (!toggle || !menu) return;
+        toggle.addEventListener('click', function () {
+            var open = menu.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+    })();
+</script>
+
+<script>
+(function () {
+    var totalSlides = 15;
+    var current = 0;
+    var frame = document.getElementById('deck-frame');
+    var host = document.getElementById('deck-host');
+    var counter = document.getElementById('deck-current');
+    var progress = document.getElementById('deck-progress');
+    var prevBtn = document.getElementById('deck-prev');
+    var nextBtn = document.getElementById('deck-next');
+    var fullscreenBtn = document.getElementById('deck-fullscreen');
+    var viewer = document.getElementById('deck-viewer');
+
+    var root = host.attachShadow({ mode: 'open' });
+    root.appendChild(document.getElementById('deck-slides').content.cloneNode(true));
+    var stage = root.querySelector('.stage');
+    var sections = root.querySelectorAll('section');
+    root.querySelectorAll('[data-order]').forEach(function (el) { el.style.setProperty('--o', el.getAttribute('data-order')); });
+
+    function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+    function fit() {
+        var w = frame.clientWidth, h = frame.clientHeight;
+        if (w && h) stage.style.setProperty('--k', Math.min(w / 1920, h / 1080));
+    }
+    if (window.ResizeObserver) new ResizeObserver(fit).observe(frame);
+    window.addEventListener('resize', fit);
+    document.addEventListener('fullscreenchange', function () { setTimeout(fit, 60); });
+
+    // the animated charts are small sandboxed pages; only the slide on stage runs
+    function start(sec) {
+        sec.querySelectorAll('iframe.emb').forEach(function (f) { f.srcdoc = f.getAttribute('data-doc'); });
+    }
+    function stop(sec) {
+        sec.querySelectorAll('iframe.emb').forEach(function (f) { f.removeAttribute('srcdoc'); f.src = 'about:blank'; });
+    }
+
+    function go(n, silent) {
+        if (n < 1 || n > totalSlides || n === current) return;
+        var old = sections[current - 1], next = sections[n - 1];
+        current = n;
+        start(next);
+        next.classList.add('on');
+        if (old) { old.classList.remove('on'); setTimeout(function () { if (!old.classList.contains('on')) stop(old); }, 450); }
+        counter.textContent = pad(n);
+        progress.style.width = ((n / totalSlides) * 100) + '%';
+        prevBtn.disabled = n === 1;
+        nextBtn.disabled = n === totalSlides;
+        if (!silent && window.history && history.replaceState) history.replaceState(null, '', '#' + n);
+    }
+
+    prevBtn.addEventListener('click', function () { go(current - 1); });
+    nextBtn.addEventListener('click', function () { go(current + 1); });
+
+    document.addEventListener('keydown', function (e) {
+        if (e.metaKey || e.ctrlKey || e.altKey) return;
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp') { e.preventDefault(); go(current - 1); }
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); go(current + 1); }
+        if (e.key === 'Home') { e.preventDefault(); go(1); }
+        if (e.key === 'End') { e.preventDefault(); go(totalSlides); }
+        if (e.key === 'f' || e.key === 'F') { toggleFullscreen(); }
+    });
+
+    var touchStartX = 0;
+    var touchStartY = 0;
+    viewer.addEventListener('touchstart', function (e) {
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+    viewer.addEventListener('touchend', function (e) {
+        var dx = e.changedTouches[0].screenX - touchStartX;
+        var dy = e.changedTouches[0].screenY - touchStartY;
+        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+            dx < 0 ? go(current + 1) : go(current - 1);
+        }
+    }, { passive: true });
+
+    function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+            if (viewer.requestFullscreen) viewer.requestFullscreen().catch(function () {});
+        } else {
+            document.exitFullscreen();
+        }
+    }
+    fullscreenBtn.addEventListener('click', toggleFullscreen);
+
+    window.addEventListener('hashchange', function () {
+        var n = parseInt(location.hash.slice(1), 10);
+        if (n) go(n, true);
+    });
+
+    fit();
+    go(parseInt(location.hash.slice(1), 10) || 1, true);
+    if (!current) go(1, true);
+})();
+</script>
+
+</body>
+</html>
