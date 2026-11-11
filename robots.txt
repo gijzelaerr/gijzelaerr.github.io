@@ -9,6 +9,8 @@ User-agent: *
 Allow: /
 # Family history map: shared by link only, keep it out of search results
 Disallow: /family/
+# House walk-through game: shared by link only
+Disallow: /chamaisgame/
 
 # ── AI training / scraping bots ───────────────────────────
 User-agent: GPTBot

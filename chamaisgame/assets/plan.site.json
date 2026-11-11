@@ -1,0 +1,605 @@
+{
+ "variant": "plan",
+ "source": "Chamais_Mountain_v8.blend",
+ "revision": "V7 owner brief: fireplace removed, concealed beam, bridge + sundowner deck, pool cover, PV, EV carport",
+ "axes": "Blender: X uphill/east, Y north (6 deg west of true north), Z metres above the garage floor",
+ "groups": {
+  "terrain": {
+   "objects": 2,
+   "tris": 25528,
+   "bounds": {
+    "min": [
+     -3.0,
+     -21.0,
+     -1.5
+    ],
+    "max": [
+     63.0,
+     18.0,
+     11.86
+    ]
+   }
+  },
+  "vegetation": {
+   "objects": 4198,
+   "tris": 74544,
+   "bounds": {
+    "min": [
+     15.157,
+     -20.544,
+     4.014
+    ],
+    "max": [
+     62.521,
+     17.37,
+     15.001
+    ]
+   }
+  },
+  "house": {
+   "objects": 1223,
+   "tris": 31384,
+   "bounds": {
+    "min": [
+     -3.005,
+     -19.239,
+     -0.817
+    ],
+    "max": [
+     59.307,
+     10.93,
+     14.4
+    ]
+   }
+  },
+  "roof": {
+   "objects": 422,
+   "tris": 10964,
+   "bounds": {
+    "min": [
+     -2.83,
+     -6.182,
+     2.584
+    ],
+    "max": [
+     22.48,
+     8.85,
+     10.912
+    ]
+   }
+  },
+  "context_near": {
+   "objects": 2592,
+   "tris": 76392,
+   "bounds": {
+    "min": [
+     -9.4,
+     -48.0,
+     -1.248
+    ],
+    "max": [
+     49.6,
+     48.0,
+     10.777
+    ]
+   }
+  },
+  "pool_water": {
+   "objects": 1,
+   "tris": 2,
+   "bounds": {
+    "min": [
+     19.05,
+     -0.6,
+     5.055
+    ],
+    "max": [
+     21.15,
+     3.6,
+     5.055
+    ]
+   }
+  },
+  "furniture": {
+   "objects": 1078,
+   "tris": 183896,
+   "bounds": {
+    "min": [
+     0.23,
+     -7.88,
+     2.06
+    ],
+    "max": [
+     22.17,
+     4.46,
+     11.32
+    ]
+   }
+  },
+  "ceiling": {
+   "objects": 11,
+   "tris": 804,
+   "bounds": {
+    "min": [
+     0.0,
+     -5.705,
+     4.3
+    ],
+    "max": [
+     15.255,
+     3.4,
+     7.624
+    ]
+   }
+  },
+  "carport": {
+   "objects": 23,
+   "tris": 756,
+   "bounds": {
+    "min": [
+     -3.0,
+     3.51,
+     -0.4
+    ],
+    "max": [
+     2.62,
+     9.22,
+     2.978
+    ]
+   }
+  },
+  "geo_terrain": {
+   "objects": 1,
+   "tris": 168124,
+   "bounds": {
+    "min": [
+     -20222.305,
+     -20252.305,
+     -322.203
+    ],
+    "max": [
+     20282.305,
+     20252.305,
+     749.67
+    ]
+   }
+  },
+  "geo_houses": {
+   "objects": 1,
+   "tris": 49363,
+   "bounds": {
+    "min": [
+     -949.27,
+     -941.45,
+     -36.588
+    ],
+    "max": [
+     895.75,
+     876.84,
+     75.015
+    ]
+   }
+  },
+  "geo_roads": {
+   "objects": 1,
+   "tris": 33048,
+   "bounds": {
+    "min": [
+     -1562.145,
+     -1600.119,
+     -43.79
+    ],
+    "max": [
+     1527.455,
+     1568.625,
+     161.131
+    ]
+   }
+  }
+ },
+ "pool_water": {
+  "min": [
+   19.05,
+   -0.6,
+   5.055
+  ],
+  "max": [
+   21.15,
+   3.6,
+   5.055
+  ]
+ },
+ "pool_objects": [
+  "V3 \u2022 Pool bottom",
+  "V3 \u2022 Pool shell wall",
+  "V3 \u2022 Pool shell wall.001",
+  "V3 \u2022 Pool shell wall.002",
+  "V3 \u2022 Pool shell wall.003",
+  "V3 \u2022 Pool stone coping",
+  "V3 \u2022 Pool stone coping.001",
+  "V3 \u2022 Pool stone coping.002",
+  "V3 \u2022 Pool stone coping.003",
+  "V3 \u2022 Pool water surface",
+  "V5 \u2022 Pool deck closed edge fascia",
+  "V5 \u2022 Pool deck side continuation",
+  "V5 \u2022 Pool deck side continuation plank joint",
+  "V5 \u2022 Pool deck side continuation plank joint.001",
+  "V5 \u2022 Pool deck side continuation plank joint.002",
+  "V5 \u2022 Pool deck side continuation plank joint.003",
+  "V5 \u2022 Pool deck side continuation plank joint.004",
+  "V5 \u2022 Pool deck side continuation plank joint.005",
+  "V5 \u2022 Pool deck side continuation plank joint.006",
+  "V5 \u2022 Pool deck side continuation plank joint.007",
+  "V5 \u2022 Pool deck side continuation plank joint.008",
+  "V5 \u2022 Pool deck side continuation plank joint.009",
+  "V5 \u2022 Pool deck side continuation plank joint.010",
+  "V5 \u2022 Pool deck side continuation plank joint.011",
+  "V5 \u2022 Pool deck side continuation plank joint.012",
+  "V5 \u2022 Pool deck side continuation retained support",
+  "V5 \u2022 Pool deck to rear entrance tread 01",
+  "V5 \u2022 Pool deck to rear entrance tread 02",
+  "V5 \u2022 Pool deck to rear entrance tread 03",
+  "V5 \u2022 Pool deck to rear entrance tread 04",
+  "V5 \u2022 Verandah to pool deck threshold tread",
+  "V7 \u2022 Pool-heating absorber panel",
+  "V7 \u2022 Pool-heating absorber panel.001",
+  "V8 \u2022 Path between the pool and the living room",
+  "V8 \u2022 Path between the pool and the living room (fill)",
+  "V8 \u2022 Pole behind the pool \u2014 ENGINEER TO SIZE",
+  "V8 \u2022 Pool cover adjustable louvre blades",
+  "V8 \u2022 Pool cover frame \u2014 ENGINEER TO SIZE",
+  "V8 \u2022 Pool cover posts",
+  "V8 \u2022 Raised deck east of the pool",
+  "V8 \u2022 Raised deck east of the pool (fill)",
+  "V8 \u2022 Raised deck north of the pool",
+  "V8 \u2022 Raised deck north of the pool (fill)",
+  "V8 \u2022 Raised deck south of the pool",
+  "V8 \u2022 Raised deck south of the pool (fill)",
+  "V8 \u2022 White wall between the path and the pool"
+ ],
+ "boundary_raw": {
+  "street_n": [
+   -3.0,
+   10.91
+  ],
+  "street_s": [
+   -3.0,
+   -5.19
+  ],
+  "splay_e": [
+   -0.4,
+   -9.47
+  ],
+  "south_bend": [
+   33.42,
+   -15.1
+  ],
+  "south_e": [
+   50.94,
+   -19.22
+  ],
+  "east_n": [
+   59.29,
+   -5.25
+  ],
+  "jog_s": [
+   34.11,
+   9.709999999999999
+  ],
+  "north_e": [
+   34.11,
+   10.09
+  ]
+ },
+ "existing_north_wall": {
+  "y_inner": 8.85,
+  "x": [
+   -3.0,
+   22.6
+  ]
+ },
+ "v8_deck_level": 5.18,
+ "v7_deck": {
+  "level": 11.55,
+  "x": [
+   31.4,
+   35.8
+  ],
+  "y": [
+   1.6,
+   6.0
+  ],
+  "boardwalk": [
+   28.7,
+   29.9,
+   -5.6,
+   2.7
+  ],
+  "ridge_stair_rise_mm": 183.3,
+  "cover_underside": 14.15,
+  "guards": "west, north"
+ },
+ "v7_pv": {
+  "modules": 32,
+  "kWp": 14.4,
+  "front_roof": 20,
+  "carport": 12
+ },
+ "v6_summary": "{\"levels_m\": {\"living_ffl\": 4.08, \"upper_ffl\": 7.3, \"slab_underside\": 7.05, \"upper_ceiling_north\": 2.62, \"upper_ceiling_south\": 3.29, \"roof_top_south\": 10.89, \"chimney_top\": 11.48}, \"stair\": {\"risers\": 17, \"rise_mm\": 189.4, \"going_mm\": 255.0, \"width_m\": 1.103, \"foot_y\": -0.31, \"top_y\": -4.39}, \"areas\": {\"bedroom_1_m2\": 24.9, \"bedroom_2_m2\": 11.3, \"bathroom_m2\": 4.5, \"hall_and_corridor_m2\": 7.6, \"upper_gross_m2\": 60.9}, \"roof_pitch_deg\": 5, \"archived\": 273, \"moved\": [\"F \\u2022 Kitchen refrigerator\", \"F \\u2022 Laundry washing machine\", \"D \\u2022 Wall-mounted lounge television\", \"F \\u2022 Main cream sofa\", \"F \\u2022 Cream reading armchair\", \"F \\u2022 Lounge coffee table\", \"F \\u2022 Small lounge side table\", \"D \\u2022 Lounge potted plant\", \"F \\u2022 woven rug.002\", \"D \\u2022 Living east curtain pair.001\"], \"created_objects\": 324}",
+ "roofed_footprint_m2": 219.8,
+ "cameras": [
+  {
+   "name": "01 Overall \u2022 house and mountain",
+   "loc": [
+    -46.0,
+    68.0,
+    53.0
+   ],
+   "dir": [
+    0.653,
+    -0.617,
+    -0.438
+   ]
+  },
+  {
+   "name": "02 House \u2022 west and north",
+   "loc": [
+    -24.0,
+    30.0,
+    24.0
+   ],
+   "dir": [
+    0.67,
+    -0.621,
+    -0.406
+   ]
+  },
+  {
+   "name": "03 Hillside \u2022 looking downhill",
+   "loc": [
+    49.0,
+    38.0,
+    35.0
+   ],
+   "dir": [
+    -0.551,
+    -0.655,
+    -0.517
+   ]
+  },
+  {
+   "name": "04 Top \u2022 footprint and terrain",
+   "loc": [
+    26.0,
+    0.0,
+    95.0
+   ],
+   "dir": [
+    0.0,
+    0.0,
+    -1.0
+   ]
+  },
+  {
+   "name": "05 South \u2022 exterior access",
+   "loc": [
+    -17.0,
+    -33.0,
+    22.0
+   ],
+   "dir": [
+    0.6,
+    0.676,
+    -0.427
+   ]
+  },
+  {
+   "name": "06 Internal stair \u2022 cutaway",
+   "loc": [
+    15.0,
+    -15.0,
+    14.0
+   ],
+   "dir": [
+    -0.384,
+    0.705,
+    -0.596
+   ]
+  },
+  {
+   "name": "07 Plan \u2022 drawing orientation",
+   "loc": [
+    10.0,
+    -2.0,
+    70.0
+   ],
+   "dir": [
+    0.0,
+    0.0,
+    -1.0
+   ]
+  },
+  {
+   "name": "08 Interior \u2022 lounge",
+   "loc": [
+    11.25,
+    1.25,
+    5.72
+   ],
+   "dir": [
+    0.903,
+    -0.413,
+    -0.115
+   ]
+  },
+  {
+   "name": "09 Interior \u2022 master",
+   "loc": [
+    1.12,
+    -0.19,
+    4.63
+   ],
+   "dir": [
+    0.541,
+    0.797,
+    -0.27
+   ]
+  },
+  {
+   "name": "10 Interior \u2022 nursery",
+   "loc": [
+    5.1,
+    1.1,
+    4.7
+   ],
+   "dir": [
+    0.0,
+    0.846,
+    -0.534
+   ]
+  },
+  {
+   "name": "11 Current \u2022 pool and deck",
+   "loc": [
+    27.0,
+    -6.0,
+    17.0
+   ],
+   "dir": [
+    -0.427,
+    0.488,
+    -0.762
+   ]
+  },
+  {
+   "name": "12 Interior \u2022 family bathroom",
+   "loc": [
+    4.95,
+    -2.03,
+    4.72
+   ],
+   "dir": [
+    -0.863,
+    -0.313,
+    -0.396
+   ]
+  },
+  {
+   "name": "SHOWCASE \u2022 01 drone reveal from the valley",
+   "loc": [
+    -260.0,
+    80.0,
+    110.0
+   ],
+   "dir": [
+    0.897,
+    -0.266,
+    -0.352
+   ]
+  },
+  {
+   "name": "SHOWCASE \u2022 02 street walk-by",
+   "loc": [
+    -7.6,
+    17.0,
+    1.75
+   ],
+   "dir": [
+    0.849,
+    -0.499,
+    0.172
+   ]
+  },
+  {
+   "name": "SHOWCASE \u2022 03 living room glide",
+   "loc": [
+    11.3,
+    -4.75,
+    5.72
+   ],
+   "dir": [
+    0.375,
+    0.923,
+    -0.086
+   ]
+  },
+  {
+   "name": "SHOWCASE \u2022 04 upstairs to the landing",
+   "loc": [
+    15.75,
+    -4.95,
+    8.92
+   ],
+   "dir": [
+    1.0,
+    -0.013,
+    -0.005
+   ]
+  },
+  {
+   "name": "SHOWCASE \u2022 05 master bedroom at golden hour",
+   "loc": [
+    14.45,
+    -3.15,
+    8.95
+   ],
+   "dir": [
+    -0.712,
+    0.69,
+    -0.131
+   ]
+  },
+  {
+   "name": "SHOWCASE \u2022 06 Kid 2",
+   "loc": [
+    18.65,
+    -2.35,
+    9.3
+   ],
+   "dir": [
+    0.59,
+    0.784,
+    -0.193
+   ]
+  },
+  {
+   "name": "SHOWCASE \u2022 07 pool deck at sunset",
+   "loc": [
+    21.9,
+    7.9,
+    6.95
+   ],
+   "dir": [
+    -0.919,
+    -0.39,
+    -0.063
+   ]
+  },
+  {
+   "name": "SHOWCASE \u2022 09 walk-through: kitchen, living room, up the stair, hall, master bedroom",
+   "loc": [
+    12.2,
+    -4.45,
+    5.7
+   ],
+   "dir": [
+    0.581,
+    0.557,
+    -0.593
+   ]
+  },
+  {
+   "name": "SHOWCASE \u2022 08 drone pull-back up the mountain",
+   "loc": [
+    16.0,
+    -1.0,
+    24.0
+   ],
+   "dir": [
+    -0.206,
+    0.051,
+    -0.977
+   ]
+  }
+ ]
+}

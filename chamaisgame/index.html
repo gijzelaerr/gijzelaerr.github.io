@@ -1,0 +1,66 @@
+---
+layout: null
+sitemap: false
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chamais: the game</title>
+<link rel="stylesheet" href="src/style.css">
+<script type="importmap">
+{ "imports": { "three": "./lib/three/three.module.min.js", "three/addons/": "./lib/three/addons/", "three-mesh-bvh": "./lib/three-mesh-bvh/index.module.js" } }
+</script>
+</head>
+<body>
+<canvas id="view"></canvas>
+
+<div id="loading"><div><h1>Chamais</h1><p id="loadmsg">Loading the house…</p></div></div>
+
+<header id="top">
+  <div class="brand">Chamais <span>the game</span></div>
+  <div id="status"></div>
+</header>
+
+<aside id="side">
+  <nav id="tabs"></nav>
+  <div id="panel"></div>
+</aside>
+
+<div id="prompt" hidden></div>
+<div id="toasts"></div>
+
+<footer id="bar">
+  <div class="seg" id="mode">
+    <button data-mode="walk" class="on">Walk</button><button data-mode="orbit">Overview</button>
+  </div>
+  <div class="seg" id="variant">
+    <button data-variant="today">Today</button><button data-variant="plan" class="on">The plan</button>
+  </div>
+  <label class="chk"><input type="checkbox" id="roofs" checked> Roofs</label>
+  <select id="goto" title="Jump to a place"></select>
+  <div class="time">
+    <input type="date" id="day">
+    <input type="range" id="hour" min="0" max="24" step="0.05">
+    <output id="clock"></output>
+    <div class="seg" id="speed">
+      <button data-speed="0" class="on" title="Pause">❚❚</button><button data-speed="0.1" title="1 game hour per 10 s">▶</button><button data-speed="1" title="1 game hour per second">▶▶</button>
+    </div>
+    <span id="sunread"></span>
+  </div>
+  <button id="helpbtn" title="Keys">?</button>
+</footer>
+
+<div id="help" hidden>
+  <h2>Keys</h2>
+  <p><b>W A S D</b> walk · <b>arrow keys</b> or <b>drag the mouse</b> look · <b>Shift</b> run · <b>Space</b> jump · <b>E</b> use what the prompt shows · <b>Tab</b> walk / overview · <b>L</b> lock the mouse (Esc frees it)</p>
+  <p>Overview: drag to turn, wheel to zoom, right-drag to pan.</p>
+  <p class="credits">Surroundings: Copernicus DEM GLO-30 (© DLR e.V. 2010-2014 and © Airbus Defence and Space GmbH 2014-2018, provided under COPERNICUS by the European Union and ESA), map data © OpenStreetMap contributors (ODbL), imagery: Esri, Maxar, Earthstar Geographics. Built with three.js and three-mesh-bvh.</p>
+  <button id="helpclose">Close</button>
+</div>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>

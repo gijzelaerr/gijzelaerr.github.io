@@ -1,0 +1,344 @@
+{
+ "variant": "today",
+ "source": "Chamais_Mountain_v5_furnished.blend",
+ "revision": 5,
+ "axes": "Blender: X uphill/east, Y north (6 deg west of true north), Z metres above the garage floor",
+ "groups": {
+  "terrain": {
+   "objects": 2,
+   "tris": 25528,
+   "bounds": {
+    "min": [
+     -3.0,
+     -21.0,
+     -1.5
+    ],
+    "max": [
+     63.0,
+     18.0,
+     11.86
+    ]
+   }
+  },
+  "vegetation": {
+   "objects": 4940,
+   "tris": 88612,
+   "bounds": {
+    "min": [
+     0.242,
+     -20.544,
+     0.717
+    ],
+    "max": [
+     62.521,
+     17.37,
+     15.001
+    ]
+   }
+  },
+  "house": {
+   "objects": 1283,
+   "tris": 28292,
+   "bounds": {
+    "min": [
+     -0.832,
+     -17.032,
+     -0.18
+    ],
+    "max": [
+     57.032,
+     12.032,
+     13.514
+    ]
+   }
+  },
+  "roof": {
+   "objects": 582,
+   "tris": 15816,
+   "bounds": {
+    "min": [
+     -0.42,
+     -8.929,
+     4.075
+    ],
+    "max": [
+     22.462,
+     4.972,
+     10.32
+    ]
+   }
+  },
+  "context_near": {
+   "objects": 2,
+   "tris": 24,
+   "bounds": {
+    "min": [
+     -9.4,
+     -14.0,
+     -0.28
+    ],
+    "max": [
+     -0.11,
+     14.0,
+     0.0
+    ]
+   }
+  },
+  "pool_water": {
+   "objects": 1,
+   "tris": 2,
+   "bounds": {
+    "min": [
+     19.05,
+     -0.6,
+     4.225
+    ],
+    "max": [
+     21.15,
+     3.6,
+     4.225
+    ]
+   }
+  },
+  "furniture": {
+   "objects": 774,
+   "tris": 140784,
+   "bounds": {
+    "min": [
+     0.23,
+     -5.505,
+     2.06
+    ],
+    "max": [
+     17.869,
+     4.46,
+     6.99
+    ]
+   }
+  },
+  "ceiling": {
+   "objects": 12,
+   "tris": 816,
+   "bounds": {
+    "min": [
+     0.0,
+     -5.73,
+     4.3
+    ],
+    "max": [
+     18.064,
+     3.4,
+     7.624
+    ]
+   }
+  }
+ },
+ "pool_water": {
+  "min": [
+   19.05,
+   -0.6,
+   4.225
+  ],
+  "max": [
+   21.15,
+   3.6,
+   4.225
+  ]
+ },
+ "pool_objects": [
+  "V3 \u2022 Pool bottom",
+  "V3 \u2022 Pool shell wall",
+  "V3 \u2022 Pool shell wall.001",
+  "V3 \u2022 Pool shell wall.002",
+  "V3 \u2022 Pool shell wall.003",
+  "V3 \u2022 Pool stone coping",
+  "V3 \u2022 Pool stone coping.001",
+  "V3 \u2022 Pool stone coping.002",
+  "V3 \u2022 Pool stone coping.003",
+  "V3 \u2022 Pool water surface",
+  "V5 \u2022 Deck joins rear-unit pool facade",
+  "V5 \u2022 Deck joins rear-unit pool facade plank joint",
+  "V5 \u2022 Deck joins rear-unit pool facade plank joint.001",
+  "V5 \u2022 Deck joins rear-unit pool facade retained support",
+  "V5 \u2022 Pool deck closed edge fascia",
+  "V5 \u2022 Pool deck side continuation",
+  "V5 \u2022 Pool deck side continuation plank joint",
+  "V5 \u2022 Pool deck side continuation plank joint.001",
+  "V5 \u2022 Pool deck side continuation plank joint.002",
+  "V5 \u2022 Pool deck side continuation plank joint.003",
+  "V5 \u2022 Pool deck side continuation plank joint.004",
+  "V5 \u2022 Pool deck side continuation plank joint.005",
+  "V5 \u2022 Pool deck side continuation plank joint.006",
+  "V5 \u2022 Pool deck side continuation plank joint.007",
+  "V5 \u2022 Pool deck side continuation plank joint.008",
+  "V5 \u2022 Pool deck side continuation plank joint.009",
+  "V5 \u2022 Pool deck side continuation plank joint.010",
+  "V5 \u2022 Pool deck side continuation plank joint.011",
+  "V5 \u2022 Pool deck side continuation plank joint.012",
+  "V5 \u2022 Pool deck side continuation retained support",
+  "V5 \u2022 Pool deck to rear entrance tread 01",
+  "V5 \u2022 Pool deck to rear entrance tread 02",
+  "V5 \u2022 Pool deck to rear entrance tread 03",
+  "V5 \u2022 Pool deck to rear entrance tread 04",
+  "V5 \u2022 Verandah to pool deck threshold tread"
+ ],
+ "roofed_footprint_m2": 204.3,
+ "cameras": [
+  {
+   "name": "01 Overall \u2022 house and mountain",
+   "loc": [
+    -46.0,
+    68.0,
+    53.0
+   ],
+   "dir": [
+    0.653,
+    -0.617,
+    -0.438
+   ]
+  },
+  {
+   "name": "02 House \u2022 west and north",
+   "loc": [
+    -24.0,
+    30.0,
+    24.0
+   ],
+   "dir": [
+    0.67,
+    -0.621,
+    -0.406
+   ]
+  },
+  {
+   "name": "03 Hillside \u2022 looking downhill",
+   "loc": [
+    49.0,
+    38.0,
+    35.0
+   ],
+   "dir": [
+    -0.551,
+    -0.655,
+    -0.517
+   ]
+  },
+  {
+   "name": "04 Top \u2022 footprint and terrain",
+   "loc": [
+    26.0,
+    0.0,
+    95.0
+   ],
+   "dir": [
+    0.0,
+    0.0,
+    -1.0
+   ]
+  },
+  {
+   "name": "05 South \u2022 exterior access",
+   "loc": [
+    -17.0,
+    -33.0,
+    22.0
+   ],
+   "dir": [
+    0.6,
+    0.676,
+    -0.427
+   ]
+  },
+  {
+   "name": "06 Internal stair \u2022 cutaway",
+   "loc": [
+    15.0,
+    -15.0,
+    14.0
+   ],
+   "dir": [
+    -0.384,
+    0.705,
+    -0.596
+   ]
+  },
+  {
+   "name": "07 Plan \u2022 drawing orientation",
+   "loc": [
+    10.0,
+    -2.0,
+    70.0
+   ],
+   "dir": [
+    0.0,
+    0.0,
+    -1.0
+   ]
+  },
+  {
+   "name": "08 Interior \u2022 lounge",
+   "loc": [
+    11.25,
+    1.25,
+    5.72
+   ],
+   "dir": [
+    0.903,
+    -0.413,
+    -0.115
+   ]
+  },
+  {
+   "name": "09 Interior \u2022 master",
+   "loc": [
+    1.12,
+    -0.19,
+    4.63
+   ],
+   "dir": [
+    0.541,
+    0.797,
+    -0.27
+   ]
+  },
+  {
+   "name": "10 Interior \u2022 nursery",
+   "loc": [
+    5.1,
+    1.1,
+    4.7
+   ],
+   "dir": [
+    0.0,
+    0.846,
+    -0.534
+   ]
+  },
+  {
+   "name": "11 Current \u2022 pool and deck",
+   "loc": [
+    27.0,
+    -6.0,
+    17.0
+   ],
+   "dir": [
+    -0.427,
+    0.488,
+    -0.762
+   ]
+  },
+  {
+   "name": "12 Interior \u2022 family bathroom",
+   "loc": [
+    4.95,
+    -2.03,
+    4.72
+   ],
+   "dir": [
+    -0.863,
+    -0.313,
+    -0.396
+   ]
+  }
+ ]
+}
