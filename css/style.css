@@ -1,13 +1,10 @@
 /* ============================================================
-   Pythonic — Observatory Log
-   A dark, cinematic editorial aesthetic. Warm cream type on
-   near-black indigo. Italic display serif, mono callsigns,
-   numbered entries, signal-trace motifs.
+   Pythonic.nl stylesheet
    ============================================================ */
 
 :root {
     /* --- ink (dark surfaces) ------------------------------ */
-    --ink-0: #060912;          /* deepest — body */
+    --ink-0: #060912;          /* deepest, body */
     --ink-1: #0b1020;          /* lifted panel */
     --ink-2: #131a2f;          /* rule cells */
 
@@ -21,9 +18,9 @@
     --paper-06: rgba(236, 227, 207, 0.06);
 
     /* --- signal accents ----------------------------------- */
-    --signal: #ff7a3a;         /* hot amber — primary accent */
+    --signal: #ff7a3a;         /* hot amber, primary accent */
     --signal-hi: #ffa366;
-    --cool: #71c7c4;           /* cool data tone — sparing */
+    --cool: #71c7c4;           /* cool data tone, sparing */
 
     /* --- bauhaus palette ---------------------------------- */
     --bh-ochre: #e3a33b;       /* warm yellow disc */
@@ -832,7 +829,7 @@ hr {
     color: var(--paper-80);
 }
 .entry-body li::before {
-    content: "—";
+    content: "•";
     position: absolute;
     left: 0;
     color: var(--signal);
@@ -1292,7 +1289,7 @@ hr {
     display: block;
 }
 
-/* ochre disc — sits behind everything */
+/* ochre disc, sits behind everything */
 .bh-disc {
     width: 72%;
     aspect-ratio: 1;
@@ -1347,7 +1344,7 @@ hr {
     opacity: 0.88;
 }
 
-/* logo tile — white paper card with the Pythonic mark */
+/* logo tile, white paper card with the Pythonic mark */
 .bh-logo {
     position: absolute;
     width: 58%;
@@ -1470,7 +1467,7 @@ hr {
 }
 
 /* ============================================================
-   404 — lost carrier
+   404, lost carrier
    ============================================================ */
 
 .notfound {
@@ -1614,7 +1611,7 @@ hr {
 }
 
 /* ============================================================
-   Deck viewer — slide presentation renderer
+   Deck viewer, slide presentation renderer
    ============================================================ */
 
 .deck-page .page-subtitle {

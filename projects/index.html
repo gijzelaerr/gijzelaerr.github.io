@@ -7,7 +7,7 @@
 
     <p class="page-eyebrow">File · Works &amp; Side-Projects</p>
     <h1 class="page-title">Projects<span class="accent-dot">.</span></h1>
-    <p class="page-subtitle">A selective timeline — recent first. More on <a href="https://github.com/gijzelaerr" target="_blank" rel="noopener">GitHub</a>.</p>
+    <p class="page-subtitle">Things I have built, newest first. It is not complete. The rest is on <a href="https://github.com/gijzelaerr" target="_blank" rel="noopener">GitHub</a>.</p>
 
     <h2 class="page-section-heading" data-num="2026">Present</h2>
     <ol class="log">
@@ -15,9 +15,65 @@
         <li class="entry">
             <div class="entry-date">2026</div>
             <div class="entry-body">
+                <p class="entry-title"><a href="https://github.com/gijzelaerr/rang-core" target="_blank" rel="noopener">ra-ng</a></p>
+                <p>Radio astronomy, next generation. I want ra-ng to become the home for agentic radio astronomy, from first steps to science-grade images. The first piece is rang-core: a Rust core with a Python package and command line that flags, calibrates and images MeerKAT data.</p>
+                <p>It contains ports of the solver from QuartiCal, the flagging strategies from Tricolour, the gridders from WSClean and ducc0, and a reader and writer for casacore tables. Each port has to reproduce the output of the original before it counts. There is also a new imager, GeMClean, and a set of Lean proofs about CLEAN.</p>
+                <p>It is a tested research demonstrator, not something to run your observatory on, and it makes no claim of novelty. Several of the research questions ended in a null result, and those are documented just like the ones that worked. "Rang" is also Dutch for rank. <a href="https://pythonic.nl/rang-core/">Documentation and tutorials</a>.</p>
+                <div class="entry-tags"><span class="entry-tag">Rust</span><span class="entry-tag">Python</span><span class="entry-tag">Lean 4</span></div>
+            </div>
+        </li>
+
+        <li class="entry">
+            <div class="entry-date">2026</div>
+            <div class="entry-body">
+                <p class="entry-title"><a href="https://github.com/gijzelaerr/s7commplus" target="_blank" rel="noopener">s7commplus</a></p>
+                <p>A pure Python library for S7CommPlus, the protocol that Siemens S7-1200 and S7-1500 PLCs use when the old PUT/GET access is switched off. It does protocol versions V1, V2 (with TLS) and V3, reads and writes optimized data blocks by tag name, has sync and asyncio clients, and ships a server emulator for testing. It is tested against a real S7-1200, an S7-1500 and PLCSIM Advanced. <a href="https://s7commplus.readthedocs.io/" target="_blank" rel="noopener">Documentation</a>.</p>
+                <div class="entry-tags"><span class="entry-tag">Python</span></div>
+            </div>
+        </li>
+
+        <li class="entry">
+            <div class="entry-date">2026</div>
+            <div class="entry-body">
+                <p class="entry-title"><a href="https://github.com/gijzelaerr/python-snap7" target="_blank" rel="noopener">python-snap7</a> 3.4</p>
+                <p>Thirteen years in, python-snap7 no longer wraps the snap7 C library. It is pure Python now, with no native dependencies, and has close to 900 stars on GitHub. It speaks the classic S7 protocol. For everything newer there is s7commplus.</p>
+                <div class="entry-tags"><span class="entry-tag">Python</span></div>
+            </div>
+        </li>
+
+        <li class="entry">
+            <div class="entry-date">2026</div>
+            <div class="entry-body">
+                <p class="entry-title"><a href="https://github.com/gijzelaerr/lean-s7" target="_blank" rel="noopener">lean-s7</a> and <a href="https://github.com/gijzelaerr/lean-s7commplus" target="_blank" rel="noopener">lean-s7commplus</a></p>
+                <p>The same two protocols again, this time in Lean 4. I use them to learn Lean and to get machine-checked proofs of the parts that are easy to get wrong: packet decoding, round trips and length fields. Running them against the Python libraries shows where the two disagree.</p>
+                <div class="entry-tags"><span class="entry-tag">Lean 4</span></div>
+            </div>
+        </li>
+
+        <li class="entry">
+            <div class="entry-date">2026</div>
+            <div class="entry-body">
                 <p class="entry-title"><a href="https://github.com/gijzelaerr/ha-s7" target="_blank" rel="noopener">ha-s7</a></p>
-                <p>A Home Assistant integration for Siemens S7 PLCs, built on top of <a href="https://github.com/gijzelaerr/python-snap7" target="_blank" rel="noopener">python-snap7</a>.</p>
-                <div class="entry-tags"><span class="entry-tag">Python</span><span class="entry-tag">Home Assistant</span><span class="entry-tag">PLC</span></div>
+                <p>A Home Assistant integration for Siemens S7 PLCs. Tags on the PLC show up as sensors, switches and numbers. It uses python-snap7 for the older controllers and s7commplus for the newer ones.</p>
+                <div class="entry-tags"><span class="entry-tag">Python</span><span class="entry-tag">Home Assistant</span></div>
+            </div>
+        </li>
+
+        <li class="entry">
+            <div class="entry-date">2026</div>
+            <div class="entry-body">
+                <p class="entry-title"><a href="https://github.com/gijzelaerr/poing" target="_blank" rel="noopener">Poing</a></p>
+                <p>A music workstation built around AI. Drop in a song and Poing shows how it is put together: stems, sections, chords and lyrics. You can then replace any stem or section from a prompt or a reference sample, and play the result with instruments and effects. The models are open and run on your own machine. It is built on <a href="https://github.com/makepad/makepad" target="_blank" rel="noopener">Makepad</a> and in early development. Poing started in 2025 as a MusicGen audio plugin and is named after the classic Dutch track.</p>
+                <div class="entry-tags"><span class="entry-tag">Rust</span><span class="entry-tag">Makepad</span><span class="entry-tag">local AI models</span></div>
+            </div>
+        </li>
+
+        <li class="entry">
+            <div class="entry-date">2026</div>
+            <div class="entry-body">
+                <p class="entry-title"><a href="https://github.com/omalaka/model" target="_blank" rel="noopener">omalaka</a></p>
+                <p>Open machine translation for Namibian languages. Omalaka is Oshiwambo for "languages". None of the well known translation services or open models handles Oshikwanyama or Oshindonga well. omalaka fine-tunes open models on openly licensed data, starting with those two into English. The pipeline works, but no model is released yet because there is not enough open training data. If you can help with that, please get in touch.</p>
+                <div class="entry-tags"><span class="entry-tag">Python</span><span class="entry-tag">PyTorch</span></div>
             </div>
         </li>
 
@@ -30,25 +86,18 @@
             <div class="entry-date">2025</div>
             <div class="entry-body">
                 <p class="entry-title"><a href="https://github.com/gijzelaerr/spectrageist" target="_blank" rel="noopener">spectrageist</a></p>
-                <p>Real-time audio feature extraction for live visualisation — written in Rust for low-latency use on stage.</p>
+                <p>Real-time audio feature extraction for live visuals, written in Rust to keep the latency low enough for use on stage.</p>
                 <div class="entry-tags"><span class="entry-tag">Rust</span><span class="entry-tag">Audio DSP</span></div>
             </div>
         </li>
 
-        <li class="entry">
-            <div class="entry-date">2025</div>
-            <div class="entry-body">
-                <p class="entry-title"><a href="https://github.com/gijzelaerr/poing" target="_blank" rel="noopener">poing</a></p>
-                <p>A neural-network audio plugin inspired by the classic Dutch electro track "Poing".</p>
-                <div class="entry-tags"><span class="entry-tag">Rust</span><span class="entry-tag">ML</span><span class="entry-tag">Audio</span></div>
-            </div>
-        </li>
+        
 
         <li class="entry">
             <div class="entry-date">2025</div>
             <div class="entry-body">
                 <p class="entry-title"><a href="https://github.com/gijzelaerr/charcoaloptimizer" target="_blank" rel="noopener">charcoaloptimizer</a></p>
-                <p>An Ultimate Charcoal Packing Maximizer 3000 — because BBQ efficiency matters.</p>
+                <p>The Ultimate Charcoal Packing Maximizer 3000. It works out how to fit the most bags of charcoal into a shipping container.</p>
                 <div class="entry-tags"><span class="entry-tag">HTML</span><span class="entry-tag">AI</span></div>
             </div>
         </li>
@@ -59,10 +108,10 @@
     <ol class="log">
 
         <li class="entry">
-            <div class="entry-date">2022 — now</div>
+            <div class="entry-date">2022 to now</div>
             <div class="entry-body">
                 <p class="entry-title">Edge &amp; service-mesh infrastructure at Spotify</p>
-                <p>On the <strong>Fabric</strong> team: service mesh, service discovery, and service-to-service auth. On the <strong>ATC</strong> team: edge-perimeter systems — attack prevention, scraping detection, load balancing. And the occasional 3&nbsp;a.m. incident call.</p>
+                <p>On the Fabric team: service mesh, service discovery and authentication between services. On the ATC team: the systems at the edge, for attack prevention, scraping detection and load balancing. And now and then an incident call at 3 a.m.</p>
                 <div class="entry-tags"><span class="entry-tag">Envoy</span><span class="entry-tag">Java</span><span class="entry-tag">Go</span><span class="entry-tag">Kubernetes</span></div>
             </div>
         </li>
@@ -76,7 +125,7 @@
             <div class="entry-date">2021</div>
             <div class="entry-body">
                 <p class="entry-title">Recommendation engine at <a href="https://www.dpgmedia.nl/" target="_blank" rel="noopener">DPG Media</a></p>
-                <p>Built the recommendation engine for a then-upcoming multi-brand news app and website. Also acted as product owner for technical debt.</p>
+                <p>I built the recommendation engine for a then upcoming news app and website for several brands. I was also the product owner for technical debt.</p>
                 <div class="entry-tags"><span class="entry-tag">ML</span><span class="entry-tag">Python</span></div>
             </div>
         </li>
@@ -88,7 +137,7 @@
                     <img src="https://i.ytimg.com/vi/I_dkK9npoaQ/hqdefault.jpg" alt="" loading="lazy" width="480" height="360">
                 </a>
                 <p class="entry-title"><a href="https://www.youtube.com/watch?v=I_dkK9npoaQ" target="_blank" rel="noopener">Self-built FPV drones</a></p>
-                <p>Building and flying first-person-view drones — soldering the boards, tuning the flight controller, and learning to fly them without crashing too often. Footage from the dunes of Langstrand, Namibia.</p>
+                <p>I built a few first-person-view drones: soldering the boards, tuning the flight controller and learning to fly without crashing too often. The video was shot over the dunes at Langstrand in Namibia.</p>
                 <div class="entry-tags"><span class="entry-tag">Hardware</span><span class="entry-tag">FPV</span><span class="entry-tag">Drones</span></div>
             </div>
         </li>
@@ -102,7 +151,7 @@
             <div class="entry-date">2020</div>
             <div class="entry-body">
                 <p class="entry-title"><a href="https://github.com/MonetDBSolutions/MonetDBe-Python/" target="_blank" rel="noopener">MonetDBe</a></p>
-                <p>An embedded version of MonetDB with a SQLite-compatible interface, plus fast NumPy / Pandas interop.</p>
+                <p>An embedded version of MonetDB for Python, with an interface like SQLite and fast exchange of data with NumPy and Pandas.</p>
             </div>
         </li>
 
@@ -110,7 +159,7 @@
             <div class="entry-date">2020</div>
             <div class="entry-body">
                 <p class="entry-title"><a href="https://github.com/eduvpn/python-eduvpn-client" target="_blank" rel="noopener">eduVPN Linux client</a> 2.0</p>
-                <p>Overhauled the Linux client and Python API for eduVPN, the federated VPN for researchers and students.</p>
+                <p>An overhaul of the Linux client and Python API for eduVPN, the VPN for researchers and students.</p>
             </div>
         </li>
 
@@ -118,17 +167,11 @@
             <div class="entry-date">2020</div>
             <div class="entry-body">
                 <p class="entry-title"><a href="https://kernsuite.info" target="_blank" rel="noopener">KERN-6</a></p>
-                <p>The sixth iteration of the KERN radio-astronomy software suite.</p>
+                <p>The sixth release of the KERN suite of radio astronomy software.</p>
             </div>
         </li>
 
-        <li class="entry">
-            <div class="entry-date">2020</div>
-            <div class="entry-body">
-                <p class="entry-title"><a href="https://github.com/gijzelaerr/python-snap7" target="_blank" rel="noopener">python-snap7</a> 0.11</p>
-                <p>A new release of python-snap7 — a pure-Python Siemens S7 PLC library that now has <a href="https://github.com/gijzelaerr/python-snap7" target="_blank" rel="noopener">~800 stars</a>.</p>
-            </div>
-        </li>
+        
 
     </ol>
 
@@ -139,7 +182,7 @@
             <div class="entry-date">2019</div>
             <div class="entry-body">
                 <p class="entry-title">Electricity-grid simulation for <a href="https://www.alliander.com" target="_blank" rel="noopener">Alliander</a></p>
-                <p>Building a simulation of the Dutch electricity grid with realistic usage patterns, as a testbed for reinforcement-learning agents optimising long-term investment strategies. We never quite got to the deep-learning part — but the simulation was lovely.</p>
+                <p>A simulation of the Dutch electricity grid with realistic usage patterns. It was meant as a testbed for reinforcement learning agents that plan long-term investments. We never got to the deep learning part.</p>
                 <div class="entry-tags"><span class="entry-tag">Simulation</span><span class="entry-tag">RL</span><span class="entry-tag">Python</span></div>
             </div>
         </li>
@@ -148,7 +191,7 @@
             <div class="entry-date">2019</div>
             <div class="entry-body">
                 <p class="entry-title">Algorithmic perfume design for <a href="https://scentronix.com/" target="_blank" rel="noopener">Scentronix</a></p>
-                <p>Collaborative filtering for recommending perfume recipes from a personality profile.</p>
+                <p>Collaborative filtering that recommends a perfume recipe based on a personality profile.</p>
             </div>
         </li>
 
@@ -161,7 +204,7 @@
             <div class="entry-date">2018</div>
             <div class="entry-body">
                 <p class="entry-title">Containers for alien-signal hunting</p>
-                <p>Containerisation and packaging of software used in the search for signals from extraterrestrial intelligence — <a href="https://seti.berkeley.edu/listen/" target="_blank" rel="noopener">Breakthrough Listen</a> at <a href="https://seti.berkeley.edu/" target="_blank" rel="noopener">Berkeley SETI</a>.</p>
+                <p>Packaging and containerising the software that <a href="https://seti.berkeley.edu/listen/" target="_blank" rel="noopener">Breakthrough Listen</a> at <a href="https://seti.berkeley.edu/" target="_blank" rel="noopener">Berkeley SETI</a> uses to look for signals from extraterrestrial intelligence.</p>
             </div>
         </li>
 
@@ -169,7 +212,7 @@
             <div class="entry-date">2018</div>
             <div class="entry-body">
                 <p class="entry-title"><a href="https://github.com/gijzelaerr/vacuum-cleaner/" target="_blank" rel="noopener">Vacuum-cleaner</a></p>
-                <p>Deconvolving radio-telescope data using deep learning.</p>
+                <p>Deconvolving radio telescope images with deep learning.</p>
             </div>
         </li>
 
@@ -177,7 +220,7 @@
             <div class="entry-date">2018</div>
             <div class="entry-body">
                 <p class="entry-title">MANRS &amp; ASTERICS pipelines</p>
-                <p>Simulation of realistic network metrics for <a href="https://www.manrs.org/" target="_blank" rel="noopener">MANRS</a>. Modular data-reduction pipelines on CWL and KERN for the <a href="https://www.asterics2020.eu/" target="_blank" rel="noopener">ASTERICS</a> OBELICS industrial partner project.</p>
+                <p>Simulated network metrics for <a href="https://www.manrs.org/" target="_blank" rel="noopener">MANRS</a>, and modular data reduction pipelines built on CWL and KERN for the <a href="https://www.asterics2020.eu/" target="_blank" rel="noopener">ASTERICS</a> project.</p>
             </div>
         </li>
 
@@ -185,7 +228,7 @@
             <div class="entry-date">2018</div>
             <div class="entry-body">
                 <p class="entry-title">APERTIF software &amp; cluster tooling</p>
-                <p>Software packaging and cluster tooling for <a href="https://www.astron.nl/astronomy-group/apertif/apertif" target="_blank" rel="noopener">APERTIF</a>.</p>
+                <p>Software packaging and cluster tooling for <a href="https://www.astron.nl/astronomy-group/apertif/apertif" target="_blank" rel="noopener">APERTIF</a> at ASTRON.</p>
             </div>
         </li>
 
@@ -198,7 +241,7 @@
             <div class="entry-date">2017</div>
             <div class="entry-body">
                 <p class="entry-title"><a href="https://github.com/arpa2/keehive" target="_blank" rel="noopener">Keehive</a></p>
-                <p>A PKCS #11 library and hosting daemon — part of the <a href="http://www.arpa2.net/" target="_blank" rel="noopener">arpa2</a> project.</p>
+                <p>A PKCS #11 library and hosting daemon, part of the <a href="http://www.arpa2.net/" target="_blank" rel="noopener">arpa2</a> project.</p>
             </div>
         </li>
 
@@ -206,7 +249,7 @@
             <div class="entry-date">2017</div>
             <div class="entry-body">
                 <p class="entry-title">EOSC LOFAR pilot</p>
-                <p>Porting <a href="https://github.com/lofar-astron/prefactor" target="_blank" rel="noopener">radio-astronomy data-reduction pipelines</a> to <a href="http://www.commonwl.org/" target="_blank" rel="noopener">Common Workflow Language</a> for the <a href="https://eoscpilot.eu/lofar-data" target="_blank" rel="noopener">European Open Science Cloud</a>.</p>
+                <p>Porting <a href="https://github.com/lofar-astron/prefactor" target="_blank" rel="noopener">LOFAR data reduction pipelines</a> to the <a href="http://www.commonwl.org/" target="_blank" rel="noopener">Common Workflow Language</a> for the <a href="https://eoscpilot.eu/lofar-data" target="_blank" rel="noopener">EOSC pilot</a>.</p>
             </div>
         </li>
 
@@ -214,7 +257,7 @@
             <div class="entry-date">2017</div>
             <div class="entry-body">
                 <p class="entry-title">Cape Town consultancy</p>
-                <p>Computer-vision and computational-creativity consulting for <a href="https://madewithover.com" target="_blank" rel="noopener">@Over</a>. Python API for live trading on the Johannesburg exchange for <a href="https://www.agcapital.co.za/" target="_blank" rel="noopener">AG Capital</a>. <a href="https://github.com/gijzelaerr/sqlalchemy-monetdb" target="_blank" rel="noopener">SQLAlchemy dialect</a> for MonetDB.</p>
+                <p>Computer vision and computational creativity for <a href="https://madewithover.com" target="_blank" rel="noopener">Over</a>. A Python API for live trading on the Johannesburg stock exchange for <a href="https://www.agcapital.co.za/" target="_blank" rel="noopener">AG Capital</a>. And a <a href="https://github.com/gijzelaerr/sqlalchemy-monetdb" target="_blank" rel="noopener">SQLAlchemy dialect</a> for MonetDB.</p>
             </div>
         </li>
 
@@ -227,7 +270,7 @@
             <div class="entry-date">2016</div>
             <div class="entry-body">
                 <p class="entry-title"><a href="http://kernsuite.info/" target="_blank" rel="noopener">KERN</a> &nbsp;·&nbsp; <a href="https://github.com/gijzelaerr/kliko" target="_blank" rel="noopener">Kliko</a></p>
-                <p>First release of the KERN radio-astronomy software suite, and Kliko — the scientific-compute container specification.</p>
+                <p>The first release of KERN, a packaged suite of radio astronomy software, and Kliko, a container specification for scientific computing.</p>
             </div>
         </li>
 
@@ -235,7 +278,7 @@
             <div class="entry-date">2015</div>
             <div class="entry-body">
                 <p class="entry-title"><a href="https://github.com/gijzelaerr/python-docker-machine" target="_blank" rel="noopener">python-docker-machine</a></p>
-                <p>A Python API around Docker Machine.</p>
+                <p>A Python API for Docker Machine.</p>
             </div>
         </li>
 
@@ -243,7 +286,7 @@
             <div class="entry-date">2013</div>
             <div class="entry-body">
                 <p class="entry-title"><a href="https://github.com/gijzelaerr/python-snap7" target="_blank" rel="noopener">python-snap7</a></p>
-                <p>A Python API for the snap7 Siemens PLC communication library. Still actively maintained a decade later.</p>
+                <p>A Python wrapper for snap7, the library for talking to Siemens PLCs. Still maintained thirteen years later.</p>
             </div>
         </li>
 
@@ -251,7 +294,7 @@
             <div class="entry-date">2012</div>
             <div class="entry-body">
                 <p class="entry-title"><a href="https://www.surffilesender.nl/" target="_blank" rel="noopener">SURFfilesender</a></p>
-                <p>Client-side JavaScript encryption for the browser-based file-sharing platform.</p>
+                <p>Encryption in the browser, in JavaScript, for the file sharing service of SURF.</p>
             </div>
         </li>
 
@@ -262,7 +305,7 @@
                     <img src="https://i.ytimg.com/vi/UV9Ib4ci0YI/hqdefault.jpg" alt="" loading="lazy" width="480" height="360">
                 </a>
                 <p class="entry-title"><a href="https://www.youtube.com/watch?v=UV9Ib4ci0YI" target="_blank" rel="noopener">CT skull visualisation with VTK</a></p>
-                <p>Playing with <a href="https://vtk.org/" target="_blank" rel="noopener">VTK</a> and DICOM files on the CT scan of my own skull — rendering, slicing, and poking around inside my own head.</p>
+                <p>Playing with <a href="https://vtk.org/" target="_blank" rel="noopener">VTK</a> and the DICOM files of a CT scan of my own head.</p>
                 <div class="entry-tags"><span class="entry-tag">VTK</span><span class="entry-tag">DICOM</span><span class="entry-tag">Medical imaging</span></div>
             </div>
         </li>
@@ -271,7 +314,7 @@
             <div class="entry-date">2011</div>
             <div class="entry-body">
                 <p class="entry-title"><a href="https://github.com/gijzelaerr/pymonetdb" target="_blank" rel="noopener">pymonetdb</a></p>
-                <p>The official Python client library for <a href="https://www.monetdb.org/" target="_blank" rel="noopener">MonetDB</a>, the open-source column-store analytical database. I started it in 2011 as a pure-Python DB-API 2.0 driver speaking MonetDB's MAPI protocol — it's since been adopted upstream and ships as the default Python interface to MonetDB.</p>
+                <p>The Python client for <a href="https://www.monetdb.org/" target="_blank" rel="noopener">MonetDB</a>, the open source column store. I wrote it in 2011 as a pure Python driver. MonetDB later adopted it and it is now the official Python interface.</p>
                 <div class="entry-tags"><span class="entry-tag">Python</span><span class="entry-tag">MonetDB</span><span class="entry-tag">DB-API</span></div>
             </div>
         </li>
@@ -283,7 +326,7 @@
                     <img src="https://i.ytimg.com/vi/GbB5jZm3ROw/hqdefault.jpg" alt="" loading="lazy" width="480" height="360">
                 </a>
                 <p class="entry-title"><a href="https://github.com/gijzelaerr/sonic-gesture" target="_blank" rel="noopener">Sonic Gesture</a></p>
-                <p>Computer vision in C++ translating real-time hand poses into MIDI. Master's-thesis project — the demo video is a Snoop Dogg / Madonna mashup driven entirely by hand gestures into Ableton Live.</p>
+                <p>My master's thesis: computer vision in C++ that turns hand poses into MIDI in real time. In the demo video I play a Snoop Dogg and Madonna mashup in Ableton Live using only my hands.</p>
             </div>
         </li>
 
