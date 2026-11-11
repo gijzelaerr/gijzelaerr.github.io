@@ -193,6 +193,7 @@ async function loadVariant(name) {
   const t1 = performance.now();
   console.info(`[chamais] ${name}: loaded and parsed in ${Math.round(t1 - t0)} ms`);
   const v = { name, site, ...glb };
+  if (v.groups.doors) v.groups.doors.visible = false; // glazed doors stand open: not drawn, no collision
   if (v.groups.pool_water) v.groups.pool_water.traverse((o) => { if (o.isMesh) o.material = waterMaterial; });
   v.octree = new Collider(v.root);
   console.info(`[chamais] ${name}: collider of ${v.octree.triangles} triangles built in ${Math.round(performance.now() - t1)} ms`);
