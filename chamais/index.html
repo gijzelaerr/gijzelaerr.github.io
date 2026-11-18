@@ -47,7 +47,7 @@ sitemap: false
   body.touch #vr[disabled] { display: none; }
   body.touch #hint { top: auto; bottom: calc(24px + env(safe-area-inset-bottom)); left: 170px; right: 170px; text-align: center; }
   body.touch #toast { top: calc(64px + env(safe-area-inset-top)); }
-  .stick { position: fixed; bottom: calc(22px + env(safe-area-inset-bottom)); width: 132px; height: 132px; border-radius: 50%;
+  .stick { position: fixed; bottom: calc(44px + env(safe-area-inset-bottom)); /* clear of the iOS home-gesture edge */ width: 132px; height: 132px; border-radius: 50%;
     background: rgba(28,22,18,.35); border: 2px solid rgba(243,234,217,.45); touch-action: none; display: grid; place-items: center; }
   .stick.left { left: calc(22px + env(safe-area-inset-left)); }
   .stick.right { right: calc(22px + env(safe-area-inset-right)); }

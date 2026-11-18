@@ -596,16 +596,28 @@ function makeStick(side, out) {
     set(e.clientX, e.clientY);
   });
   base.addEventListener('pointermove', (e) => { if (e.pointerId === id) set(e.clientX, e.clientY); });
-  const end = (e) => {
-    if (e.pointerId !== id) return;
+  const release = () => {
     id = null; out.x = 0; out.y = 0;
     knob.style.transform = '';
     base.classList.remove('on');
   };
+  const end = (e) => { if (e.pointerId === id) release(); };
   base.addEventListener('pointerup', end);
   base.addEventListener('pointercancel', end);
+  base.addEventListener('lostpointercapture', end);
   base.addEventListener('contextmenu', (e) => e.preventDefault());
+  stickReleases.push(release);
 }
+// iOS can take a touch over (the home gesture at the bottom edge, a notification)
+// without ever sending pointerup or pointercancel: the stick would stay pushed and
+// keep turning or walking. So: no finger on the screen, or the page in the
+// background, lets go of every stick.
+const stickReleases = [];
+const releaseSticks = () => stickReleases.forEach((f) => f());
+window.addEventListener('touchend', (e) => { if (!e.touches.length) releaseSticks(); }, { passive: true });
+window.addEventListener('touchcancel', (e) => { if (!e.touches.length) releaseSticks(); }, { passive: true });
+window.addEventListener('blur', releaseSticks);
+document.addEventListener('visibilitychange', () => { if (document.hidden) releaseSticks(); });
 if (TOUCH) {
   document.body.classList.add('touch');
   // phones: fewer pixels and a smaller shadow map, so Safari keeps the tab alive

@@ -84,10 +84,10 @@ export async function initDM(W) {
       #dm .play[hidden] { display: none; }
       #dm .touchbtn { position: absolute; pointer-events: auto; touch-action: none; border-radius: 50%; border: 2px solid rgba(255,255,255,.5); background: rgba(255,106,61,.35); display: grid; place-items: center; font-size: 13px; }
       #dm .touchbtn:active, #dm .touchbtn.on { background: rgba(255,106,61,.75); }
-      #dm .fire { right: calc(40px + env(safe-area-inset-right)); bottom: calc(175px + env(safe-area-inset-bottom)); width: 92px; height: 92px; font-size: 16px; }
-      #dm .jump { right: calc(150px + env(safe-area-inset-right)); bottom: calc(160px + env(safe-area-inset-bottom)); width: 64px; height: 64px; background: rgba(61,214,255,.3); }
-      #dm .swap { right: calc(170px + env(safe-area-inset-right)); bottom: calc(240px + env(safe-area-inset-bottom)); width: 56px; height: 56px; background: rgba(255,255,255,.18); }
-      body.touch #dm .stats { bottom: calc(160px + env(safe-area-inset-bottom)); } body.touch #dm .gun { bottom: auto; top: 60px; }
+      #dm .fire { right: calc(40px + env(safe-area-inset-right)); bottom: calc(197px + env(safe-area-inset-bottom)); width: 92px; height: 92px; font-size: 16px; }
+      #dm .jump { right: calc(150px + env(safe-area-inset-right)); bottom: calc(182px + env(safe-area-inset-bottom)); width: 64px; height: 64px; background: rgba(61,214,255,.3); }
+      #dm .swap { right: calc(170px + env(safe-area-inset-right)); bottom: calc(262px + env(safe-area-inset-bottom)); width: 56px; height: 56px; background: rgba(255,255,255,.18); }
+      body.touch #dm .stats { bottom: calc(182px + env(safe-area-inset-bottom)); } body.touch #dm .gun { bottom: auto; top: 60px; }
       body.touch #dm .stat b, body.touch #dm .gun b { font-size: 32px; }
     </style>
     <div class="vignette"></div>
@@ -668,7 +668,9 @@ export async function initDM(W) {
     document.addEventListener('pointerlockchange', () => { H('.play').hidden = document.pointerLockElement === canvas; if (!document.pointerLockElement) me.firing = false; });
     document.addEventListener('mousemove', (e) => {
       if (document.pointerLockElement !== canvas) return;
-      W.turn(-e.movementX * 0.0022, -e.movementY * 0.0022);
+      // Safari sometimes reports a huge jump (e.g. the first event after locking): cap each event
+      const mx = Math.max(-120, Math.min(120, e.movementX || 0)), my = Math.max(-120, Math.min(120, e.movementY || 0));
+      W.turn(-mx * 0.0022, -my * 0.0022);
     });
     document.addEventListener('mousedown', (e) => { if (document.pointerLockElement === canvas && e.button === 0) me.firing = true; if (document.pointerLockElement === canvas && e.button === 2) cycle(1); });
     document.addEventListener('mouseup', (e) => { if (e.button === 0) me.firing = false; });
