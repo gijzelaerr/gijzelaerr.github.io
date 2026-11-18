@@ -1,0 +1,99 @@
+---
+layout: null
+sitemap: false
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="robots" content="noindex, nofollow">
+<title>Chamais</title>
+<style>
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #1c1612; color: #f3ead9; font: 15px/1.4 "Segoe UI", system-ui, sans-serif; }
+  canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+  #loading { position: fixed; inset: 0; display: grid; place-items: center; background: #1c1612; text-align: center; }
+  #loading[hidden] { display: none; }
+  #loading h1 { font-weight: 600; letter-spacing: .04em; margin: 0 0 .4em; }
+  #bar { position: fixed; left: 12px; right: 12px; bottom: 12px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  #bar button, #bar select { font: inherit; color: #f3ead9; background: rgba(28,22,18,.82); border: 1px solid #6b5640; border-radius: 8px; padding: 8px 12px; cursor: pointer; }
+  #bar label { background: rgba(28,22,18,.82); border: 1px solid #6b5640; border-radius: 8px; padding: 6px 12px; display: flex; gap: 8px; align-items: center; }
+  #vr { background: #e0a458 !important; color: #1c1612 !important; font-weight: 600; border-color: #e0a458 !important; }
+  #vr[disabled] { background: rgba(28,22,18,.82) !important; color: #b9a78f !important; border-color: #6b5640 !important; cursor: default; }
+  #hint { position: fixed; top: 12px; left: 12px; right: 12px; color: #d9cbb3; text-shadow: 0 1px 3px #000; font-size: 13px; }
+  #tools { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  #tools button.on { background: #e0a458; color: #1c1612; border-color: #e0a458; }
+  #tools .swatches { display: flex; gap: 4px; background: rgba(28,22,18,.82); border: 1px solid #6b5640; border-radius: 8px; padding: 5px 7px; }
+  #tools .sw { width: 24px; height: 24px; padding: 0; border-radius: 6px; border: 2px solid transparent; }
+  #tools .sw.on { border-color: #fff; }
+  #livestate { background: rgba(28,22,18,.82); border: 1px solid #6b5640; border-radius: 8px; padding: 8px 12px; color: #b9a78f; }
+  #livestate.ok { color: #7fd17f; }
+  #toast { position: fixed; top: 44px; left: 50%; transform: translateX(-50%); background: rgba(28,22,18,.9); border: 1px solid #e0a458; color: #f3ead9; padding: 10px 18px; border-radius: 10px; max-width: min(720px, 90vw); }
+  #toast[hidden] { display: none; }
+  #hint { transition: opacity .8s; }
+  #hint.gone { opacity: 0; pointer-events: none; }
+  /* Touch screens (walk.js adds .touch): toolbar on top, one scrolling row; sticks in the bottom corners */
+  body.touch { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+  body.touch button, body.touch select, body.touch input { touch-action: manipulation; }
+  body.touch #bar { top: calc(8px + env(safe-area-inset-top)); bottom: auto; left: calc(8px + env(safe-area-inset-left)); right: calc(8px + env(safe-area-inset-right));
+    gap: 6px; }
+  body.touch #tools { flex: 1 1 100%; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  body.touch #tools::-webkit-scrollbar { display: none; }
+  body.touch #tools > * { flex: none; }
+  body.touch #bar label { flex: 1; min-width: 0; }
+  body.touch #bar label input { flex: 1; min-width: 0; }
+  body.touch #bar button, body.touch #bar select { padding: 8px 10px; }
+  body.touch #vr[disabled] { display: none; }
+  body.touch #hint { top: auto; bottom: calc(24px + env(safe-area-inset-bottom)); left: 170px; right: 170px; text-align: center; }
+  body.touch #toast { top: calc(64px + env(safe-area-inset-top)); }
+  .stick { position: fixed; bottom: calc(22px + env(safe-area-inset-bottom)); width: 132px; height: 132px; border-radius: 50%;
+    background: rgba(28,22,18,.35); border: 2px solid rgba(243,234,217,.45); touch-action: none; display: grid; place-items: center; }
+  .stick.left { left: calc(22px + env(safe-area-inset-left)); }
+  .stick.right { right: calc(22px + env(safe-area-inset-right)); }
+  .stick.on { background: rgba(28,22,18,.5); border-color: #e0a458; }
+  .stick .knob { width: 58px; height: 58px; border-radius: 50%; background: rgba(243,234,217,.75); pointer-events: none; }
+  .stick.on .knob { background: #e0a458; }
+  @media (max-width: 520px) { body.touch #hint { display: none; } }
+  /* Start screen: pick a mode while the house loads */
+  #menu { display: grid; gap: 14px; justify-items: center; margin: 10px 0 6px; }
+  #menu[hidden] { display: none; }
+  #pname { font: inherit; font-size: 17px; color: #f3ead9; background: #2a211b; border: 1px solid #6b5640; border-radius: 8px; padding: 10px 14px; width: min(280px, 80vw); text-align: center; }
+  #menu .modes { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+  #menu .modes button { font: inherit; color: #f3ead9; background: #2a211b; border: 2px solid #6b5640; border-radius: 12px; padding: 18px 22px; width: min(260px, 80vw); cursor: pointer; display: grid; gap: 6px; text-align: left; }
+  #menu .modes button:hover, #menu .modes button:focus-visible { border-color: #e0a458; }
+  #menu .modes button b { font-size: 20px; }
+  #menu .modes button[data-mode="dm"] b { color: #ff6a3d; }
+  #menu .modes small { color: #b9a78f; font-size: 13px; }
+  #loading:not([hidden]) ~ #hint, #loading:not([hidden]) ~ #bar { display: none; }
+  /* Death match hides the walk's controls */
+  body[data-mode="dm"] #bar, body[data-mode="dm"] #hint { display: none !important; }
+</style>
+<script type="importmap">
+{ "imports": { "three": "./lib/three/three.module.min.js", "three/addons/": "./lib/three/addons/", "three-mesh-bvh": "./lib/three-mesh-bvh/index.module.js" } }
+</script>
+</head>
+<body>
+<canvas id="view"></canvas>
+<div id="loading"><div>
+  <h1>Chamais</h1>
+  <div id="menu">
+    <input id="pname" maxlength="16" placeholder="Your name" autocomplete="nickname" spellcheck="false">
+    <div class="modes">
+      <button data-mode="architect"><b>Architect</b><small>Walk through the house, see the plans, change things</small></button>
+      <button data-mode="dm"><b>Death match</b><small>Run, grab weapons, frag each other</small></button>
+    </div>
+  </div>
+  <p id="loadmsg">Loading the house…</p>
+</div></div>
+<div id="hint">Headset: left stick walks, right stick turns, click a stick to run, A / X next place, B / Y previous. Left trigger: point and jump. Right trigger: use the tool on your left wrist.
+Computer: W A S D to walk, drag to look, Shift to run; tools 1–5, click to use, Ctrl+Z to undo.</div>
+<div id="toast" hidden></div>
+<div id="bar">
+  <button id="vr" disabled>Checking for VR…</button>
+  <select id="goto"></select>
+  <label>Time <input id="hour" type="range" min="5" max="20" step="0.05"> <span id="clock"></span></label>
+</div>
+<script type="module" src="walk.js"></script>
+</body>
+</html>

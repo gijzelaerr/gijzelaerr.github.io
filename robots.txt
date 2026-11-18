@@ -9,7 +9,8 @@ User-agent: *
 Allow: /
 # Family history map: shared by link only, keep it out of search results
 Disallow: /family/
-# House walk-through game: shared by link only
+# House walk-through and death match: shared by link only
+Disallow: /chamais/
 Disallow: /chamaisgame/
 
 # ── AI training / scraping bots ───────────────────────────
