@@ -156,9 +156,10 @@ export async function initDM(W) {
     const left = Math.max(0, matchInfo.left - (performance.now() - matchClock) / 1000);
     const lead = scoreRows()[0];
     const t = `${Math.floor(left / 60)}:${String(Math.floor(left % 60)).padStart(2, '0')}`;
-    H('.top').innerHTML = matchInfo.state === 'on'
+    const n = others.size + 1;
+    H('.top').innerHTML = (matchInfo.state === 'on'
       ? `${t} · ${me.frags} frag${me.frags === 1 ? '' : 's'} · first to ${matchInfo.fraglimit}${lead && lead.frags > 0 ? ` · lead: ${tag(lead.id)} ${lead.frags}` : ''}`
-      : 'Next match soon';
+      : 'Next match soon') + ` · ${n} in the arena`;
   }
 
   // ── Sound: everything synthesised ──────────────────────────────────
@@ -367,10 +368,12 @@ export async function initDM(W) {
   const r3 = (n) => Math.round(n * 1000) / 1000;
   function connect() {
     ws = new WebSocket(serverUrl());
-    ws.onopen = () => { connected = true; sendNow({ t: 'hello', name: me.name || '' }); };
+    ws.onopen = () => { connected = true; me.id = null; sendNow({ t: 'hello', name: me.name || '' }); };
     ws.onclose = () => {
+      const wasIn = connected && me.id;
       connected = false;
-      center('Lost the server', 'trying again…', 3000, '#ff6a3d');
+      // closed before the welcome: the arena is full (24) or out of reach
+      center(wasIn ? 'Lost the server' : 'The arena is full or out of reach', 'trying again…', 3000, '#ff6a3d');
       for (const p of others.values()) scene.remove(p.group);
       others.clear();
       setTimeout(connect, 2500);
