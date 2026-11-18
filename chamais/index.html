@@ -60,12 +60,16 @@ sitemap: false
   #menu[hidden] { display: none; }
   #pname { font: inherit; font-size: 17px; color: #f3ead9; background: #2a211b; border: 1px solid #6b5640; border-radius: 8px; padding: 10px 14px; width: min(280px, 80vw); text-align: center; }
   #menu .modes { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
-  #menu .modes button { font: inherit; color: #f3ead9; background: #2a211b; border: 2px solid #6b5640; border-radius: 12px; padding: 18px 22px; width: min(260px, 80vw); cursor: pointer; display: grid; gap: 6px; text-align: left; }
+  #menu .modes button { font: inherit; color: #f3ead9; background: #2a211b; border: 2px solid #6b5640; border-radius: 12px; padding: 16px 20px; width: min(300px, 86vw); cursor: pointer; display: flex; gap: 16px; align-items: center; text-align: left; }
+  #menu .modes button > span { display: grid; gap: 6px; }
+  #menu .icon { flex: none; width: 52px; height: 52px; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; color: #e0a458; }
+  #menu .modes button[data-mode="dm"] .icon { color: #ff6a3d; }
+  #menu .modes button:hover .icon { transform: scale(1.08); transition: transform .15s; }
   #menu .modes button:hover, #menu .modes button:focus-visible { border-color: #e0a458; }
   #menu .modes button b { font-size: 20px; }
   #menu .modes button[data-mode="dm"] b { color: #ff6a3d; }
   #menu .modes small { color: #b9a78f; font-size: 13px; }
-  #loading:not([hidden]) ~ #hint, #loading:not([hidden]) ~ #bar { display: none; }
+  #loading:not([hidden]) ~ #hint, #loading:not([hidden]) ~ #bar, #loading:not([hidden]) ~ #toast, #loading:not([hidden]) ~ .stick { display: none; }
   /* Death match hides the walk's controls */
   body[data-mode="dm"] #bar, body[data-mode="dm"] #hint { display: none !important; }
 </style>
@@ -80,8 +84,14 @@ sitemap: false
   <div id="menu">
     <input id="pname" maxlength="16" placeholder="Your name" autocomplete="nickname" spellcheck="false">
     <div class="modes">
-      <button data-mode="architect"><b>Architect</b><small>Walk through the house, see the plans, change things</small></button>
-      <button data-mode="dm"><b>Death match</b><small>Run, grab weapons, frag each other</small></button>
+      <button data-mode="architect">
+        <svg class="icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M6 24 24 9l18 15"/><path d="M11 20v19h26V20"/><path d="M20 39V28h8v11"/><path d="M30 6h7v8" opacity=".55"/><path d="M8 44h32" stroke-dasharray="3 3" opacity=".55"/></svg>
+        <span><b>Architect</b><small>Walk through the house, see the plans, change things</small></span>
+      </button>
+      <button data-mode="dm">
+        <svg class="icon" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="14"/><circle cx="24" cy="24" r="3" fill="currentColor" stroke="none"/><path d="M24 4v10M24 34v10M4 24h10M34 24h10"/></svg>
+        <span><b>Death match</b><small>Run, grab weapons, frag each other</small></span>
+      </button>
     </div>
   </div>
   <p id="loadmsg">Loading the house…</p>
