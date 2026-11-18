@@ -20,15 +20,15 @@ const PICKUP_LOOK = {
   scatter: { color: 0xffb36b, label: 'Scatter' }, boomer: { color: 0xff6a3d, label: 'Boomer' }, lancer: { color: 0x6be4ff, label: 'Lancer' },
   health: { color: 0x5dff7a, label: '+25' }, mega: { color: 0x3dd6ff, label: 'Mega' }, armor: { color: 0xffd23d, label: 'Armour' },
 };
-const INTERP = 0.1; // other players are drawn 100 ms in the past, between two updates
+const INTERP = 0.07; // other players are drawn 70 ms in the past, between two updates (20 a second)
 const PLAYER_R = 0.32, PLAYER_H = 1.75; // hit capsule (a bit fatter than the collision one: more fun)
 
-/** Where the game server is: ?dm=<ws url>; this PC when served locally; the home arena at home; online the public one. */
+/** Where the game server is: ?dm=<ws url>; this PC when served locally; everywhere else the one arena on omalaka
+    (home and online play in the same match since 2026-11-18). */
 function serverUrl() {
   const p = new URLSearchParams(location.search).get('dm');
   if (p && /^wss?:\/\/[\w.:-]+\/dm\/ws$/.test(p)) return p;
   if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) return 'ws://127.0.0.1:8140/dm/ws';
-  if (location.hostname === 'home.invalid') return `wss://${location.host}/dm/ws`; // the home arena (infra: chamais-dm)
   return DM_PUBLIC_URL;
 }
 const DM_PUBLIC_URL = 'wss://84-32-151-62.sslip.io/dm/ws'; // omalaka (Cherry Servers, Lithuania); see walk/README.md
