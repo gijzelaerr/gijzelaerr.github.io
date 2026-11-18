@@ -37,6 +37,13 @@ export async function initDM(W) {
   const { THREE, scene, camera, b2t, t2b, keys } = W;
   const $ = (s) => document.querySelector(s);
   const map = await (await fetch('assets/dm-map.json')).json();
+  // Everyone in the arena must stand in the same house, and the spawn and pickup points
+  // belong to one version: death match always uses the map's house (at home the walk may
+  // already show a newer one from the Claude loop). Online the page only has that house.
+  if (!W.isPublic() && map.version && W.house.version !== map.version) {
+    W.toast(`Loading the death-match house (${map.version})…`);
+    await W.loadHouse(map.version, 'the death-match house');
+  }
 
   // ── State ──────────────────────────────────────────────────────────
   const me = { id: null, name: '', alive: false, hp: 100, ar: 0, weapon: 'ticker', last: 'ticker', owned: new Set(['ticker']),

@@ -836,6 +836,7 @@ const world = {
   view: () => ({ yaw, pitch }),
   setView: (y, p = 0) => { yaw = y; pitch = p; },
   colliders: () => colliders,
+  isPublic: () => PUBLIC,
 };
 
 // ── Mode: architect (the walk: people, sketches, pins, the Claude loop) or
